@@ -13,4 +13,7 @@ class Yelp(models.Model):
     image_url = models.CharField(max_length=250)
     cuisine_type = models.CharField(max_length=250)
     city = models.CharField(max_length=100)
+    saveCurrent = models.CharField(max_length=100)
+    saveFuture = models.CharField(max_length=100)
+    completed = models.CharField(max_length=100)
     isFavorite = models.CharField(max_length=100)

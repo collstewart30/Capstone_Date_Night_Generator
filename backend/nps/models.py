@@ -14,4 +14,7 @@ class NPS(models.Model):
     state = models.CharField(max_length=2)
     description = models.CharField(max_length=250)
     type = models.CharField(max_length=100)
+    saveCurrent = models.CharField(max_length=100)
+    saveFuture = models.CharField(max_length=100)
+    completed = models.CharField(max_length=100)
     isFavorite = models.CharField(max_length=100)

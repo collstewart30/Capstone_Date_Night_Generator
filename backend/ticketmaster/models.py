@@ -12,4 +12,7 @@ class Ticketmaster(models.Model):
     image = models.CharField(max_length=250)
     eventType = models.CharField(max_length=250)
     state = models.CharField(max_length=100)
+    saveCurrent = models.CharField(max_length=100)
+    saveFuture = models.CharField(max_length=100)
+    completed = models.CharField(max_length=100)
     isFavorite = models.CharField(max_length=100)

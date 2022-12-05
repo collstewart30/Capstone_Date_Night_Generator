@@ -13,3 +13,15 @@ from django.shortcuts import get_object_or_404
 def get_ticketmaster_favorites(request):
     
     return Response('ticketmaster backend')
+
+
+# @api_view(['GET', 'POST'])     
+# @permission_classes([IsAuthenticated])
+# def user_comments(request):
+#    # print('User ',f"{request.user.id} {request.user.email} {request.user.username}")
+    
+#     if request.method == 'POST':
+#         serializer = TicketmasterSerializer(data=request.data)        
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save(user=request.user)
+#         return Response(serializer.data, status=status.HTTP_201_CREATED)

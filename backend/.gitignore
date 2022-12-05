@@ -128,4 +128,4 @@ dmypy.json
 .pyre/
 
 # Local Settings
-drf_jwt_backend/local_settings.py
+date_night_project/local_settings.py

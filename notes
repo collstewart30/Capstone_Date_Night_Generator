@@ -1,0 +1,27 @@
+ticketmaster
+- name
+- url
+- image
+- classifications.name (type)
+- _embedded.venues.state.stateCode
+- isFavorite
+
+
+yelp
+- name
+- url
+- image_url
+- categories.title
+- location.city
+- isFavorite
+
+
+NPS
+- title
+- url
+- image
+- relatedParks.fullName
+- relatedParks.state
+- shortDescription
+- activities.name
+- isFavorite

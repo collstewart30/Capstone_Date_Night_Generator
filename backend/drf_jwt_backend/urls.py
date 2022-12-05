@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
     path('api/cars/', include('cars.urls')),
-    # path('api/ticketmaster/', include('ticketmaster.urls')),
-    # path('api/nps/', include('nps.urls')),
-    # path('api/yelp/', include('yelp.urls')),
+    path('api/ticketmaster/', include('ticketmaster.urls')),
+    path('api/nps/', include('nps.urls')),
+    path('api/yelp/', include('yelp.urls')),
 ]

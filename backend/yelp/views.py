@@ -7,7 +7,7 @@ from .serializers import YelpSerializer
 from django.shortcuts import get_object_or_404
 
 
-@api_view(['GET', 'POST', 'PUT'])
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def yelp_items_search(request):
     print(
@@ -29,3 +29,7 @@ def yelp_items_search(request):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+    elif request.method == 'DELETE':
+        yelp_items = get_object_or_404(Yelp, user_id=request.user.id)
+        yelp_items.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

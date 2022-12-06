@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 
 
 
-@api_view(['GET', 'POST', 'PUT'])  
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])  
 @permission_classes([IsAuthenticated])
 def nps_items_search(request):
     print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
@@ -29,3 +29,7 @@ def nps_items_search(request):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+    elif request.method == 'DELETE':
+        nps_items = get_object_or_404(NPS, user_id=request.user.id)
+        nps_items.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 
 
 
-@api_view(['GET', 'POST'])  
+@api_view(['GET', 'POST', 'PUT'])  
 @permission_classes([IsAuthenticated])
 def ticketmaster_items_search(request):
     print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
@@ -20,6 +20,12 @@ def ticketmaster_items_search(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        nps_items = Ticketmaster.objects.filter(user_id=request.user.id)
-        serializer = TicketmasterSerializer(nps_items, many=True)
+        ticketmaster_items = Ticketmaster.objects.filter(user_id=request.user.id)
+        serializer = TicketmasterSerializer(ticketmaster_items, many=True)
+        return Response(serializer.data)
+    elif request.method == 'PUT':
+        ticketmaster_items = get_object_or_404(Ticketmaster, user_id=request.user.id)
+        serializer = TicketmasterSerializer(ticketmaster_items, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         return Response(serializer.data)

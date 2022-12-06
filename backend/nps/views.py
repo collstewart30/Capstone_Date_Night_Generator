@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 
 
 
-@api_view(['GET', 'POST'])  
+@api_view(['GET', 'POST', 'PUT'])  
 @permission_classes([IsAuthenticated])
 def nps_items_search(request):
     print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
@@ -23,4 +23,9 @@ def nps_items_search(request):
         nps_items = NPS.objects.filter(user_id=request.user.id)
         serializer = NPSSerializer(nps_items, many=True)
         return Response(serializer.data)
-
+    elif request.method == 'PUT':
+        nps_items = get_object_or_404(NPS, user_id=request.user.id)
+        serializer = NPSSerializer(nps_items, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)

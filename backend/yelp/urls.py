@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.get_yelp_favorites)
+    path('', views.yelp_items_search)
 ]

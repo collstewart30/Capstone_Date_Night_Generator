@@ -7,15 +7,19 @@ from .serializers import YelpSerializer
 from django.shortcuts import get_object_or_404
 
 
-# will need GET for user profile (authenticated): isFavorite, completed, saveCurrent, saveFuture
-# will need POST for user profile (authenticated): save as favorite, mark complete, save for current, save for future
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST'])  
 @permission_classes([IsAuthenticated])
-def get_yelp_favorites(request):
+def yelp_items_search(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
 
     if request.method == 'POST':
-        serializer = YelpSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(user=request.user)
-    return Response(serializer.data, status=status.HTTP_201_CREATED)
+        serializer = YelpSerializer(data=request.data)        
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'GET':
+        nps_items = Yelp.objects.filter(user_id=request.user.id)
+        serializer = YelpSerializer(nps_items, many=True)
+        return Response(serializer.data)

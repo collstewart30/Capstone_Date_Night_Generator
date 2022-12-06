@@ -7,6 +7,7 @@ from authentication.models import User
 
 class NPS(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    event_id = models.CharField(max_length=100, default=0)
     park_id = models.CharField(max_length=100, default=0)
     title = models.CharField(max_length=100)
     url = models.CharField(max_length=100)

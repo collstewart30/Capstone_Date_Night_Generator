@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.get_ticketmaster_favorites)
+    path('', views.ticketmaster_items_search)
 ]

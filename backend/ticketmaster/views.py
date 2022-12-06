@@ -8,20 +8,18 @@ from django.shortcuts import get_object_or_404
 
 
 
-@api_view(['GET'])  
-@permission_classes([AllowAny])
-def get_ticketmaster_favorites(request):
-    
-    return Response('ticketmaster backend')
+@api_view(['GET', 'POST'])  
+@permission_classes([IsAuthenticated])
+def ticketmaster_items_search(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
 
-
-# @api_view(['GET', 'POST'])     
-# @permission_classes([IsAuthenticated])
-# def user_comments(request):
-#    # print('User ',f"{request.user.id} {request.user.email} {request.user.username}")
-    
-#     if request.method == 'POST':
-#         serializer = TicketmasterSerializer(data=request.data)        
-#         serializer.is_valid(raise_exception=True)
-#         serializer.save(user=request.user)
-#         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    if request.method == 'POST':
+        serializer = TicketmasterSerializer(data=request.data)        
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'GET':
+        nps_items = Ticketmaster.objects.filter(user_id=request.user.id)
+        serializer = TicketmasterSerializer(nps_items, many=True)
+        return Response(serializer.data)

@@ -10,6 +10,7 @@ class NPS(models.Model):
     park_id = models.CharField(max_length=100, default=0)
     title = models.CharField(max_length=100)
     url = models.CharField(max_length=100)
+    image_url = models.CharField(max_length=100, default=False)
     park_name = models.CharField(max_length=250)
     state = models.CharField(max_length=2)
     description = models.CharField(max_length=250)

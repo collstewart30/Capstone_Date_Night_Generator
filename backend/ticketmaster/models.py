@@ -8,7 +8,7 @@ class Ticketmaster(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     event_id = models.CharField(max_length=100, default=0)
     name = models.CharField(max_length=100)
-    url = models.CharField(max_length=100)
+    url = models.CharField(max_length=500)
     image = models.CharField(max_length=250)
     eventType = models.CharField(max_length=250)
     state = models.CharField(max_length=100)

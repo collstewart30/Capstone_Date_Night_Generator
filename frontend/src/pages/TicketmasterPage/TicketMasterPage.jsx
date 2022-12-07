@@ -1,30 +1,32 @@
-// import React, { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
-// import axios from "axios";
-// import { KEY } from "../../localKey";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { tickemasterKEY } from "../../localKey";
 
 
-// const TicketMasterPage = () => {
+const TicketMasterPage = () => {
 
-//     useEffect(() => {
-//         getRelatedVideos();
-//         getAllComments();
-//       }, [videoId]);
+    const[ticketmasterData, setTicketmasterData] = useState([]);
+
+    useEffect(() => {
+        getTicketMasterData();
+      }, []);
     
-//       const getTicketMasterData = async () => {
-//         try {
-//           let response = await axios.get(
-//             `https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&key=${KEY}&part=snippet&type=video&maxResults=5`
-//           );
-//           console.log("VideoPage - results from thumbnail click");
-//           console.log(response.data.items);
-//           setLikeVideoId(response.data.items);
-//         } catch (error) {
-//           console.log(error);
-//         }
-//       };
+      const getTicketMasterData = async () => {
+        try {
+          let response = await axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${tickemasterKEY}&size=5&stateCode=MD`
+          );
+          console.log("Ticketmaster API");
+          console.log(response.data._embedded.events);
+          setTicketmasterData(response.data._embedded.events);
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
-//     return (  );
-// }
+    return ( 
+        <button></button>
+    );
+}
  
-// export default TicketMasterPage;
+export default TicketMasterPage;

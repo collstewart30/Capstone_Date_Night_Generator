@@ -127,5 +127,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+
 # Local Settings
+.drf_jwt_backend/local_settings.py
 drf_jwt_backend/local_settings.py
+.local_settings
+
+# Local Settings
+drf_jwt_backend/local_settingsv2.py

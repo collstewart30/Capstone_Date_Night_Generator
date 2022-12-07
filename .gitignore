@@ -263,3 +263,7 @@ dist
 
 
 .notes
+
+
+# Local Settings
+drf_jwt_backend/local_settings.py

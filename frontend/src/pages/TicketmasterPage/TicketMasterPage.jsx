@@ -7,6 +7,7 @@ import { tickemasterKEY } from "../../localKey";
 const TicketMasterPage = () => {
 
     const[ticketmasterData, setTicketmasterData] = useState([]);
+    const[searchTerm, setSearchTerm] = useState('MD');
 
     useEffect(() => {
         getTicketMasterData();
@@ -14,7 +15,7 @@ const TicketMasterPage = () => {
     
       const getTicketMasterData = async () => {
         try {
-          let response = await axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${tickemasterKEY}&size=5&stateCode=MD`
+          let response = await axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${tickemasterKEY}&size=5&stateCode=${searchTerm}`
           );
           console.log("Ticketmaster API");
           console.log(response.data._embedded.events);

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { npsKEY } from "../../localKey";
+import { token } from "../../localKey";
 
 const YelpPage = () => {
 
     const[yelpData, setYelpData] = useState([]);
+    const[location, setLocation] = useState('Baltimore');
 
     useEffect(() => {
         getYelpData();
@@ -13,11 +14,15 @@ const YelpPage = () => {
     
       const getYelpData = async () => {
         try {
-          let response = await axios.get(`https://developer.nps.gov/api/v1/thingstodo?stateCode=PA%2CMD&api_key=${npsKEY}`
+          let response = await axios.get(`https://api.yelp.com/v3/businesses/search?term=restaurant&location=${location}`,{
+            headers: {
+                Authorization: "Bearer " + token,
+            },
+          }
           );
           console.log("Yelp API");
           console.log(response);
-          seNPSData(response);
+          setYelpData(response);
         } catch (error) {
           console.log(error);
         }

@@ -6,6 +6,7 @@ import { npsKEY } from "../../localKey";
 const NPSPage = () => {
 
     const[NPSData, setNPSData] = useState([]);
+    const[searchTerm, setSearchTerm] = useState('PA');
 
     useEffect(() => {
         getNPSData();
@@ -13,7 +14,7 @@ const NPSPage = () => {
     
       const getNPSData = async () => {
         try {
-          let response = await axios.get(`https://developer.nps.gov/api/v1/thingstodo?stateCode=PA%2CMD&api_key=${npsKEY}`
+          let response = await axios.get(`https://developer.nps.gov/api/v1/thingstodo?stateCode=${searchTerm}%2CMD&api_key=${npsKEY}`
           );
           console.log("NPS API");
           console.log(response.data.data);

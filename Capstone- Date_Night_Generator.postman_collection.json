@@ -1,0 +1,894 @@
+{
+	"info": {
+		"_postman_id": "d10b889d-aaaf-4a18-8df8-c26f2d802f08",
+		"name": "Capstone: Date_Night_Generator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23037655"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register_User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"person1\",\r\n    \"password\": \"password123@\",\r\n    \"email\": \"person1@person1.com\",\r\n    \"first_name\": \"Person1\",\r\n    \"last_name\": \"PersonLastName\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"person1\",\r\n    \"password\": \"password123@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh_Access",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\": \"PASTE REFRESH TOKEN FROM LOGIN HERE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/refresh/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Frontend",
+			"item": [
+				{
+					"name": "NPS - GET things to do by stateCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://developer.nps.gov/api/v1/thingstodo?stateCode=PA%2CMD&api_key=cWwMCYqNufQDykMdAzT8bW49ypaAu5zVRnEKk8Z5",
+							"protocol": "https",
+							"host": [
+								"developer",
+								"nps",
+								"gov"
+							],
+							"path": [
+								"api",
+								"v1",
+								"thingstodo"
+							],
+							"query": [
+								{
+									"key": "stateCode",
+									"value": "PA%2CMD"
+								},
+								{
+									"key": "api_key",
+									"value": "cWwMCYqNufQDykMdAzT8bW49ypaAu5zVRnEKk8Z5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ticket Master - GET events by postalCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://app.ticketmaster.com/discovery/v2/events.json?apikey=Oeh81s2fL1i3VM6YeAkRChouAfdqbGvW&size=2&stateCode=MD",
+							"protocol": "https",
+							"host": [
+								"app",
+								"ticketmaster",
+								"com"
+							],
+							"path": [
+								"discovery",
+								"v2",
+								"events.json"
+							],
+							"query": [
+								{
+									"key": "apikey",
+									"value": "Oeh81s2fL1i3VM6YeAkRChouAfdqbGvW"
+								},
+								{
+									"key": "size",
+									"value": "2"
+								},
+								{
+									"key": "postalCode",
+									"value": "21230",
+									"disabled": true
+								},
+								{
+									"key": "stateCode",
+									"value": "MD"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Yelp - GET restaurants",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "g66isYOD6e4zKEap_lZqg_h0PUX-VwztEPiijFw2tXSiHqPWGypwiYDYlnPVYwfJYeG-1BIMUL5MdvocRi89HfhmzKxObhdISEUE8zRP2eLvUPKNIsAQM8nIcO96Y3Yx",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore",
+							"protocol": "https",
+							"host": [
+								"api",
+								"yelp",
+								"com"
+							],
+							"path": [
+								"v3",
+								"businesses",
+								"search"
+							],
+							"query": [
+								{
+									"key": "term",
+									"value": "restaurant"
+								},
+								{
+									"key": "location",
+									"value": "Baltimore"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AMC - Get showtimes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-AMC-Vendor-Key",
+								"value": "8B7BCEA3-BC39-4D6F-9363-AB02A869FA53",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.amctheatres.com/v1/markets",
+							"protocol": "https",
+							"host": [
+								"api",
+								"amctheatres",
+								"com"
+							],
+							"path": [
+								"v1",
+								"markets"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Backend",
+			"item": [
+				{
+					"name": "Cars (example)",
+					"item": [
+						{
+							"name": "GET all cars (unprotected)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/cars/all/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"cars",
+										"all",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET cars for user (protected)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTQzODY3LCJpYXQiOjE2NzAyNzk4NjcsImp0aSI6IjJhMzcwYTg4ZTY2MTQ4NzU5OTQ3NzgzMDZkZGYxNDgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.Nkp6hYK04Y8R3IAETVIbzFV1FV-6TsbITEOQA_dp0hA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/cars/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"cars",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST new car for user (protected)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTQzODY3LCJpYXQiOjE2NzAyNzk4NjcsImp0aSI6IjJhMzcwYTg4ZTY2MTQ4NzU5OTQ3NzgzMDZkZGYxNDgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.Nkp6hYK04Y8R3IAETVIbzFV1FV-6TsbITEOQA_dp0hA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"make\": \"Ford\",\n    \"model\": \"F150\",\n    \"year\": 1999\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/cars/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"cars",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Yelp",
+					"item": [
+						{
+							"name": "GET all Yelp items",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/yelp/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"yelp",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Yelp item",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"business_id\": \"ieS_5zqxDHcWMCm8BKUYbg\",\n    \"name\": \"Thames Street Oyster House\",\n    \"url\": \"https://www.yelp.com/biz/thames-street-oyster-house-baltimore?adjust_creative=Z9bFLQzXrBadY0N37xYNHw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Z9bFLQzXrBadY0N37xYNHw\",\n    \"image_url\": \"https://s3-media1.fl.yelpcdn.com/bphoto/fVt5qt7jPetbVti90Mzqqw/o.jpg\",\n    \"cuisine_type\": \"Seafood\",\n    \"city\": \"Baltimore\",\n    \"saveCurrent\": \"True\",\n    \"saveFuture\": \"False\",\n    \"completed\": \"False\",\n    \"isFavorite\": \"False\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/yelp/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"yelp",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE Yelp item",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"business_id\": \"ieS_5zqxDHcWMCm8BKUYbg\",\r\n    \"name\": \"Thames Street Oyster House\",\r\n    \"url\": \"https://www.yelp.com/biz/thames-street-oyster-house-baltimore?adjust_creative=Z9bFLQzXrBadY0N37xYNHw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Z9bFLQzXrBadY0N37xYNHw\",\r\n    \"image_url\": \"https://s3-media1.fl.yelpcdn.com/bphoto/fVt5qt7jPetbVti90Mzqqw/o.jpg\",\r\n    \"cuisine_type\": \"Seafood\",\r\n    \"city\": \"Baltimore\",\r\n    \"saveCurrent\": \"False\",\r\n    \"saveFuture\": \"False\",\r\n    \"completed\": \"True\",\r\n    \"isFavorite\": \"False\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/yelp/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"yelp",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT Yelp item",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"business_id\": \"ieS_5zqxDHcWMCm8BKUYbg\",\n    \"name\": \"Thames Street Oyster House\",\n    \"url\": \"https://www.yelp.com/biz/thames-street-oyster-house-baltimore?adjust_creative=Z9bFLQzXrBadY0N37xYNHw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Z9bFLQzXrBadY0N37xYNHw\",\n    \"image_url\": \"https://s3-media1.fl.yelpcdn.com/bphoto/fVt5qt7jPetbVti90Mzqqw/o.jpg\",\n    \"cuisine_type\": \"Seafood\",\n    \"city\": \"Baltimore\",\n    \"saveCurrent\": \"False\",\n    \"saveFuture\": \"False\",\n    \"completed\": \"True\",\n    \"isFavorite\": \"False\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/yelp/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"yelp",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "NPS",
+					"item": [
+						{
+							"name": "GET all NPS items",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/nps/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"nps",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE NPS item",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_id\": \"32D63018-7718-4F13-867D-B6B2737481D4\",\r\n    \"park_id\": \"gett\",\r\n    \"title\": \"Campfire Programs at Gettysburg\",\r\n    \"url\": \"https://www.nps.gov/thingstodo/gett-campfire-programs.htm\",\r\n    \"image_url\": \"https://www.nps.gov/common/uploads/cropped_image/967892F4-DCCB-4AC7-3A6A6F9B26279813.jpg\",\r\n    \"park_name\": \"Gettysburg National Military Park\",\r\n    \"state\": \"PA\",\r\n    \"description\":\"Join us in the evening for a campfire program! Campfire programs are stationary talks held at the park amphitheater that cover special themes and topics related to Gettysburg.\",\r\n    \"type\": \"campfire program\",\r\n    \"saveCurrent\": \"True\",\r\n    \"saveFuture\": \"False\",\r\n    \"completed\": \"False\",\r\n    \"isFavorite\": \"False\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/nps/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"nps",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT NPS item",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_id\": \"32D63018-7718-4F13-867D-B6B2737481D4\",\r\n    \"park_id\": \"gett\",\r\n    \"title\": \"Campfire Programs at Gettysburg\",\r\n    \"url\": \"https://www.nps.gov/thingstodo/gett-campfire-programs.htm\",\r\n    \"image_url\": \"https://www.nps.gov/common/uploads/cropped_image/967892F4-DCCB-4AC7-3A6A6F9B26279813.jpg\",\r\n    \"park_name\": \"Gettysburg National Military Park\",\r\n    \"state\": \"PA\",\r\n    \"description\":\"Join us in the evening for a campfire program! Campfire programs are stationary talks held at the park amphitheater that cover special themes and topics related to Gettysburg.\",\r\n    \"type\": \"campfire program\",\r\n    \"saveCurrent\": \"True\",\r\n    \"saveFuture\": \"False\",\r\n    \"completed\": \"False\",\r\n    \"isFavorite\": \"False\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/nps/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"nps",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST NPS Item",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_id\": \"32D63018-7718-4F13-867D-B6B2737481D4\",\r\n    \"park_id\": \"gett\",\r\n    \"title\": \"Campfire Programs at Gettysburg\",\r\n    \"url\": \"https://www.nps.gov/thingstodo/gett-campfire-programs.htm\",\r\n    \"image_url\": \"https://www.nps.gov/common/uploads/cropped_image/967892F4-DCCB-4AC7-3A6A6F9B26279813.jpg\",\r\n    \"park_name\": \"Gettysburg National Military Park\",\r\n    \"state\": \"PA\",\r\n    \"description\":\"Join us in the evening for a campfire program! Campfire programs are stationary talks held at the park amphitheater that cover special themes and topics related to Gettysburg.\",\r\n    \"type\": \"campfire program\",\r\n    \"saveCurrent\": \"True\",\r\n    \"saveFuture\": \"False\",\r\n    \"completed\": \"False\",\r\n    \"isFavorite\": \"False\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/nps/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"nps",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ticketmaster",
+					"item": [
+						{
+							"name": "POST Ticketmaster item",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_id\": \"G5vfZ94NQ9eNM\",\r\n    \"name\": \"Shania Twain: Queen Of Me Tour\",\r\n    \"url\": \"https://www.ticketmaster.com/shania-twain-queen-of-me-tour-columbia-maryland-06-27-2023/event/15005D58DA5C28F7\",\r\n    \"image\": \"https://s1.ticketm.net/dam/a/1d1/47cc9b10-4904-4dec-b1d6-539e44a521d1_1825531_RETINA_PORTRAIT_3_2.jpg\",\r\n    \"eventType\": \"Music\",\r\n    \"state\": \"MD\",\r\n    \"saveCurrent\": \"False\",\r\n    \"saveFuture\": \"False\",\r\n    \"completed\": \"True\",\r\n    \"isFavorite\": \"False\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/ticketmaster/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"ticketmaster",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT Ticketmaster item",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_id\": \"G5vfZ94NQ9eNM\",\r\n    \"name\": \"Shania Twain: Queen Of Me Tour\",\r\n    \"url\": \"https://www.ticketmaster.com/shania-twain-queen-of-me-tour-columbia-maryland-06-27-2023/event/15005D58DA5C28F7\",\r\n    \"image\": \"https://s1.ticketm.net/dam/a/1d1/47cc9b10-4904-4dec-b1d6-539e44a521d1_1825531_RETINA_PORTRAIT_3_2.jpg\",\r\n    \"eventType\": \"Music\",\r\n    \"state\": \"MD\",\r\n    \"saveCurrent\": \"False\",\r\n    \"saveFuture\": \"False\",\r\n    \"completed\": \"True\",\r\n    \"isFavorite\": \"False\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/ticketmaster/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"ticketmaster",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE Ticketmaster item",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_id\": \"G5vfZ94NQ9eNM\",\r\n    \"name\": \"Shania Twain: Queen Of Me Tour\",\r\n    \"url\": \"https://www.ticketmaster.com/shania-twain-queen-of-me-tour-columbia-maryland-06-27-2023/event/15005D58DA5C28F7\",\r\n    \"image\": \"https://s1.ticketm.net/dam/a/1d1/47cc9b10-4904-4dec-b1d6-539e44a521d1_1825531_RETINA_PORTRAIT_3_2.jpg\",\r\n    \"eventType\": \"Music\",\r\n    \"state\": \"MD\",\r\n    \"saveCurrent\": \"False\",\r\n    \"saveFuture\": \"False\",\r\n    \"completed\": \"True\",\r\n    \"isFavorite\": \"False\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/ticketmaster/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"ticketmaster",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET all Ticketmaster items",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/ticketmaster/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"ticketmaster",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

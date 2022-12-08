@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { token } from "../../localKey";
+import { yelpKEY } from "../../localKey";
 
 const YelpPage = () => {
 
     const[yelpData, setYelpData] = useState([]);
-    const[location, setLocation] = useState('Baltimore');
+    const[city, setCity] = useState('Baltimore');
 
     useEffect(() => {
         getYelpData();
@@ -14,9 +14,9 @@ const YelpPage = () => {
     
       const getYelpData = async () => {
         try {
-          let response = await axios.get(`https://api.yelp.com/v3/businesses/search?term=restaurant&location=${location}`,{
+          let response = await axios.get(`https://api.yelp.com/v3/businesses/search?term=restaurant&location=${city}`,{
             headers: {
-                Authorization: "Bearer " + token,
+                Authorization: `Bearer ${yelpKEY}`
             },
           }
           );

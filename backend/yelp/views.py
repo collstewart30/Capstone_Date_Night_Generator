@@ -5,6 +5,7 @@ from rest_framework import status
 from .models import Yelp
 from .serializers import YelpSerializer
 from django.shortcuts import get_object_or_404
+import requests
 
 
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
@@ -12,6 +13,9 @@ from django.shortcuts import get_object_or_404
 def yelp_items_search(request):
     print(
         'User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+    
+    rest_response = requests.get("https://swapi.dev/api/")
+    print(rest_response.json())
 
     if request.method == 'POST':
         serializer = YelpSerializer(data=request.data)

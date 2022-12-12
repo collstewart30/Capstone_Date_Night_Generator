@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { npsKEY } from "../../localKey";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import NPStoBackend from "../../components/NPStoBackend/NPStoBackend";
+
+
 
 const NPSPage = () => {
   const [NPSData, setNPSData] = useState([]);
@@ -24,8 +27,7 @@ const NPSPage = () => {
     }
   };
 
-
-
+  
   return (
     <div>
       <h1>Search by state</h1>
@@ -45,6 +47,8 @@ const NPSPage = () => {
                 frameBorder="0"
               />
             </li>
+            
+            <NPStoBackend markCompleteParent={setNPSData} />
           </div>
         ))}
     </div>

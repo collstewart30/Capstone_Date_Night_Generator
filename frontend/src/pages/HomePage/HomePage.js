@@ -4,7 +4,9 @@ import useAuth from "../../hooks/useAuth";
 
 import axios from "axios";
 import { tickemasterKEY } from "../../localKey";
-import { Link } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
+
+import TicketMasterPage from "../TicketmasterPage/TicketMasterPage";
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -30,10 +32,16 @@ const HomePage = () => {
   //   }
   // };
 
+  {/* <button onClick={() => Navigate("/ticketmaster")}>Ticketmaster</button>
+  <button onClick={() => Navigate("/nps")}>NPS</button>
+  <button onClick={() => Navigate("/yelp")}>Yelp</button> */}
+
   return (
-    // <Link to={`/ticketmaster`}>Click for Ticketmaster</Link>
-    <Link to={`/nps`}>Click for NPS</Link>
-    // <Link to={`/yelp`}>Click for Yelp</Link>
+    <div>
+      <Link to="/ticketmaster">Ticketmaster</Link>
+      <Link to="/nps">NPS</Link>
+      <Link to="/yelp">Yelp</Link>
+    </div>
   );
 };
 

@@ -37,6 +37,8 @@ const NPStoBackend = () => {
     }
 
 
+// URL first in axios. POST and PUT: request body data
+
     function handleSubmit(event) {
         event.preventDefault();
         

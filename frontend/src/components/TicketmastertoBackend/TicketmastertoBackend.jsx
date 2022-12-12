@@ -15,7 +15,6 @@ const TicketmastertoBackend = () => {
     const [completed, setCompleted] = useState('');
     const [isFavorite, setIsFavorite] = useState('');
 
-
     let recordTicketmasterData = {
         user: user,
         event_id: event_id,
@@ -30,6 +29,8 @@ const TicketmastertoBackend = () => {
         isFavorite: isFavorite
     }
 
+
+// URL first in axios. POST and PUT: request body data
 
     function handleSubmit(event) {
         event.preventDefault();

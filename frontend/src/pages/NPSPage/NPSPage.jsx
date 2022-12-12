@@ -6,13 +6,12 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 
 const NPSPage = () => {
   const [NPSData, setNPSData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("MD");
 
   useEffect(() => {
     getNPSData();
   }, []);
 
-  const getNPSData = async () => {
+  const getNPSData = async (searchTerm = 'MD') => {
     try {
       let response = await axios.get(
         `https://developer.nps.gov/api/v1/thingstodo?stateCode=${searchTerm}%2CMD&api_key=${npsKEY}&limit=5`
@@ -25,14 +24,17 @@ const NPSPage = () => {
     }
   };
 
+
+
   return (
     <div>
+      <h1>Search by state</h1>
       <SearchBar searchBarParent={getNPSData} />
       {NPSData &&
         NPSData.map((data) => (
-          <div key={data.id}>
-            <li className="text-decoration-none">{data.title}</li>
-            <li className="text-decoration-none">{data.shortDescription}</li>
+          <div key={data.id} className="list-unstyled text-decoration-none">
+            <li>{data.title}</li>
+            <li>{data.shortDescription}</li>
             <li>
               <img
                 id="ytplayer"

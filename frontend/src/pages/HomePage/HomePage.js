@@ -32,8 +32,8 @@ const HomePage = () => {
 
   return (
     // <Link to={`/ticketmaster`}>Click for Ticketmaster</Link>
-    // <Link to={`/nps`}>Click for NPS</Link>
-    <Link to={`/yelp`}>Click for Yelp</Link>
+    <Link to={`/nps`}>Click for NPS</Link>
+    // <Link to={`/yelp`}>Click for Yelp</Link>
   );
 };
 

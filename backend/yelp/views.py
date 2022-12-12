@@ -6,6 +6,7 @@ from .models import Yelp
 from .serializers import YelpSerializer
 from django.shortcuts import get_object_or_404
 import requests
+from requests.auth import HTTPBasicAuth
 
 
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
@@ -15,6 +16,15 @@ def yelp_items_search(request):
         'User: 'f"{request.user.id} {request.user.email} {request.user.username}")
     
     rest_response = requests.get("https://swapi.dev/api/")
+    print(rest_response.headers)
+    print(rest_response.json())
+    # best practices services django requests library
+    # benefits of doing it this way: security, performance
+    # calling API in backedn and then serializing data in a response variable to send to the front end
+    # Yelp API was being bloked by CORS
+
+    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore", auth=('collstewart30@gmail.com', 'lIndsAylOhan3'))
+    print(rest_response.status_code)
     print(rest_response.json())
 
     if request.method == 'POST':

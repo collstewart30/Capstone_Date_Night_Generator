@@ -19,9 +19,11 @@ const NPStoBackend = (props) => {
   const [completed, setCompleted] = useState("");
   const [isFavorite, setIsFavorite] = useState("");
 
+  let eventId = props.event_id;
+
   let markCompleteNPSData = {
     user: user.id,
-    event_id: event_id,
+    event_id: eventId,
     park_id: park_id,
     title: title,
     url: url,
@@ -40,9 +42,9 @@ const NPStoBackend = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    markComplete();
+    markComplete(markCompleteNPSData);
     console.log("updated NPS markComplete");
-    // props.
+    // props.markComplete();
   }
 
   const markComplete = async () => {

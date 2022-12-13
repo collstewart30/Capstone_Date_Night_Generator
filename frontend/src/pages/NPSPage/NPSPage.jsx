@@ -7,11 +7,15 @@ import NPStoBackend from "../../components/NPStoBackend/NPStoBackend";
 
 
 
-const NPSPage = () => {
+const NPSPage = (props) => {
   const [NPSData, setNPSData] = useState([]);
 
   useEffect(() => {
-    getNPSData();
+    let mounted = true;
+    if(mounted){
+      getNPSData();
+    }
+    return () => mounted = false;
   }, []);
 
   const getNPSData = async (searchTerm = 'MD') => {
@@ -35,19 +39,19 @@ const NPSPage = () => {
       {NPSData &&
         NPSData.map((data) => (
           <div key={data.id} className="list-unstyled text-decoration-none">
-            <li>{data.title}</li>
-            <li>{data.shortDescription}</li>
-            <li>
+            <p>{data.title}</p>
+            <p>{data.shortDescription}</p>
+            <p>
               <img
                 id="ytplayer"
                 type="text/html"
-                width="640"
-                height="360"
+                width="320"
+                height="180"
                 src={data.images.url}
                 frameBorder="0"
               />
-            </li>
-            <NPStoBackend markCompleteParent={setNPSData} />     
+            </p>
+            <NPStoBackend markComplete={NPSData} />     
           </div>
         ))}
     </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
-const NPStoBackend = () => {
+const NPStoBackend = (props) => {
   const [user, token] = useAuth();
 
   const [event_id, setEvent_id] = useState("");
@@ -49,8 +49,7 @@ const NPStoBackend = () => {
     try {
       let response = await axios.post(
         `http://127.0.0.1:8000/api/nps/`,
-        markCompleteNPSData,
-        { headers: { Authorization: "Bearer " + token } }
+        markCompleteNPSData
       );
       console.log("NPS backend markComplete updated");
       console.log(response.data.data);

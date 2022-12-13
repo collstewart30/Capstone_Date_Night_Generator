@@ -47,8 +47,7 @@ const NPSPage = () => {
                 frameBorder="0"
               />
             </li>
-            
-            <NPStoBackend markCompleteParent={setNPSData} />
+            <NPStoBackend markCompleteParent={setNPSData} />     
           </div>
         ))}
     </div>

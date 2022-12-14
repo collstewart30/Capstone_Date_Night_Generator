@@ -36,7 +36,7 @@ const NPSPage = (props) => {
     <div>
       <h1>Search by state</h1>
       <SearchBar searchBarParent={getNPSData} />
-      {NPSData &&
+      {NPSData[0] &&
         NPSData.map((data) => (
           <div key={data.id} className="list-unstyled text-decoration-none">
             <p>{data.title}</p>

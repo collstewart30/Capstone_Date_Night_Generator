@@ -16,7 +16,7 @@ const NPStoBackend = (props) => {
   const [type, setType] = useState("");
   const [saveCurrent, setSaveCurrent] = useState("");
   const [saveFuture, setSaveFuture] = useState("");
-  const [completed, setCompleted] = useState("");
+  const [completed, setCompleted] = useState(false);
   const [isFavorite, setIsFavorite] = useState("");
 
   let eventId = props.event_id;
@@ -40,6 +40,22 @@ const NPStoBackend = (props) => {
 
   // URL first in axios. POST and PUT: request body data
 
+  const markComplete = async () => {
+    try {
+      let response = await axios.post(
+        `http://127.0.0.1:8000/api/nps/`,
+        markCompleteNPSData,
+        { headers: { Authorization: "Bearer " + token } }
+      );
+      console.log("NPS backend markComplete updated");
+      console.log(response.data.data);
+      setCompleted(true)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   function handleSubmit(event) {
     event.preventDefault();
     markComplete(markCompleteNPSData);
@@ -47,27 +63,17 @@ const NPStoBackend = (props) => {
     // props.markComplete();
   }
 
-  const markComplete = async () => {
-    try {
-      let response = await axios.post(
-        `http://127.0.0.1:8000/api/nps/`,
-        markCompleteNPSData
-      );
-      console.log("NPS backend markComplete updated");
-      console.log(response.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+// where video starts
 
   return (
     <button
       type="submit"
       className="button"
       style={{ margin: "1em" }}
-      onClick={(event) => setCompleted(event.target.value)}
+      onClick={handleSubmit}
     >
       Mark Complete
+      {completed&&"✅"}
     </button>
   );
 };

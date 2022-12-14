@@ -38,9 +38,9 @@ const HomePage = () => {
 
   return (
     <div>
-      <Link to="/ticketmaster">Ticketmaster</Link>
-      <Link to="/nps">NPS</Link>
-      <Link to="/yelp">Yelp</Link>
+      <p><Link to="/ticketmaster">Ticketmaster</Link></p>
+      <p><Link to="/nps">NPS</Link></p>
+      <p><Link to="/yelp">Yelp</Link></p>
     </div>
   );
 };

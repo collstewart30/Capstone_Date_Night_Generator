@@ -14,10 +14,10 @@ const NPStoBackend = (props) => {
   const [state, setState] = useState("");
   const [description, setDescription] = useState("");
   const [type, setType] = useState("");
-  const [saveCurrent, setSaveCurrent] = useState("");
-  const [saveFuture, setSaveFuture] = useState("");
-  const [completed, setCompleted] = useState(false);
-  const [isFavorite, setIsFavorite] = useState("");
+  const [saveCurrent, setSaveCurrent] = useState("False");
+  const [saveFuture, setSaveFuture] = useState("False");
+  const [completed, setCompleted] = useState("False");
+  const [isFavorite, setIsFavorite] = useState("False");
 
   let eventId = props.event_id;
 
@@ -49,9 +49,9 @@ const NPStoBackend = (props) => {
       );
       console.log("NPS backend markComplete updated");
       console.log(response.data.data);
-      setCompleted(true)
+      setCompleted("True")
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };
 

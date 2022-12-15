@@ -25,16 +25,15 @@ const TicketMasterPage = () => {
   };
 
   return (
-    <div>
-      <h1>Search by state abbreviation</h1>
+    <div className="container">
+      <h1>Search by state abbreviation:</h1>
       <SearchBar searchBarParent={getTicketMasterData} />
       {ticketmasterData &&
         ticketmasterData.map((data) => (
           <div key={data.id} className="list-unstyled text-decoration-none">
-            <li>{data.name}</li>
-            <h3>Location:</h3>
-            <li>{data._embedded.venues[0].name}</li>
-            <li>
+            <p>{data.name}</p>
+            <p>Location: {data._embedded.venues[0].name}</p>
+            <p>
               <img
                 id="ytplayer"
                 type="text/html"
@@ -43,7 +42,7 @@ const TicketMasterPage = () => {
                 src={data.images[0].url}
                 frameBorder="0"
               />
-            </li>
+            </p>
           </div>
         ))}
     </div>

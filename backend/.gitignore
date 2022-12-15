@@ -135,3 +135,5 @@ drf_jwt_backend/local_settings.py
 
 # Local Settings
 drf_jwt_backend/local_settingsv2.py
+
+yelp/yelp_local_settings.py

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
@@ -8,9 +8,10 @@ import { Navigate, Link } from "react-router-dom";
 
 import TicketMasterPage from "../TicketmasterPage/TicketMasterPage";
 import EmailJS from "../../components/EmailJS/EmailJS";
-
+import AuthContext from "../../context/AuthContext";
 
 const HomePage = () => {
+  const [user, token] = useAuth();
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
@@ -39,11 +40,13 @@ const HomePage = () => {
   <button onClick={() => Navigate("/yelp")}>Yelp</button> */}
 
   return (
-    <div>
+    <div className="container">
+      <h1>Welcome, {user.username}!</h1>
+      <h2>Choose from the below options to start planning your date night!</h2>
       <p><Link to="/ticketmaster">Ticketmaster</Link></p>
       <p><Link to="/nps">NPS</Link></p>
       <p><Link to="/yelp">Yelp</Link></p>
-      <EmailJS />
+      {/* <EmailJS /> */}
     </div>
   );
 };

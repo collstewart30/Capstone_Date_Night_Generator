@@ -7,6 +7,8 @@ import { tickemasterKEY } from "../../localKey";
 import { Navigate, Link } from "react-router-dom";
 
 import TicketMasterPage from "../TicketmasterPage/TicketMasterPage";
+import EmailJS from "../../components/EmailJS/EmailJS";
+
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -41,6 +43,7 @@ const HomePage = () => {
       <p><Link to="/ticketmaster">Ticketmaster</Link></p>
       <p><Link to="/nps">NPS</Link></p>
       <p><Link to="/yelp">Yelp</Link></p>
+      <EmailJS />
     </div>
   );
 };

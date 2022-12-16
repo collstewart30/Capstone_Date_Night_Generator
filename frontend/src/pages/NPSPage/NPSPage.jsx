@@ -7,54 +7,19 @@ import NPStoBackend from "../../components/NPStoBackend/NPStoBackend";
 import AuthContext from "../../context/AuthContext";
 import useAuth from "../../hooks/useAuth";
 
-
-
 const NPSPage = (props) => {
   const [NPSData, setNPSData] = useState([]);
   const [user, token] = useAuth();
 
-
-  const [event_id, setEvent_id] = useState("");
-  const [park_id, setPark_id] = useState("");
-  const [title, setTitle] = useState("");
-  const [url, setUrl] = useState("");
-  const [image_url, setImage_url] = useState("");
-  const [park_name, setPark_name] = useState("");
-  const [state, setState] = useState("");
-  const [description, setDescription] = useState("");
-  const [type, setType] = useState("");
-  const [saveCurrent, setSaveCurrent] = useState("False");
-  const [saveFuture, setSaveFuture] = useState("False");
-  const [completed, setCompleted] = useState("False");
-  const [isFavorite, setIsFavorite] = useState("False");
-
-
-    let markCompleteNPSData = {
-      user: user.id,
-      event_id: event_id,
-      park_id: park_id,
-      title: title,
-      url: url,
-      image_url: image_url,
-      park_name: park_name,
-      state: state,
-      description: description,
-      type: type,
-      saveCurrent: saveCurrent,
-      saveFuture: saveFuture,
-      completed: completed,
-      isFavorite: isFavorite,
-  };
-
   useEffect(() => {
     let mounted = true;
-    if(mounted){
+    if (mounted) {
       getNPSData();
     }
-    return () => mounted = false;
+    return () => (mounted = false);
   }, []);
 
-  const getNPSData = async (searchTerm = 'MD') => {
+  const getNPSData = async (searchTerm = "MD") => {
     try {
       let response = await axios.get(
         `https://developer.nps.gov/api/v1/thingstodo?stateCode=${searchTerm}%2CMD&api_key=${npsKEY}&limit=5`
@@ -67,21 +32,10 @@ const NPSPage = (props) => {
     }
   };
 
+  // RELATED PARKS[] : will pull the park/event/hike if you enter one state in list of all it's related states
 
-  // const markComplete = (NPSData) => {
-  //     setEvent_id(response.data.data.id);
-  //     // setPark_id(response.data.data.);
-  //     setTitle(response.data.data.title);
-  //     setUrl(response.data.data.url);
-  //     setImage_url(response.data.data.images.url);
-  //     setPark_name(response.data.data.relatedParks.fullName);
-  //     setState(response.data.data.relatedParks.states);
-  //     setDescription(response.data.data.shortDescription);
-  // };
-  
-  
   return (
-    <div>
+    <div className="container">
       <h1>Search by state</h1>
       <SearchBar searchBarParent={getNPSData} />
       {NPSData[0] &&
@@ -89,17 +43,29 @@ const NPSPage = (props) => {
           <div key={data.id} className="list-unstyled text-decoration-none">
             <p>{data.title}</p>
             <p>{data.shortDescription}</p>
+            <p>{data.relatedParks[0].fullName}</p>
+            <p>{data.activities[0].name}</p>
             <p>
               <img
                 id="ytplayer"
                 type="text/html"
                 width="320"
                 height="180"
-                src={data.images.url}
+                src={data.images[0].url}
                 frameBorder="0"
               />
             </p>
-            {/* <NPStoBackend markComplete={setEvent_id(data.id)} />      */}
+            <NPStoBackend
+              event_id={data.id}
+              parkCode={data.relatedParks.parkCode}
+              title={data.title}
+              url={data.url}
+              image_url={data.images[0].url}
+              park_name={data.relatedParks[0].fullName}
+              state={data.relatedParks[0].states}
+              description={data.shortDescription}
+              type={data.activities[0].name}
+            />
           </div>
         ))}
     </div>

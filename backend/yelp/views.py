@@ -26,11 +26,11 @@ def yelp_items_search(request):
     # print(rest_response_example.json())
 
 
-    # best practices services django requests library
+    # Python requests library:
+    # best practices. services django requests library
     # benefits of doing it this way: security, performance
     # calling API in backend and then serializing data in a response variable to send to the front end
     # Yelp API was being blocked by CORS
-
 
 
     headers = {'Authorization': 'Bearer {}'.format(api_key)}
@@ -46,6 +46,8 @@ def yelp_items_search(request):
     print(rest_response.status_code)
     # print(rest_response.headers)
     print(rest_response.json())
+
+    
 
     if request.method == 'POST':
         serializer = YelpSerializer(data=request.data)

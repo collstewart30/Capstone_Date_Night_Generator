@@ -14,11 +14,11 @@ const Navbar = () => {
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             <b>Home</b>
           </Link>
+          </li>
         <li>
           <Link to={`/user/${user.id}`} style={{ textDecoration: "none", color: "white" }}>
             <b>Profile</b>
           </Link>
-        </li>
         </li>
         <li>
           {user ? (

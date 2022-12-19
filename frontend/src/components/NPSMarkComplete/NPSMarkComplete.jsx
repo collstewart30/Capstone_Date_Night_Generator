@@ -7,7 +7,7 @@ const NPStoBackend = (props) => {
 
   const [saveCurrent, setSaveCurrent] = useState("False");
   const [saveFuture, setSaveFuture] = useState("True");
-  const [completed, setCompleted] = useState("False");
+  const [completed, setCompleted] = useState("True");
   const [isFavorite, setIsFavorite] = useState("False");
 
   let event_id = props.event_id;
@@ -29,7 +29,7 @@ const NPStoBackend = (props) => {
       });
       console.log("NPS Save for Future Updated");
       console.log(response.data.data);
-      setSaveFuture("True");
+      setCompleted("True");
     } catch (error) {
       console.log(error.response);
     }
@@ -55,8 +55,8 @@ const NPStoBackend = (props) => {
       completed: completed,
       isFavorite: isFavorite,
     };
-    saveForFuture(markCompleteNPSData);
-    console.log("updated NPS Save for Future");
+    setCompleted(markCompleteNPSData);
+    console.log("updated Mark Complete");
   }
 
   return (
@@ -66,7 +66,7 @@ const NPStoBackend = (props) => {
       style={{ margin: "1em" }}
       onClick={handleSubmit}
     >
-      Save for future
+      Mark Complete
     </button>
   );
 };

@@ -9,6 +9,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import TicketMasterPage from "./pages/TicketmasterPage/TicketMasterPage";
 import NPSPage from "./pages/NPSPage/NPSPage";
 import YelpPage from "./pages/YelpPage/YelpPage";
+import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -35,6 +36,7 @@ function App() {
         <Route path="/ticketmaster" element={<TicketMasterPage />} />
         <Route path="/nps" element={<NPSPage />} />
         <Route path="/yelp" element={<YelpPage />} />
+        <Route path="/user/:userid" element={<UserProfilePage />} />
       </Routes>
       <Footer />
     </div>

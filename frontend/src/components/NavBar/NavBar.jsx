@@ -12,8 +12,13 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>Home, user id {user.id}</b>
+            <b>Home</b>
           </Link>
+        <li>
+          <Link to={`/user/${user.id}`} style={{ textDecoration: "none", color: "white" }}>
+            <b>Profile</b>
+          </Link>
+        </li>
         </li>
         <li>
           {user ? (

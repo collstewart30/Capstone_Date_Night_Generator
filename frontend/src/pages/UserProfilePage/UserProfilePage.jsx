@@ -13,7 +13,7 @@ import DisplayFavorites from "../../components/DisplayFavorites/DisplayFavorites
 const UserProfilePage = (props) => {
   const { userid } = useParams();
   const [user, token] = useAuth();
-  const [userNPSDetail, setUserNPSDetail] = useState({});
+  const [userNPSDetail, setUserNPSDetail] = useState([]);
 
   useEffect(() => {
     fetchNPSDetails();
@@ -38,13 +38,11 @@ const UserProfilePage = (props) => {
       <h2>Here are your favorites:</h2>
       <div>
         {/* <DisplayFavorites parentNPSDetail={userNPSDetail}/> */}
-        {userNPSDetail[0] &&
-          userNPSDetail.map((data) => {
-            <div key={data.id}>
-              <p>{data.title}</p>
-              <p>{data.park_name}</p>
-            </div>;
-          })}
+        {userNPSDetail.map((data) => {
+          <DisplayFavorites 
+          key={data.id.id} 
+          displayFavoritesParent={data} />;
+        })}
       </div>
     </div>
   );

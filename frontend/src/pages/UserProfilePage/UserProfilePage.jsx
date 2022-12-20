@@ -36,15 +36,16 @@ const UserProfilePage = (props) => {
       <h1>Welcome, {user.first_name}!</h1>
       <h1>{user.username}!</h1>
       <h2>Here are your favorites:</h2>
-      <div>
-        {/* <DisplayFavorites parentNPSDetail={userNPSDetail}/> */}
-        {userNPSDetail.map((data) => {
-          <DisplayFavorites 
-          key={data.id.id} 
-          displayFavoritesParent={data} />;
-        })}
-      </div>
-    </div>
+      {userNPSDetail &&
+        userNPSDetail.map((nps) => (
+          <DisplayFavorites key={nps.id.event_id} nps={nps}/>
+        ))}
+        {/* // <div key={nps.id.id}>
+        //   <li>{nps.title}</li>
+        //   <li>{nps.description}</li>
+        //   <li>{nps.type}</li>
+        // </div>) */}
+   </div>
   );
 };
 

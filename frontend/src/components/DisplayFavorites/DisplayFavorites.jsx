@@ -1,8 +1,8 @@
-const DisplayFavorites = ({ data }) => {
+const DisplayFavorites = ({ nps }) => {
   return (
     <div>
-      <p>{data.title}</p>
-      <p>{data.park_name}</p>
+      <li>{nps.title}</li>
+      <li>{nps.park_name}</li>
     </div>
   );
 };

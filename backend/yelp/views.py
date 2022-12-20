@@ -7,9 +7,7 @@ from .serializers import YelpSerializer
 from django.shortcuts import get_object_or_404
 import requests
 from requests.auth import HTTPBasicAuth
-# import sys
-# from sys.path.append('C:\Users\colls\OneDrive\Desktop\Date_Night_Generator\backend\drf_jwt_backend\local_settingsv2.py') 
-# import key 
+
 
 from .yelp_local_settings import api_key
 
@@ -20,10 +18,10 @@ def yelp_items_search(request):
         'User: 'f"{request.user.id} {request.user.email} {request.user.username}")
 
 
-    # # example:
-    # rest_response_example = requests.get("https://swapi.dev/api/")
-    # # print(rest_response.headers)
-    # print(rest_response_example.json())
+    # example:
+    rest_response_example = requests.get("https://swapi.dev/api/")
+    # print(rest_response.headers)
+    print(rest_response_example.json())
 
 
     # Python requests library:
@@ -46,6 +44,8 @@ def yelp_items_search(request):
     print(rest_response.status_code)
     # print(rest_response.headers)
     print(rest_response.json())
+    serializer = YelpSerializer(data=rest_response.data)
+    
 
     
 

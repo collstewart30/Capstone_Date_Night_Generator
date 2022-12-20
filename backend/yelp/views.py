@@ -7,47 +7,14 @@ from .serializers import YelpSerializer
 from django.shortcuts import get_object_or_404
 import requests
 from requests.auth import HTTPBasicAuth
-
-
 from .yelp_local_settings import api_key
+
 
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def yelp_items_search(request):
     print(
         'User: 'f"{request.user.id} {request.user.email} {request.user.username}")
-
-
-    # example:
-    rest_response_example = requests.get("https://swapi.dev/api/")
-    # print(rest_response.headers)
-    print(rest_response_example.json())
-
-
-    # Python requests library:
-    # best practices. services django requests library
-    # benefits of doing it this way: security, performance
-    # calling API in backend and then serializing data in a response variable to send to the front end
-    # Yelp API was being blocked by CORS
-
-
-    headers = {'Authorization': 'Bearer {}'.format(api_key)}
-
-    params = {
-        'term': 'restaurant',
-        'location': 'Baltimore',
-        'limit': 50
-    }
-    #, params=params
-
-    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1", headers=headers)
-    print(rest_response.status_code)
-    # print(rest_response.headers)
-    print(rest_response.json())
-    serializer = YelpSerializer(data=rest_response.data)
-    
-
-    
 
     if request.method == 'POST':
         serializer = YelpSerializer(data=request.data)
@@ -69,3 +36,46 @@ def yelp_items_search(request):
         yelp_items = get_object_or_404(Yelp, user_id=request.user.id)
         yelp_items.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def yelp_api(request):
+    print(
+        'User: 'f"Yelp API called. {request.user.id} {request.user.email} {request.user.username}")
+
+
+    # example:
+    rest_response_example = requests.get("https://swapi.dev/api/")
+    # print(rest_response.headers)
+    print(rest_response_example.json())
+
+
+    # Python requests library:
+    # best practices. services django requests library
+    # benefits of doing it this way: security, performance
+    # calling API in backend and then serializing data in a response variable to send to the front end
+    # Yelp API was being blocked by CORS
+
+
+    headers = {'Authorization': 'Bearer {}'.format(api_key)}
+    baseUrl = "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1"
+
+    params = {
+        'term': 'restaurant',
+        'location': 'Baltimore',
+        'limit': 50
+    }
+    #, params=params
+
+    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1", headers=headers)
+    # print(rest_response.status_code)
+    print(rest_response.headers)
+    print(rest_response.json())
+    serializer = YelpSerializer(rest_response, many=True)
+    print(serializer.data)
+    return Response(serializer.data)
+
+
+
+    # TypeError: Object of type method is not JSON serializable

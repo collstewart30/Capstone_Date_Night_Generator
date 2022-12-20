@@ -3,20 +3,22 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { yelpKEY } from "../../localKey";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import useAuth from "../../hooks/useAuth";
 
 const YelpPage = () => {
 
     const[yelpData, setYelpData] = useState([]);
+    const[user, token] = useAuth();
 
     useEffect(() => {
         getYelpData();
       }, []);
     
-      const getYelpData = async (city = "Baltimore") => {
+      const getYelpData = async () => {
         try {
-          let response = await axios.get(`https://api.yelp.com/v3/businesses/search?term=restaurant&location=${city}`,{
-            headers: {
-                Authorization: `Bearer ${yelpKEY}`
+          let response = await axios.get(`http://127.0.0.1:8000/api/yelp/yelp_api/`,
+          {  headers: {
+                Authorization: `Bearer ${token}`
             },
           }
           );

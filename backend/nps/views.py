@@ -33,3 +33,14 @@ def nps_items_search(request):
         nps_items = get_object_or_404(NPS, user_id=request.user.id)
         nps_items.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET'])  
+@permission_classes([IsAuthenticated])
+def nps_get_favorites(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+
+    if request.method == 'GET':
+        nps_items = NPS.objects.filter(user_id=request.user.id, isFavorite="True")
+        serializer = NPSSerializer(nps_items, many=True)
+        return Response(serializer.data)

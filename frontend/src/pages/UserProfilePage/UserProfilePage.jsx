@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 import useAuth from "../../hooks/useAuth";
-import DisplayFavorites from "../../components/DisplayFavorites/DisplayFavorites";
+import DisplaySaveForFuture from "../../components/DisplaySaveForFuture/DisplaySaveForFuture";
 
 const UserProfilePage = (props) => {
   const { userid } = useParams();
@@ -38,15 +38,18 @@ const UserProfilePage = (props) => {
       <h2>Here are your favorites:</h2>
       {userNPSDetail &&
         userNPSDetail.map((nps) => (
-          <DisplayFavorites key={nps.id.event_id} nps={nps}/>
+          <DisplaySaveForFuture key={nps.id.event_id} nps={nps} />
         ))}
-        {/* // <div key={nps.id.id}>
-        //   <li>{nps.title}</li>
-        //   <li>{nps.description}</li>
-        //   <li>{nps.type}</li>
-        // </div>) */}
-   </div>
+    </div>
   );
 };
 
 export default UserProfilePage;
+
+
+  /* // <div key={nps.id.id}>
+        //   <li>{nps.title}</li>
+        //   <li>{nps.description}</li>
+        //   <li>{nps.type}</li>
+        // </div>) */
+

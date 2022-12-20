@@ -1,4 +1,4 @@
-const DisplayFavorites = ({ nps }) => {
+const DisplaySaveForFuture = ({ nps }) => {
   return (
     <div>
       <li>{nps.title}</li>
@@ -7,4 +7,4 @@ const DisplayFavorites = ({ nps }) => {
   );
 };
 
-export default DisplayFavorites;
+export default DisplaySaveForFuture;

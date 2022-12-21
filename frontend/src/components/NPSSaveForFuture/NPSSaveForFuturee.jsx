@@ -7,7 +7,7 @@ const NPStoBackend = (props) => {
 
   const [saveCurrent, setSaveCurrent] = useState("False");
   const [saveFuture, setSaveFuture] = useState("True");
-  const [completed, setCompleted] = useState("True");
+  const [completed, setCompleted] = useState("False");
   const [isFavorite, setIsFavorite] = useState("False");
 
   let event_id = props.event_id;
@@ -27,7 +27,6 @@ const NPStoBackend = (props) => {
       let response = await axios.post(`http://127.0.0.1:8000/api/nps/`, post, {
         headers: { Authorization: "Bearer " + token },
       });
-      console.log("NPS Save for Future Updated");
       console.log(response.data.data);
       setCompleted("True");
     } catch (error) {
@@ -39,7 +38,7 @@ const NPStoBackend = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    let markCompleteNPSData = {
+    let saveForFutureNPSData = {
       user: user.id,
       event_id: event_id,
       parkCode: parkCode,
@@ -55,7 +54,7 @@ const NPStoBackend = (props) => {
       completed: completed,
       isFavorite: isFavorite,
     };
-    setCompleted(markCompleteNPSData);
+    setSaveFuture(saveForFutureNPSData);
     console.log("updated Mark Complete");
   }
 
@@ -66,7 +65,7 @@ const NPStoBackend = (props) => {
       style={{ margin: "1em" }}
       onClick={handleSubmit}
     >
-      Mark Complete
+      Save for Future
     </button>
   );
 };

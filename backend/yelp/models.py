@@ -17,3 +17,15 @@ class Yelp(models.Model):
     saveFuture = models.CharField(max_length=100, default=False)
     completed = models.CharField(max_length=100, default=False)
     isFavorite = models.CharField(max_length=100, default=False)
+
+
+
+class Yelp_API(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    alias = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, default=0)
+    url = models.CharField(max_length=500)
+    image_url = models.CharField(max_length=250)
+    categories = models.CharField(max_length=250)
+    city = models.CharField(max_length=100)
+

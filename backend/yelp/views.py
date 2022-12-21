@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import status
 from .models import Yelp
-from .serializers import YelpSerializer
+from .serializers import YelpSerializer, YelpAPISerializer
 from django.shortcuts import get_object_or_404
 import requests
 from requests.auth import HTTPBasicAuth
@@ -39,10 +39,10 @@ def yelp_items_search(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def yelp_api(request):
-    print(
-        'User: 'f"Yelp API called. {request.user.id} {request.user.email} {request.user.username}")
+    # print(
+    #     'User: 'f"Yelp API called. {request.user.id} {request.user.email} {request.user.username}")
 
 
     # example:
@@ -72,10 +72,6 @@ def yelp_api(request):
     # print(rest_response.status_code)
     print(rest_response.headers)
     print(rest_response.json())
-    serializer = YelpSerializer(rest_response, many=True)
+    serializer = YelpAPISerializer(rest_response, many=True)
     print(serializer.data)
-    return Response(serializer.data)
-
-
-
-    # TypeError: Object of type method is not JSON serializable
+    return Response(rest_response)

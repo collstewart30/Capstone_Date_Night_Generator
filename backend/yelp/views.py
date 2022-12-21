@@ -41,23 +41,15 @@ def yelp_items_search(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def yelp_api(request):
-    # print(
-    #     'User: 'f"Yelp API called. {request.user.id} {request.user.email} {request.user.username}")
-
-
     # example:
     rest_response_example = requests.get("https://swapi.dev/api/")
     # print(rest_response.headers)
     print(rest_response_example.json())
 
-
-    # Python requests library:
-    # best practices. services django requests library
-    # benefits of doing it this way: security, performance
+    # Python requests library:      Yelp API was being blocked by CORS
+    # best practices. services django requests library. benefits of doing it this way: security, performance
     # calling API in backend and then serializing data in a response variable to send to the front end
-    # Yelp API was being blocked by CORS
-
-
+    
     headers = {'Authorization': 'Bearer {}'.format(api_key)}
     baseUrl = "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1"
 

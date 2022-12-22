@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
-const NPStoBackend = (props) => {
+const NPSSaveForFuture = (props) => {
   const [user, token] = useAuth();
 
   const [saveCurrent, setSaveCurrent] = useState("False");
@@ -56,7 +56,6 @@ const NPStoBackend = (props) => {
       isFavorite: isFavorite,
     };
     saveForFuture(markCompleteNPSData);
-    console.log("updated NPS Save for Future");
   }
 
   return (
@@ -71,4 +70,4 @@ const NPStoBackend = (props) => {
   );
 };
 
-export default NPStoBackend;
+export default NPSSaveForFuture;

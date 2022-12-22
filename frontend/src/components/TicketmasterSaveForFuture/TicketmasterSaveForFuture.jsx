@@ -11,7 +11,6 @@ const TicketmasterSaveForFuture = (props) => {
     const [completed, setCompleted] = useState("False");
     const [isFavorite, setIsFavorite] = useState("False");
 
-
     let event_id = props.event_id;
     let name = props.name;
     let url = props.url;
@@ -46,7 +45,7 @@ const TicketmasterSaveForFuture = (props) => {
             completed: completed,
             isFavorite: isFavorite,
         };
-        setSaveFuture(saveForFutureTicketmasterData);
+        saveForFuture(saveForFutureTicketmasterData);
         console.log("Ticketmaster Save for Future Updated");
     }
 

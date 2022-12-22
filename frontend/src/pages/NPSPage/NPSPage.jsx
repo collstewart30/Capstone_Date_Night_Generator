@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { npsKEY } from "../../localKey";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import NPStoBackend from "../../components/NPStoBackend/NPStoBackend";
+import NPSSaveForFuture from "../../components/NPSSaveForFuture/NPSSaveForFuture";
 import AuthContext from "../../context/AuthContext";
 import useAuth from "../../hooks/useAuth";
 
@@ -55,7 +55,7 @@ const NPSPage = (props) => {
                 frameBorder="0"
               />
             </p>
-            <NPStoBackend
+            <NPSSaveForFuture
               event_id={data.id}
               parkCode={data.relatedParks.parkCode}
               title={data.title}

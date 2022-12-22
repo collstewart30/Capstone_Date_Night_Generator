@@ -41,7 +41,7 @@ def yelp_items_search(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def yelp_api(request):
-    
+
     # example:
     # rest_response_example = requests.get("https://swapi.dev/api/")
     # print(rest_response.headers)
@@ -61,7 +61,7 @@ def yelp_api(request):
     }
     #, params=params
 
-    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1", headers=headers)
+    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore", headers=headers)
     # print(rest_response.status_code)
     print(rest_response.headers)
     print(rest_response.json())

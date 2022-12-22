@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { yelpKEY } from "../../localKey";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import useAuth from "../../hooks/useAuth";
 

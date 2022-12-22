@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import status
 from .models import Yelp
-from .serializers import YelpSerializer, YelpAPISerializer
+from .serializers import YelpSerializer
 from django.shortcuts import get_object_or_404
 import requests
 from requests.auth import HTTPBasicAuth
@@ -41,10 +41,11 @@ def yelp_items_search(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def yelp_api(request):
+    
     # example:
-    rest_response_example = requests.get("https://swapi.dev/api/")
+    # rest_response_example = requests.get("https://swapi.dev/api/")
     # print(rest_response.headers)
-    print(rest_response_example.json())
+    # print(rest_response_example.json())
 
     # Python requests library:      Yelp API was being blocked by CORS
     # best practices. services django requests library. benefits of doing it this way: security, performance

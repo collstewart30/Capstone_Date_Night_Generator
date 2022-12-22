@@ -23,7 +23,7 @@ const YelpPage = () => {
           }
           );
           console.log("Yelp API");
-          console.log(response);
+          console.log(response.data.businesses);
           setYelpData(response.data.businesses);
         } catch (error) {
           console.log(error);

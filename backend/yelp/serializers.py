@@ -8,9 +8,3 @@ class YelpSerializer(serializers.ModelSerializer):
         fields = ['id', 'business_id', 'name', 'url', 'image_url', 'cuisine_type', 'city','saveCurrent', 'saveFuture', 'completed', 'isFavorite', 'user_id']
         depth = 1
 
-
-class YelpAPISerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Yelp_API
-        fields = '__all__'
-        depth = 1

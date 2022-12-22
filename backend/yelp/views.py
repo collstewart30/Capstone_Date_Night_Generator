@@ -64,6 +64,4 @@ def yelp_api(request):
     # print(rest_response.status_code)
     print(rest_response.headers)
     print(rest_response.json())
-    serializer = YelpAPISerializer(rest_response, many=True)
-    print(serializer.data)
-    return Response(rest_response)
+    return Response(rest_response.json())

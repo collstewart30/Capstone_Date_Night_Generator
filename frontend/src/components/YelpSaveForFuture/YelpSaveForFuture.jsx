@@ -6,7 +6,7 @@ const YelptoBackend = (props) => {
   const [user, token] = useAuth();
 
   const [saveCurrent, setSaveCurrent] = useState("False");
-  const [saveFuture, setSaveFuture] = useState("False");
+  const [saveFuture, setSaveFuture] = useState("True");
   const [completed, setCompleted] = useState("False");
   const [isFavorite, setIsFavorite] = useState("False");
 

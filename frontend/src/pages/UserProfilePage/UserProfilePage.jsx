@@ -20,11 +20,15 @@ const UserProfilePage = (props) => {
   const [userNPSDetail, setUserNPSDetail] = useState([]);
   const [userTMDetail, setUserTMDetail] = useState([]);
   const [userYelpDetail, setuserYelpDetail] = useState([]);
+  const [NPSSaveForFuture, setNPSSaveForFuture] = useState([]);
+  const [YelpSaveForFuture, setYelpSaveForFuture] = useState([]);
 
   useEffect(() => {
-    fetchNPSDetails();
-    fetchTicketmasterDetails();
+    // fetchNPSDetails();
+    // fetchNPSSaveForFuture();
+    // fetchTicketmasterDetails();
     fetchYelpDetails();
+    // fetchYelpSaveForFuture();
   }, [userid]);
 
   const fetchNPSDetails = async () => {
@@ -33,11 +37,36 @@ const UserProfilePage = (props) => {
         headers: { Authorization: "Bearer " + token },
       });
       setUserNPSDetail(response.data);
-      console.log("NPS user save for future: ", response.data);
+      console.log("NPS user ALL data: ", response.data);
     } catch (error) {
       console.log(error);
     }
   };
+
+const fetchNPSSaveForFuture = async () => {
+  try {
+    let saveForFuture = userNPSDetail.filter((save) => {
+      if(save.saveFuture.includes("True")){
+        console.log(saveForFuture);
+        setNPSSaveForFuture(saveForFuture)
+      }
+    })
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+// need to filter for saveForFuture = "True". other backend api calls are pulling all saved info per user.
+  // function fetchNPSSaveForFuture (){
+  //   let saveForFuture = userNPSDetail.filter(function(save){
+  //     if(save.saveFuture.includes("True")){
+  //       return true
+  //     }
+  //   })
+  //   console.log("NPS user set save for future: ", saveForFuture)
+  //   setNPSSaveForFuture(saveForFuture)
+  // }
 
   const fetchTicketmasterDetails = async () => {
     try {
@@ -51,25 +80,40 @@ const UserProfilePage = (props) => {
     }
   };
 
+
   const fetchYelpDetails = async () => {
     try {
       let response = await axios.get(`http://127.0.0.1:8000/api/yelp/`, {
         headers: { Authorization: "Bearer " + token },
       });
       setuserYelpDetail(response.data);
-      console.log("Yelp user save for future: ",response.data);
+      console.log("Yelp user ALL data: ",response.data);
+      fetchYelpSaveForFuture();
     } catch (error) {
       console.log(error);
     }
   };
+
+  const fetchYelpSaveForFuture = () => {
+    try {
+    let saveForFuture = userYelpDetail.filter((save) => {
+      if(save.saveFuture.includes("True")){
+        return true
+      }
+    })
+    console.log("Yelp user set save for future: ", saveForFuture)
+    setYelpSaveForFuture(saveForFuture);
+  } catch(error){
+    console.log(error);
+  }}
 
   return (
     <div>
       <h1>Welcome, {user.first_name}!</h1>
       <h1>{user.username}!</h1>
       <h2>Here are your favorites:</h2>
-      {userNPSDetail &&
-        userNPSDetail.map((nps) => (
+      {NPSSaveForFuture &&
+        NPSSaveForFuture.map((nps) => (
           <div>
           <NPSDisplaySaveForFuture key={nps.id.event_id} nps={nps}/>
           <NPSMarkComplete />
@@ -83,12 +127,12 @@ const UserProfilePage = (props) => {
             </div>
           ))          
         }
-        {userYelpDetail &&
-          userYelpDetail.map((yelp) => (
+        {YelpSaveForFuture &&
+          YelpSaveForFuture.map((yelp) => (
             <div>
               <YelpDisplaySaveForFuture key={yelp.id} yelp={yelp}/>
             </div>
-          ))          
+          ))     
         }
     </div>
   );

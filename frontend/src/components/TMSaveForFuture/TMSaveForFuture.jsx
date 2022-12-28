@@ -3,7 +3,7 @@ import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 
 
-const TicketmasterSaveForFuture = (props) => {
+const TMSaveForFuture = (props) => {
     const[user, token] = useAuth();
 
     const [saveCurrent, setSaveCurrent] = useState("False");
@@ -61,4 +61,4 @@ const TicketmasterSaveForFuture = (props) => {
      );
 }
  
-export default TicketmasterSaveForFuture;
+export default TMSaveForFuture;

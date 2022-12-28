@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { tickemasterKEY } from "../../localKey";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import TicketmasterSaveForFuture from "../../components/TicketmasterSaveForFuture/TicketmasterSaveForFuture";
+import TMSaveForFuture from "../../components/TMSaveForFuture/TMSaveForFuture";
 
 const TicketMasterPage = () => {
   const [ticketmasterData, setTicketmasterData] = useState([]);
@@ -44,7 +44,7 @@ const TicketMasterPage = () => {
                 frameBorder="0"
               />
             </p>
-            <TicketmasterSaveForFuture
+            <TMSaveForFuture
               event_id={data.id}
               name={data.name}
               url={data.url}

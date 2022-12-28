@@ -11,16 +11,20 @@ import useAuth from "../../hooks/useAuth";
 import NPSDisplaySaveForFuture from "../../components/NPSDisplaySaveForFuture/NPSDisplaySaveForFuture";
 import NPSMarkComplete from "../../components/NPSMarkComplete/NPSMarkComplete";
 import TMDisplaySaveForFuture from "../../components/TMDisplaySaveForFuture/TMDisplaySaveForFuture";
+import YelpDisplaySaveForFuture from "../../components/YelpDisplaySaveForFuture/YelpDisplaySaveForFuture";
+
 
 const UserProfilePage = (props) => {
   const { userid } = useParams();
   const [user, token] = useAuth();
   const [userNPSDetail, setUserNPSDetail] = useState([]);
   const [userTMDetail, setUserTMDetail] = useState([]);
+  const [userYelpDetail, setuserYelpDetail] = useState([]);
 
   useEffect(() => {
     fetchNPSDetails();
     fetchTicketmasterDetails();
+    fetchYelpDetails();
   }, [userid]);
 
   const fetchNPSDetails = async () => {
@@ -47,6 +51,18 @@ const UserProfilePage = (props) => {
     }
   };
 
+  const fetchYelpDetails = async () => {
+    try {
+      let response = await axios.get(`http://127.0.0.1:8000/api/yelp/`, {
+        headers: { Authorization: "Bearer " + token },
+      });
+      setuserYelpDetail(response.data);
+      console.log("Yelp user save for future: ",response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <h1>Welcome, {user.first_name}!</h1>
@@ -64,6 +80,13 @@ const UserProfilePage = (props) => {
           userTMDetail.map((tm) => (
             <div>
               <TMDisplaySaveForFuture key={tm.event_id} tm={tm}/>
+            </div>
+          ))          
+        }
+        {userYelpDetail &&
+          userYelpDetail.map((yelp) => (
+            <div>
+              <YelpDisplaySaveForFuture key={yelp.id} yelp={yelp}/>
             </div>
           ))          
         }

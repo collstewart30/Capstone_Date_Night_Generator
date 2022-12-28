@@ -22,13 +22,13 @@ const NPStoBackend = (props) => {
 
   // URL first in axios. POST and PUT: request body data
 
-  const saveForFuture = async (post) => {
+  const markComplete = async (patch) => {
     try {
-      let response = await axios.post(`http://127.0.0.1:8000/api/nps/`, post, {
+      let response = await axios.patch(`http://127.0.0.1:8000/api/nps/`, {
         headers: { Authorization: "Bearer " + token },
       });
       console.log(response.data.data);
-      setCompleted("True");
+      markComplete("True");
     } catch (error) {
       console.log(error.response);
     }
@@ -38,23 +38,23 @@ const NPStoBackend = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    let saveForFutureNPSData = {
-      user: user.id,
-      event_id: event_id,
-      parkCode: parkCode,
-      title: title,
-      url: url,
-      image_url: image_url,
-      park_name: park_name,
-      state: state,
-      description: description,
-      type: type,
-      saveCurrent: saveCurrent,
-      saveFuture: saveFuture,
-      completed: completed,
-      isFavorite: isFavorite,
-    };
-    setSaveFuture(saveForFutureNPSData);
+    // let markCompleteData = {
+    //   user: user.id,
+    //   event_id: event_id,
+    //   parkCode: parkCode,
+    //   title: title,
+    //   url: url,
+    //   image_url: image_url,
+    //   park_name: park_name,
+    //   state: state,
+    //   description: description,
+    //   type: type,
+    //   saveCurrent: saveCurrent,
+    //   saveFuture: saveFuture,
+    //   completed: completed,
+    //   isFavorite: isFavorite,
+    // };
+    markComplete();
     console.log("updated Mark Complete");
   }
 
@@ -65,7 +65,7 @@ const NPStoBackend = (props) => {
       style={{ margin: "1em" }}
       onClick={handleSubmit}
     >
-      Save for Future
+      Mark Complete
     </button>
   );
 };

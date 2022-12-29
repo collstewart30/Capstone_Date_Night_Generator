@@ -7,22 +7,30 @@ const EmailJS = (props) => {
 
     const [user, token] = useAuth();
 
+    const templateParams = {
+        subject: "Your date night itinerary inside",
+        name: `${user.first_name}`,
+        message: "pull current date night in here"
+    };
+
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_xyg31q3', 'template_hwszaat', e.target, 'rNS8dDRzazPcQrmwr')  // youtube tutorial has e.target instead of form.current
+        emailjs.send('service_xyg31q3', 'template_8wng7ul', templateParams, 'rNS8dDRzazPcQrmwr')  // youtube tutorial has e.target instead of form.current.  API key: 'rNS8dDRzazPcQrmwr'
           .then((result) => {
               console.log(result.text);
+              console.log(`${user.first_name}`)
           }, (error) => {
               console.log(error.text);
           });
-          e.target.reset()
+        //   e.target.reset()
     };
 
     return ( 
         <div>
             <div className="container">
-            <form onSubmit={sendEmail}>
+            <button onClick={sendEmail}>Email Itinerary</button>
+            {/* <form onSubmit={sendEmail}>
                 <div className="row pt-5 mx-auto">
                     <div className="col-8 form-group mx-auto">
                         <input type="text" className="form-control" placeholder="Name" name="name"/>
@@ -40,7 +48,7 @@ const EmailJS = (props) => {
                         <input type="submit" className="btn btn-info" value="Send Message"></input>
                     </div>
                 </div>
-            </form>
+            </form> */}
             </div>
         </div>
      );

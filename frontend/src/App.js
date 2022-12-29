@@ -38,7 +38,7 @@ function App() {
         <Route path="/yelp" element={<YelpPage />} />
         <Route path="/user/:userid" element={<UserProfilePage />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

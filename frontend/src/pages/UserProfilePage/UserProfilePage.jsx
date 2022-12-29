@@ -12,6 +12,7 @@ import NPSDisplaySaveForFuture from "../../components/NPSDisplaySaveForFuture/NP
 import NPSMarkComplete from "../../components/NPSMarkComplete/NPSMarkComplete";
 import TMDisplaySaveForFuture from "../../components/TMDisplaySaveForFuture/TMDisplaySaveForFuture";
 import YelpDisplaySaveForFuture from "../../components/YelpDisplaySaveForFuture/YelpDisplaySaveForFuture";
+import EmailJS from "../../components/EmailJS/EmailJS"
 
 
 const UserProfilePage = (props) => {
@@ -111,6 +112,8 @@ const fetchNPSSaveForFuture = async () => {
     <div>
       <h1>Welcome, {user.first_name}!</h1>
       <h1>{user.username}!</h1>
+      <h2>Email your info:</h2>
+      <EmailJS />
       <h2>Here are your favorites:</h2>
       {NPSSaveForFuture &&
         NPSSaveForFuture.map((nps) => (

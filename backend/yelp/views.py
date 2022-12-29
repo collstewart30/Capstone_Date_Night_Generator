@@ -55,13 +55,11 @@ def yelp_api(request):
     baseUrl = "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1"
 
     params = {
-        'term': 'restaurant',
         'location': 'Baltimore',
-        'limit': 50
     }
     #, params=params
 
-    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore", headers=headers)
+    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&limit=10", params=params, headers=headers)
     # print(rest_response.status_code)
     print(rest_response.headers)
     print(rest_response.json())

@@ -111,8 +111,8 @@ const fetchNPSSaveForFuture = async () => {
   return (
     <div className="container">
       <h1>Welcome, {user.first_name}!</h1>
-      <h1>{user.username}!</h1>
-      <h2>Email your info:</h2>
+      {/* <h1>{user.username}!</h1> */}
+      {/* <h2>Email your info:</h2> */}
       <EmailJS />
       <h2>Here are your favorites:</h2>
       {NPSSaveForFuture &&

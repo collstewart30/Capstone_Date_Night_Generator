@@ -10,11 +10,11 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>Welcome, {user.username}!</h1>
-      <p>
+      {/* <p>
           <Link to={`/user/${user.id}`} style={{ textDecoration: "none", color: "orange" }}>
             <b>Profile</b>
           </Link>
-        </p>
+        </p> */}
       <h2>Choose from the below options to start planning your date night!</h2>
       <p><Link to="/ticketmaster">Ticketmaster</Link></p>
       <p><Link to="/nps">NPS</Link></p>

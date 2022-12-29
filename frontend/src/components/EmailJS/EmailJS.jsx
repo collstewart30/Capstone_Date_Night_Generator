@@ -29,7 +29,7 @@ const EmailJS = (props) => {
     return ( 
         <div>
             <div className="container">
-            <button onClick={sendEmail}>Email Itinerary</button>
+            <button onClick={sendEmail}>Email Current Itinerary</button>
             {/* <form onSubmit={sendEmail}>
                 <div className="row pt-5 mx-auto">
                     <div className="col-8 form-group mx-auto">

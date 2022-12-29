@@ -13,7 +13,7 @@ const YelpPage = () => {
     getYelpData();
   }, []);
 
-  const getYelpData = async (searchTerm) => {
+  const getYelpData = async (searchTerm= 'Philadelphia') => {
     try {
       let response = await axios.get(
         `http://127.0.0.1:8000/api/yelp/yelp_api/`,

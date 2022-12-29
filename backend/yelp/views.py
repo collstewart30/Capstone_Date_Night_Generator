@@ -62,6 +62,7 @@ def yelp_api(request):
     rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&limit=10", params=params, headers=headers)
     # print(rest_response.status_code)
     print(rest_response.headers)
+    print(rest_response.url)
     print(rest_response.json())
     return Response(rest_response.json())
 

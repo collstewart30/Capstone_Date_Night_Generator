@@ -39,7 +39,7 @@ const NPSSaveForFuture = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    let markCompleteNPSData = {
+    let saveForFutureNPSData = {
       user: user.id,
       event_id: event_id,
       parkCode: parkCode,
@@ -55,7 +55,7 @@ const NPSSaveForFuture = (props) => {
       completed: completed,
       isFavorite: isFavorite,
     };
-    saveForFuture(markCompleteNPSData);
+    saveForFuture(saveForFutureNPSData);
   }
 
   return (

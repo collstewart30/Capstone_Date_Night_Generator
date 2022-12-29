@@ -14,7 +14,12 @@ const Navbar = () => {
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             <b>Home</b>
           </Link>
-          </li>
+        </li>
+        <li className="brand">
+          <Link to="/user/:userid" style={{ textDecoration: "none", color: "white" }}>
+            <b>Profile</b>
+          </Link>
+        </li>
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>

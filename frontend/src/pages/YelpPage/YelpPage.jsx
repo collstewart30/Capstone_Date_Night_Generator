@@ -8,6 +8,7 @@ import YelpSaveForFuture from "../../components/YelpSaveForFuture/YelpSaveForFut
 const YelpPage = () => {
   const [yelpData, setYelpData] = useState([]);
   const [user, token] = useAuth();
+  const [location, setLocation] = useState([]);
 
   useEffect(() => {
     getYelpData();
@@ -31,10 +32,28 @@ const YelpPage = () => {
     }
   };
 
+  const searchLocationtYelpData = async () => {
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/yelp/yelp_api/search/`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("Yelp location search");
+      console.log(response.data.businesses);
+      setLocation(response.data.businesses);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container">
       <h1>Search by city</h1>
-      <SearchBar searchBarParent={getYelpData} />
+      <SearchBar searchBarParent={location} />
       {yelpData &&
         yelpData.map((data) => (
           <div key={data.id} className="list-unstyled text-decoration-none">

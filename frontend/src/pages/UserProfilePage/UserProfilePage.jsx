@@ -109,7 +109,7 @@ const fetchNPSSaveForFuture = async () => {
   }}
 
   return (
-    <div>
+    <div className="container">
       <h1>Welcome, {user.first_name}!</h1>
       <h1>{user.username}!</h1>
       <h2>Email your info:</h2>

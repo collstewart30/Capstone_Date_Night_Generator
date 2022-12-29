@@ -66,3 +66,23 @@ def yelp_api(request):
     print(rest_response.headers)
     print(rest_response.json())
     return Response(rest_response.json())
+
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def search_yelp_api(request):
+
+    headers = {'Authorization': 'Bearer {}'.format(api_key)}
+    baseUrl = "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1"
+
+    params = {
+        'location': 'Baltimore'
+    }
+    #, params=params
+
+    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&limit=20", params, headers=headers)
+    # print(rest_response.status_code)
+    print(rest_response.headers)
+    print(rest_response.json())
+    return Response(rest_response.json())

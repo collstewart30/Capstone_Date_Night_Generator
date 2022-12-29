@@ -36,7 +36,14 @@ function App() {
         <Route path="/ticketmaster" element={<TicketMasterPage />} />
         <Route path="/nps" element={<NPSPage />} />
         <Route path="/yelp" element={<YelpPage />} />
-        <Route path="/user/:userid" element={<UserProfilePage />} />
+        <Route
+          path="/user/:userid"
+          element={
+            <PrivateRoute>
+              <UserProfilePage />
+            </PrivateRoute>
+          }
+        />
       </Routes>
       {/* <Footer /> */}
     </div>

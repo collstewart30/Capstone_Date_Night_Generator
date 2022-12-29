@@ -8,18 +8,27 @@ import YelpSaveForFuture from "../../components/YelpSaveForFuture/YelpSaveForFut
 const YelpPage = () => {
   const [yelpData, setYelpData] = useState([]);
   const [user, token] = useAuth();
+  const [location, setLocation] = useState();
 
   useEffect(() => {
     getYelpData();
   }, []);
 
-  const getYelpData = async (searchTerm= 'Philadelphia') => {
+  const searchYelpLocation = (searchTerm) => {
+    setLocation(searchTerm);
+    console.log("setLocation function called ", searchTerm);
+    getYelpData(searchTerm);
+  };
+
+  // location parameter not pulling location from SearchBar
+
+  const getYelpData = async (location) => {
     try {
       let response = await axios.get(
         `http://127.0.0.1:8000/api/yelp/yelp_api/`,
         {
           params: {
-            location: `${searchTerm}`
+            location: location
           },
           headers: {
             Authorization: `Bearer ${token}`,
@@ -34,10 +43,11 @@ const YelpPage = () => {
     }
   };
 
+
   return (
     <div className="container">
       <h1>Search by city</h1>
-      <SearchBar searchBarParent={getYelpData}/>
+      <SearchBar searchBarParent={searchYelpLocation}/>
       {yelpData &&
         yelpData.map((data) => (
           <div key={data.id} className="list-unstyled text-decoration-none">

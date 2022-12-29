@@ -12,8 +12,7 @@ import NPSDisplaySaveForFuture from "../../components/NPSDisplaySaveForFuture/NP
 import NPSMarkComplete from "../../components/NPSMarkComplete/NPSMarkComplete";
 import TMDisplaySaveForFuture from "../../components/TMDisplaySaveForFuture/TMDisplaySaveForFuture";
 import YelpDisplaySaveForFuture from "../../components/YelpDisplaySaveForFuture/YelpDisplaySaveForFuture";
-import EmailJS from "../../components/EmailJS/EmailJS"
-
+import EmailJS from "../../components/EmailJS/EmailJS";
 
 const UserProfilePage = (props) => {
   const { userid } = useParams();
@@ -25,11 +24,11 @@ const UserProfilePage = (props) => {
   const [YelpSaveForFuture, setYelpSaveForFuture] = useState([]);
 
   useEffect(() => {
-    // fetchNPSDetails();
-    // fetchNPSSaveForFuture();
-    // fetchTicketmasterDetails();
+    fetchNPSDetails();
+    fetchNPSSaveForFuture();
+    fetchTicketmasterDetails();
     fetchYelpDetails();
-    // fetchYelpSaveForFuture();
+    fetchYelpSaveForFuture();
   }, [userid]);
 
   const fetchNPSDetails = async () => {
@@ -44,21 +43,20 @@ const UserProfilePage = (props) => {
     }
   };
 
-const fetchNPSSaveForFuture = async () => {
-  try {
-    let saveForFuture = userNPSDetail.filter((save) => {
-      if(save.saveFuture.includes("True")){
-        console.log(saveForFuture);
-        setNPSSaveForFuture(saveForFuture)
-      }
-    })
-  } catch (error) {
-    console.log(error);
-  }
-}
+  const fetchNPSSaveForFuture = async () => {
+    try {
+      let saveForFuture = userNPSDetail.filter((save) => {
+        if (save.saveFuture.includes("True")) {
+          console.log(saveForFuture);
+          setNPSSaveForFuture(saveForFuture);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-
-// need to filter for saveForFuture = "True". other backend api calls are pulling all saved info per user.
+  // need to filter for saveForFuture = "True". other backend api calls are pulling all saved info per user.
   // function fetchNPSSaveForFuture (){
   //   let saveForFuture = userNPSDetail.filter(function(save){
   //     if(save.saveFuture.includes("True")){
@@ -71,16 +69,18 @@ const fetchNPSSaveForFuture = async () => {
 
   const fetchTicketmasterDetails = async () => {
     try {
-      let response = await axios.get(`http://127.0.0.1:8000/api/ticketmaster/`, {
-        headers: { Authorization: "Bearer " + token },
-      });
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/ticketmaster/`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
       setUserTMDetail(response.data);
-      console.log("Ticketmaster user save for future: ",response.data);
+      console.log("Ticketmaster user save for future: ", response.data);
     } catch (error) {
       console.log(error);
     }
   };
-
 
   const fetchYelpDetails = async () => {
     try {
@@ -88,7 +88,7 @@ const fetchNPSSaveForFuture = async () => {
         headers: { Authorization: "Bearer " + token },
       });
       setuserYelpDetail(response.data);
-      console.log("Yelp user ALL data: ",response.data);
+      console.log("Yelp user ALL data: ", response.data);
       fetchYelpSaveForFuture();
     } catch (error) {
       console.log(error);
@@ -97,20 +97,22 @@ const fetchNPSSaveForFuture = async () => {
 
   const fetchYelpSaveForFuture = () => {
     try {
-    let saveForFuture = userYelpDetail.filter((save) => {
-      if(save.saveFuture.includes("True")){
-        return true
-      }
-    })
-    console.log("Yelp user set save for future: ", saveForFuture)
-    setYelpSaveForFuture(saveForFuture);
-  } catch(error){
-    console.log(error);
-  }}
+      let saveForFuture = userYelpDetail.filter((save) => {
+        if (save.saveFuture.includes("True")) {
+          return true;
+        }
+      });
+      console.log("Yelp user set save for future: ", saveForFuture);
+      setYelpSaveForFuture(saveForFuture);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="container">
       <h1>Welcome, {user.first_name}!</h1>
+      <h1>Welcome, {user.id}!</h1>
       {/* <h1>{user.username}!</h1> */}
       {/* <h2>Email your info:</h2> */}
       <EmailJS />
@@ -118,35 +120,30 @@ const fetchNPSSaveForFuture = async () => {
       {NPSSaveForFuture &&
         NPSSaveForFuture.map((nps) => (
           <div>
-          <NPSDisplaySaveForFuture key={nps.id.event_id} nps={nps}/>
-          <NPSMarkComplete />
+            <NPSDisplaySaveForFuture key={nps.id.event_id} nps={nps} />
+            <NPSMarkComplete />
           </div>
-        ))
-        }
-        {userTMDetail &&
-          userTMDetail.map((tm) => (
-            <div>
-              <TMDisplaySaveForFuture key={tm.event_id} tm={tm}/>
-            </div>
-          ))          
-        }
-        {YelpSaveForFuture &&
-          YelpSaveForFuture.map((yelp) => (
-            <div>
-              <YelpDisplaySaveForFuture key={yelp.id} yelp={yelp}/>
-            </div>
-          ))     
-        }
+        ))}
+      {userTMDetail &&
+        userTMDetail.map((tm) => (
+          <div>
+            <TMDisplaySaveForFuture key={tm.event_id} tm={tm} />
+          </div>
+        ))}
+      {YelpSaveForFuture &&
+        YelpSaveForFuture.map((yelp) => (
+          <div>
+            <YelpDisplaySaveForFuture key={yelp.id} yelp={yelp} />
+          </div>
+        ))}
     </div>
   );
 };
 
 export default UserProfilePage;
 
-
-  /* // <div key={nps.id.id}>
+/* // <div key={nps.id.id}>
         //   <li>{nps.title}</li>
         //   <li>{nps.description}</li>
         //   <li>{nps.type}</li>
         // </div>) */
-

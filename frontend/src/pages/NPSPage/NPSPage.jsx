@@ -22,7 +22,7 @@ const NPSPage = (props) => {
   const getNPSData = async (searchTerm = "MD") => {
     try {
       let response = await axios.get(
-        `https://developer.nps.gov/api/v1/thingstodo?stateCode=${searchTerm}%2CMD&api_key=${npsKEY}&limit=5`
+        `https://developer.nps.gov/api/v1/thingstodo?stateCode=${searchTerm}%2CMD&api_key=${npsKEY}&limit=10`
       );
       console.log("NPS API");
       console.log(response.data.data);

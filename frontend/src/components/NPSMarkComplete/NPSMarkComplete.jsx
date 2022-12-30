@@ -7,7 +7,7 @@ const NPSMarkComplete = (props) => {
 
   const [saveCurrent, setSaveCurrent] = useState("False");
   const [saveFuture, setSaveFuture] = useState("True");
-  const [completed, setCompleted] = useState("False");
+  const [completed, setCompleted] = useState("True");
   const [isFavorite, setIsFavorite] = useState("False");
 
   let event_id = props.event_id;
@@ -22,9 +22,9 @@ const NPSMarkComplete = (props) => {
 
   // URL first in axios. POST and PUT: request body data
 
-  const markComplete = async (patch) => {
+  const markComplete = async (post) => {
     try {
-      let response = await axios.patch(`http://127.0.0.1:8000/api/nps/`, {
+      let response = await axios.put(`http://127.0.0.1:8000/api/nps/`, post, {
         headers: { Authorization: "Bearer " + token },
       });
       console.log(response.data.data);
@@ -36,6 +36,7 @@ const NPSMarkComplete = (props) => {
 
   // patch
 
+  
   function handleSubmit(event) {
     event.preventDefault();
     let markCompleteData = {

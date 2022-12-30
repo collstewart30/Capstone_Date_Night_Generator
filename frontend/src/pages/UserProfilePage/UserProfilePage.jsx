@@ -38,6 +38,7 @@ const UserProfilePage = (props) => {
       });
       setUserNPSDetail(response.data);
       console.log("NPS user ALL data: ", response.data);
+      fetchNPSSaveForFuture(userNPSDetail);
     } catch (error) {
       console.log(error);
     }
@@ -89,7 +90,7 @@ const UserProfilePage = (props) => {
       });
       setuserYelpDetail(response.data);
       console.log("Yelp user ALL data: ", response.data);
-      fetchYelpSaveForFuture();
+      fetchYelpSaveForFuture(userYelpDetail);
     } catch (error) {
       console.log(error);
     }
@@ -112,18 +113,35 @@ const UserProfilePage = (props) => {
   return (
     <div className="container">
       <h1>Welcome, {user.first_name}!</h1>
-      <h1>Welcome, {user.id}!</h1>
+      <h1>User ID # {user.id}</h1>
       {/* <h1>{user.username}!</h1> */}
       {/* <h2>Email your info:</h2> */}
       <EmailJS />
       <h2>Here are your favorites:</h2>
       {NPSSaveForFuture &&
         NPSSaveForFuture.map((nps) => (
-          <div>
-            <NPSDisplaySaveForFuture key={nps.id.event_id} nps={nps} />
-            <NPSMarkComplete />
+          <div key={nps.id.event_id}>
+            <NPSDisplaySaveForFuture nps={nps} />
           </div>
         ))}
+      ;
+      {/* {userNPSDetail &&
+        userNPSDetail.map((nps) => (
+          <div key={nps.id.event_id}>
+            <NPSMarkComplete
+              event_id={data.id}
+              parkCode={data.relatedParks.parkCode}
+              title={data.title}
+              url={data.url}
+              image_url={data.images[0].url}
+              park_name={data.relatedParks[0].fullName}
+              state={data.relatedParks[0].states}
+              description={data.shortDescription}
+              type={data.activities[0].name}
+            />
+          </div>
+        ))} */}
+      ;
       {userTMDetail &&
         userTMDetail.map((tm) => (
           <div>

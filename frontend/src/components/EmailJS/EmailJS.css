@@ -1,0 +1,14 @@
+.email-button {
+    background: darkcyan;
+    border: 2px solid black;
+    color: white;
+    padding: 0.4rem 0.5rem;
+  }
+  
+  .email-button:hover{
+    background: ghostwhite;
+    border: 2px solid black;
+    color: black;
+    padding: 0.4rem 0.5rem;
+  }
+  

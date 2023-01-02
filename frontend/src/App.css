@@ -10,32 +10,57 @@
 
 html {
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* web-safe fonts are already available - no need to import. serif - has hook on characters, sans-serif has flat characters */
+
 p {
-  font-size: 20px;
+  font-size: 15px;
+  text-transform: uppercase;
+  line-height: 1.6em;
+  margin: 5px 10px;
 }
+
+h1 {
+  line-height: 1.6em;
+  font-style: italic;
+}
+
+h2 {
+  line-height: 1em;
+  margin: 10px;
+  margin-bottom: 10px;
+  /* border-bottom: 1px black solid; */
+}
+
 
 button {
   background-color: transparent;
-  border: 2px solid steelblue;
-  color: steelblue;
-  font-size: 1rem;
+  border: 2px solid black;
+  color:darkcyan;
+  font-size: .75rem;
   font-family: inherit;
-  max-width: 100px;
+  /* max-width: 100px; */
   padding: 0.5rem 0.5rem;
 }
+
+/* Route {
+  color:black;
+  font-size: 1rem;
+  font-family: inherit;
+  padding: 0.5rem 0.5rem;
+} */
 
 button:hover {
   cursor: pointer;
   color: white;
-  background-color: steelblue;
+  background-color: darkcyan;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 85%;
   overflow: auto;
   text-align: center;
 }

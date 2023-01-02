@@ -14,7 +14,7 @@ class NPS(models.Model):
     image_url = models.CharField(max_length=100, default=False)
     park_name = models.CharField(max_length=250)
     state = models.CharField(max_length=250)
-    description = models.CharField(max_length=250)
+    description = models.CharField(max_length=500)
     type = models.CharField(max_length=250)
     saveCurrent = models.CharField(max_length=100, default=False)
     saveFuture = models.CharField(max_length=100, default=False)

@@ -43,7 +43,7 @@ const NPSPage = (props) => {
           <div key={data.id} className="list-unstyled text-decoration-none">
             <p>{data.title}</p>
             <p>{data.shortDescription}</p>
-            <p>{data.relatedParks[0].fullName}</p>
+            <p>{data.relatedParks[0].fullName}</p>  
             <p>{data.activities[0].name}</p>
             <p>
               <img
@@ -57,7 +57,7 @@ const NPSPage = (props) => {
             </p>
             <NPSSaveForFuture
               event_id={data.id}
-              parkCode={data.relatedParks.parkCode}
+              parkCode={data.relatedParks[0].parkCode}
               title={data.title}
               url={data.url}
               image_url={data.images[0].url}

@@ -3,6 +3,7 @@
 
 // routes - user id in url
 
+import "./UserProfilePage.css";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -124,24 +125,23 @@ const UserProfilePage = (props) => {
             <NPSDisplaySaveForFuture nps={nps} />
           </div>
         ))}
-      ;
-      {/* {userNPSDetail &&
+      {userNPSDetail &&
         userNPSDetail.map((nps) => (
           <div key={nps.id.event_id}>
+            <p>{nps.title}</p>
             <NPSMarkComplete
-              event_id={data.id}
-              parkCode={data.relatedParks.parkCode}
-              title={data.title}
-              url={data.url}
-              image_url={data.images[0].url}
-              park_name={data.relatedParks[0].fullName}
-              state={data.relatedParks[0].states}
-              description={data.shortDescription}
-              type={data.activities[0].name}
+              event_id={nps.id}
+              parkCode={nps.parkCode}
+              title={nps.title}
+              url={nps.url}
+              image_url={nps.image_url}
+              park_name={nps.park_name}
+              state={nps.state}
+              description={nps.description}
+              type={nps.type}
             />
           </div>
-        ))} */}
-      ;
+        ))}
       {userTMDetail &&
         userTMDetail.map((tm) => (
           <div>

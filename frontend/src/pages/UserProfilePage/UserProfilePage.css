@@ -1,0 +1,6 @@
+p {
+    display: container;
+    justify-content: space-between;
+    list-style-type: none;
+    /* color: red; */
+  }

@@ -9,7 +9,7 @@ li {
 }
 
 .navBar {
-  background: steelblue;
+  background: darkcyan;
   box-shadow: 4px 2px 5px gray;
   color: white;
   margin-bottom: 2rem;
@@ -24,9 +24,10 @@ li {
 }
 
 .navBar button:hover {
-  background: white;
-  color: steelblue;
+  background: ghostwhite;
+  color: black;
   cursor: pointer;
+  border-color: black;
 }
 
 .brand {

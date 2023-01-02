@@ -40,11 +40,11 @@ const NPSPage = (props) => {
       <SearchBar searchBarParent={getNPSData} />
       {NPSData[0] &&
         NPSData.map((data) => (
-          <div key={data.id} className="list-unstyled text-decoration-none">
-            <p>{data.title}</p>
+          <div key={data.id} className="list-unstyled text-decoration-none" style={{border: ".75px solid black", margin: ".5em"}}>
+            <h2>{data.title}</h2>
             <p>{data.shortDescription}</p>
-            <p>{data.relatedParks[0].fullName}</p>  
-            <p>{data.activities[0].name}</p>
+            <p>Location: {data.relatedParks[0].fullName}</p>  
+            <p>Type: {data.activities[0].name}</p>
             <p>
               <img
                 id="ytplayer"
@@ -52,7 +52,7 @@ const NPSPage = (props) => {
                 width="320"
                 height="180"
                 src={data.images[0].url}
-                frameBorder="0"
+                border="1px solid #555"
               />
             </p>
             <NPSSaveForFuture

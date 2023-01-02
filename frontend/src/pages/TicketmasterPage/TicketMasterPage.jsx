@@ -3,6 +3,8 @@ import axios from "axios";
 import { tickemasterKEY } from "../../localKey";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import TMSaveForFuture from "../../components/TMSaveForFuture/TMSaveForFuture";
+import "./TicketMasterPage.css";
+
 
 const TicketMasterPage = () => {
   const [ticketmasterData, setTicketmasterData] = useState([]);
@@ -30,17 +32,18 @@ const TicketMasterPage = () => {
       <SearchBar searchBarParent={getTicketMasterData} />
       {ticketmasterData &&
         ticketmasterData.map((data) => (
-          <div key={data.id} className="list-unstyled text-decoration-none">
-            <p>{data.name}</p>
-            <p>Location: {data._embedded.venues[0].name}</p>
+          <div key={data.id} className="list-unstyled text-decoration-none" style={{border: ".75px solid black", margin: ".5em"}}>
+            <h2 className="heading">{data.name}</h2>
+            <p className="heading">Location: {data._embedded.venues[0].name}</p>
             <p>
               <img
                 id="ytplayer"
                 type="text/html"
-                width="640"
-                height="360"
+                width="320"
+                height="180"
                 src={data.images[0].url}
-                frameBorder="0"
+                border="1px solid #555"
+
               />
             </p>
             <TMSaveForFuture

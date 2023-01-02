@@ -50,8 +50,8 @@ const YelpPage = () => {
       <SearchBar searchBarParent={searchYelpLocation}/>
       {yelpData &&
         yelpData.map((data) => (
-          <div key={data.id} className="list-unstyled text-decoration-none">
-            <p>{data.name}</p>
+          <div key={data.id} className="list-unstyled text-decoration-none" style={{border: ".75px solid black", margin: ".5em"}}>
+            <h2>{data.name}</h2>
             <p>Type: {data.categories[0].title}</p>
             <p>
               <img
@@ -60,7 +60,7 @@ const YelpPage = () => {
                 width="320"
                 height="180"
                 src={data.image_url}
-                frameBorder="0"
+                border="1px solid #555"
               />
             </p>
             <YelpSaveForFuture

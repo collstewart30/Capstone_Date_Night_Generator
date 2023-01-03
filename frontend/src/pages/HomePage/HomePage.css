@@ -1,25 +1,19 @@
-/* .homepage{
-    text-align: center;
-} */
-
 .Link, .Link:visited {
     text-decoration: none;
     color: black;
     border: 1px black solid;
-    padding: 2.5px;
+    font-weight: bold;
+    padding: 3px;
     margin: 3.5px;
-    float: left;
-    width: 29.99%;
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
     background-color: ghostwhite;
 }
 
-/* .Link, :hover{
-    color:red;
-} */
-
 .Link:hover {
     background: white;
-    color: darkcyan;
+    color: black;
     cursor:pointer;
     border-color: darkcyan;
   }

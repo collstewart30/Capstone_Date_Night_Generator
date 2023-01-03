@@ -9,10 +9,10 @@ const HomePage = () => {
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
 
   return (
-    <div className="container">
+    <div>
       <h1>Welcome, {user.first_name}!</h1>
       <h2>Choose from the below options to start planning your date night:</h2>
-      <div>
+      <div className="grid-container">
         <p>
           <Link to="/ticketmaster" className="Link">Ticketmaster</Link>
         </p>

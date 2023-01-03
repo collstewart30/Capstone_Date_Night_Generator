@@ -30,38 +30,38 @@ const TicketMasterPage = () => {
       <h1>Search by state abbreviation:</h1>
       <SearchBar searchBarParent={getTicketMasterData} />
       <div className="grid-container">
-        {ticketmasterData &&
-          ticketmasterData.map((data) => (
-            <div
-              key={data.id}              
-              style={{ border: ".75px solid black", margin: ".5em" }}
-            >
-              <h2 className="heading">{data.name}</h2>
-              <p className="heading">
-                Location: {data._embedded.venues[0].name}
-              </p>
-              <p>
-                <img
-                  id="ytplayer"
-                  type="text/html"
-                  width="320"
-                  height="180"
-                  src={data.images[0].url}
-                  border="1px solid #555"
+          {ticketmasterData &&
+            ticketmasterData.map((data) => (
+              <div
+                key={data.id}
+                style={{ border: ".75px solid black", margin: ".5em" }}
+              >
+                <h2 className="heading">{data.name}</h2>
+                <p className="heading">
+                  Location: {data._embedded.venues[0].name}
+                </p>
+                <p>
+                  <img
+                    id="ytplayer"
+                    type="text/html"
+                    width="160"
+                    height="90"
+                    src={data.images[0].url}
+                    border="1px solid #555"
+                  />
+                </p>
+                <TMSaveForFuture
+                  event_id={data.id}
+                  name={data.name}
+                  url={data.url}
+                  image={data.images[0].url}
+                  eventType={data.classifications[0].genre.name}
+                  state={data._embedded.venues[0].state.name}
                 />
-              </p>
-              <TMSaveForFuture
-                event_id={data.id}
-                name={data.name}
-                url={data.url}
-                image={data.images[0].url}
-                eventType={data.classifications[0].genre.name}
-                state={data._embedded.venues[0].state.name}
-              />
-            </div>
-          ))}
-        ;
-      </div>
+              </div>
+            ))}
+          ;
+        </div>
       ;
     </div>
   );

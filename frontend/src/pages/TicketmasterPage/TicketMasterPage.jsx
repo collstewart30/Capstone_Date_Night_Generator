@@ -26,9 +26,9 @@ const TicketMasterPage = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Search by state abbreviation:</h1>
-      <SearchBar searchBarParent={getTicketMasterData} />
+      <SearchBar searchBarParent={getTicketMasterData}/>
       <div className="grid-container">
           {ticketmasterData &&
             ticketmasterData.map((data) => (

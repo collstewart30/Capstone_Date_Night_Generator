@@ -44,7 +44,7 @@ const YelpPage = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Search by city</h1>
       <SearchBar searchBarParent={searchYelpLocation} />
       <div className="grid-container">

@@ -35,7 +35,7 @@ const NPSPage = (props) => {
   // RELATED PARKS[] : will pull the park/event/hike if you enter one state in list of all it's related states
 
   return (
-    <div>
+    <div className="container">
       <h1>Search by state</h1>
       <SearchBar searchBarParent={getNPSData} />
       <div className="grid-container">

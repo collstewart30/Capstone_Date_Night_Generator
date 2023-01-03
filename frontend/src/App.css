@@ -10,7 +10,7 @@
 
 html {
   box-sizing: border-box;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 /* web-safe fonts are already available - no need to import. serif - has hook on characters, sans-serif has flat characters */
@@ -34,11 +34,20 @@ h2 {
   /* border-bottom: 1px black solid; */
 }
 
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: .25em;
+}
+
+/* .grid-container > * {
+  /* children for grid-container */
+
 
 button {
-  background-color: transparent;
-  border: 2px solid black;
-  color:darkcyan;
+  background-color:ghostwhite;
+  border: 1px solid black;
+  color:black;
   font-size: .75rem;
   font-family: inherit;
   /* max-width: 100px; */

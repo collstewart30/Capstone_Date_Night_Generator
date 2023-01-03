@@ -28,7 +28,7 @@ const YelpPage = () => {
         `http://127.0.0.1:8000/api/yelp/yelp_api/`,
         {
           params: {
-            location: location
+            location: location,
           },
           headers: {
             Authorization: `Bearer ${token}`,
@@ -43,36 +43,41 @@ const YelpPage = () => {
     }
   };
 
-
   return (
-    <div className="container">
+    <div>
       <h1>Search by city</h1>
-      <SearchBar searchBarParent={searchYelpLocation}/>
-      {yelpData &&
-        yelpData.map((data) => (
-          <div key={data.id} className="list-unstyled text-decoration-none" style={{border: ".75px solid black", margin: ".5em"}}>
-            <h2>{data.name}</h2>
-            <p>Type: {data.categories[0].title}</p>
-            <p>
-              <img
-                id="ytplayer"
-                type="text/html"
-                width="320"
-                height="180"
-                src={data.image_url}
-                border="1px solid #555"
+      <SearchBar searchBarParent={searchYelpLocation} />
+      <div className="grid-container">
+        {yelpData &&
+          yelpData.map((data) => (
+            <div
+              key={data.id}
+              className="list-unstyled text-decoration-none"
+              style={{ border: ".75px solid black", margin: ".5em" }}
+            >
+              <h2>{data.name}</h2>
+              <p>Type: {data.categories[0].title}</p>
+              <p>
+                <img
+                  id="ytplayer"
+                  type="text/html"
+                  width="320"
+                  height="180"
+                  src={data.image_url}
+                  border="1px solid #555"
+                />
+              </p>
+              <YelpSaveForFuture
+                business_id={data.id}
+                name={data.name}
+                url={data.url}
+                image_url={data.image_url}
+                cuisine_type={data.categories[0].title}
+                city={data.location.city}
               />
-            </p>
-            <YelpSaveForFuture
-              business_id={data.id}
-              name={data.name}
-              url={data.url}
-              image_url={data.image_url}
-              cuisine_type={data.categories[0].title}
-              city={data.location.city}
-            />
-          </div>
-        ))}
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

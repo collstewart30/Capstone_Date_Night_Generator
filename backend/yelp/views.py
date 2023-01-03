@@ -80,7 +80,7 @@ def search_yelp_api(request):
     }
     #, params=params
 
-    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&limit=20", params, headers=headers)
+    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&limit=12", params, headers=headers)
     # print(rest_response.status_code)
     print(rest_response.headers)
     print(rest_response.json())

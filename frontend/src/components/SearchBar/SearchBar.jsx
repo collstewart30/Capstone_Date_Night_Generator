@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./SearchBar.css";
 
 const SearchBar = (props) => {
   const [search, setSearch] = useState("");
@@ -18,7 +19,7 @@ const SearchBar = (props) => {
       />
       <button
         type="submit"
-        className="button"
+        className="search-button "
         style={{ margin: "1em" }}
       >
         Enter

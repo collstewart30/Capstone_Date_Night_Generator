@@ -1,14 +1,13 @@
-.email-button {
+.search-button {
     background: darkcyan;
     border: 1px solid black;
     color: white;
     padding: 0.4rem 0.5rem;
   }
   
-  .email-button:hover{
+  .search-button:hover{
     background: ghostwhite;
     border: 1px solid black;
     color: black;
     padding: 0.4rem 0.5rem;
   }
-  

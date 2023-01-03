@@ -47,15 +47,13 @@ const NPSPage = (props) => {
               style={{ border: ".75px solid black", margin: ".5em" }}
             >
               <h2>{data.title}</h2>
-              <p>{data.shortDescription}</p>
               <p>Location: {data.relatedParks[0].fullName}</p>
-              <p>Type: {data.activities[0].name}</p>
               <p>
                 <img
                   id="ytplayer"
                   type="text/html"
-                  width="320"
-                  height="180"
+                  width="160"
+                  height="90"
                   src={data.images[0].url}
                   border="1px solid #555"
                 />

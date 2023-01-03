@@ -3,7 +3,6 @@ import axios from "axios";
 import { tickemasterKEY } from "../../localKey";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import TMSaveForFuture from "../../components/TMSaveForFuture/TMSaveForFuture";
-import "./TicketMasterPage.css";
 
 const TicketMasterPage = () => {
   const [ticketmasterData, setTicketmasterData] = useState([]);
@@ -36,8 +35,8 @@ const TicketMasterPage = () => {
                 key={data.id}
                 style={{ border: ".75px solid black", margin: ".5em" }}
               >
-                <h2 className="heading">{data.name}</h2>
-                <p className="heading">
+                <h2>{data.name}</h2>
+                <p>
                   Location: {data._embedded.venues[0].name}
                 </p>
                 <p>

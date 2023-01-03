@@ -61,8 +61,8 @@ const YelpPage = () => {
                 <img
                   id="ytplayer"
                   type="text/html"
-                  width="320"
-                  height="180"
+                  width="160"
+                  height="90"
                   src={data.image_url}
                   border="1px solid #555"
                 />

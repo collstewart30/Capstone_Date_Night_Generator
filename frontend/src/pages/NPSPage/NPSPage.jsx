@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import { npsKEY } from "../../localKey";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import NPSSaveForFuture from "../../components/NPSSaveForFuture/NPSSaveForFuture";
-import AuthContext from "../../context/AuthContext";
 import useAuth from "../../hooks/useAuth";
 
 const NPSPage = (props) => {
@@ -36,7 +34,7 @@ const NPSPage = (props) => {
 
   return (
     <div className="container">
-      <h1>Search by state</h1>
+      <h2>Search by state abbreviation:</h2>
       <SearchBar searchBarParent={getNPSData} />
       <div className="grid-container">
         {NPSData[0] &&

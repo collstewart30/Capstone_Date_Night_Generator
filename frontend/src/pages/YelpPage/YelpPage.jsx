@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import useAuth from "../../hooks/useAuth";
@@ -45,7 +44,7 @@ const YelpPage = () => {
 
   return (
     <div className="container">
-      <h1>Search by city</h1>
+      <h2>Search by city:</h2>
       <SearchBar searchBarParent={searchYelpLocation} />
       <div className="grid-container">
         {yelpData &&

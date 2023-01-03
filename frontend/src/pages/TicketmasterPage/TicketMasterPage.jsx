@@ -26,7 +26,7 @@ const TicketMasterPage = () => {
 
   return (
     <div className="container">
-      <h2>Search by state abbreviation:</h2>
+      <h1>SEARCH BY STATE ABBREVIATION:</h1>
       <SearchBar searchBarParent={getTicketMasterData}/>
       <div className="grid-container">
           {ticketmasterData &&

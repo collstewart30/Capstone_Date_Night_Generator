@@ -5,7 +5,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import NPSSaveForFuture from "../../components/NPSSaveForFuture/NPSSaveForFuture";
 import useAuth from "../../hooks/useAuth";
 
-const NPSPage = (props) => {
+const NPSPage = () => {
   const [NPSData, setNPSData] = useState([]);
   const [user, token] = useAuth();
 
@@ -34,7 +34,7 @@ const NPSPage = (props) => {
 
   return (
     <div className="container">
-      <h2>Search by state abbreviation:</h2>
+      <h1>SEARCH BY STATE ABBREVIATION:</h1>
       <SearchBar searchBarParent={getNPSData} />
       <div className="grid-container">
         {NPSData[0] &&

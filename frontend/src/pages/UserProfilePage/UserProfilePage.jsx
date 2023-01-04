@@ -11,6 +11,7 @@ import AuthContext from "../../context/AuthContext";
 import useAuth from "../../hooks/useAuth";
 import NPSDisplaySaveForFuture from "../../components/NPSDisplaySaveForFuture/NPSDisplaySaveForFuture";
 import NPSMarkComplete from "../../components/NPSMarkComplete/NPSMarkComplete";
+import TMMarkComplete from "../../components/TMMarkComplete/TMMarkComplete";
 import TMDisplaySaveForFuture from "../../components/TMDisplaySaveForFuture/TMDisplaySaveForFuture";
 import YelpDisplaySaveForFuture from "../../components/YelpDisplaySaveForFuture/YelpDisplaySaveForFuture";
 import EmailJS from "../../components/EmailJS/EmailJS";
@@ -26,8 +27,8 @@ const UserProfilePage = (props) => {
 
   useEffect(() => {
     fetchNPSDetails();
-    fetchNPSSaveForFuture();
-    // fetchTicketmasterDetails();
+    // fetchNPSSaveForFuture();
+    fetchTicketmasterDetails();
     // fetchYelpDetails();
     // fetchYelpSaveForFuture();
   }, []);
@@ -39,24 +40,28 @@ const UserProfilePage = (props) => {
       });
       setUserNPSDetail(response.data);
       console.log("NPS user ALL data: ", response.data);
-      fetchNPSSaveForFuture(userNPSDetail);
+      // fetchNPSSaveForFuture(userNPSDetail);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const fetchNPSSaveForFuture = async () => {
-    try {
-      let saveForFuture = userNPSDetail.filter((save) => {
-        if (save.saveFuture.includes("True")) {
-          console.log(saveForFuture);
-          setNPSSaveForFuture(saveForFuture);
-        }
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //  WORK ON - FILTERING IN BACKEND
+  // const fetchNPSSaveForFuture = async () => {
+  //   try {
+  //     let response = await axios.get(
+  //       `http://127.0.0.1:8000/api/nps/nps_saveFuture/`,
+  //       {
+  //         headers: { Authorization: "Bearer " + token },
+  //       }
+  //     );
+  //     setUserNPSDetail(response.data);
+  //     console.log("save for future: ", response.data);
+  //     fetchNPSSaveForFuture(userNPSDetail);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   // need to filter for saveForFuture = "True". other backend api calls are pulling all saved info per user.
   // function fetchNPSSaveForFuture (){
@@ -78,7 +83,7 @@ const UserProfilePage = (props) => {
         }
       );
       setUserTMDetail(response.data);
-      console.log("Ticketmaster user save for future: ", response.data);
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -120,7 +125,7 @@ const UserProfilePage = (props) => {
       <EmailJS />
       <h2>Here are your favorites:</h2>
       <div className="grid-container">
-        {NPSSaveForFuture &&
+        {/* {NPSSaveForFuture &&
           NPSSaveForFuture.map((nps) => (
             <div
               key={nps.event_id}
@@ -128,7 +133,7 @@ const UserProfilePage = (props) => {
             >
               <NPSDisplaySaveForFuture nps={nps} />
             </div>
-          ))}
+          ))} */}
         {userNPSDetail &&
           userNPSDetail.map((nps) => (
             <div
@@ -162,8 +167,30 @@ const UserProfilePage = (props) => {
           ))}
         {userTMDetail &&
           userTMDetail.map((tm) => (
-            <div style={{ border: ".75px solid black", margin: ".5em" }}>
-              <TMDisplaySaveForFuture key={tm.event_id} tm={tm} />
+            <div
+              key={tm.event_id}
+              style={{ border: ".75px solid black", margin: ".5em" }}
+            >
+              <h2>{tm.title}</h2>
+              <p>Event Type: {tm.eventType}</p>
+              <p>
+                <img
+                  id="ytplayer"
+                  type="text/html"
+                  width="160"
+                  height="90"
+                  src={tm.image}
+                  border="1px solid #555"
+                />
+              </p>
+              <TMMarkComplete
+                event_id={tm.event_id}
+                name={tm.name}
+                url={tm.url}
+                image={tm.image}
+                eventType={tm.eventType}
+                state={tm.state}
+              />
             </div>
           ))}
         {YelpSaveForFuture &&
@@ -178,4 +205,3 @@ const UserProfilePage = (props) => {
 };
 
 export default UserProfilePage;
-

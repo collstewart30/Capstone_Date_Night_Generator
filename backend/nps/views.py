@@ -27,7 +27,7 @@ def nps_items_search(request):
 
 
 
-@api_view(['GET','PUT', 'DELETE'])  # get comments by video id
+@api_view(['GET','PUT', 'DELETE'])  # GET, PUT, DELETE by id
 @permission_classes([IsAuthenticated])
 def nps_by_id(request, event_id):
     nps_items = get_object_or_404(NPS, user_id=request.user.id, event_id=event_id)
@@ -46,9 +46,9 @@ def nps_by_id(request, event_id):
 
 @api_view(['GET'])  
 @permission_classes([IsAuthenticated])
-def nps_get_favorites(request):
+def nps_saveFuture(request):
 
     if request.method == 'GET':
-        nps_items = NPS.objects.filter(user_id=request.user.id, isFavorite="True")
+        nps_items = NPS.objects.filter(user_id=request.user.id, saveFuture="True")
         serializer = NPSSerializer(nps_items, many=True)
         return Response(serializer.data)

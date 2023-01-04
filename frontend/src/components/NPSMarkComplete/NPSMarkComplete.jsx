@@ -28,7 +28,7 @@ const NPSMarkComplete = (props) => {
         headers: { Authorization: "Bearer " + token },
       });
       console.log(response.data.data);
-      markComplete("True");
+      // markComplete("True");
     } catch (error) {
       console.log(error.response);
     }

@@ -119,41 +119,43 @@ const UserProfilePage = (props) => {
       {/* <h2>Email your info:</h2> */}
       <EmailJS />
       <h2>Here are your favorites:</h2>
-      {NPSSaveForFuture &&
-        NPSSaveForFuture.map((nps) => (
-          <div key={nps.id.event_id}>
-            <NPSDisplaySaveForFuture nps={nps} />
-          </div>
-        ))}
-      {userNPSDetail &&
-        userNPSDetail.map((nps) => (
-          <div key={nps.id.event_id}>
-            <p>{nps.title}</p>
-            <NPSMarkComplete
-              event_id={nps.id}
-              parkCode={nps.parkCode}
-              title={nps.title}
-              url={nps.url}
-              image_url={nps.image_url}
-              park_name={nps.park_name}
-              state={nps.state}
-              description={nps.description}
-              type={nps.type}
-            />
-          </div>
-        ))}
-      {userTMDetail &&
-        userTMDetail.map((tm) => (
-          <div>
-            <TMDisplaySaveForFuture key={tm.event_id} tm={tm} />
-          </div>
-        ))}
-      {YelpSaveForFuture &&
-        YelpSaveForFuture.map((yelp) => (
-          <div>
-            <YelpDisplaySaveForFuture key={yelp.id} yelp={yelp} />
-          </div>
-        ))}
+      <div className="grid-container">
+        {NPSSaveForFuture &&
+          NPSSaveForFuture.map((nps) => (
+            <div key={nps.id.event_id} style={{ border: ".75px solid black", margin: ".5em" }}>
+              <NPSDisplaySaveForFuture nps={nps} />
+            </div>
+          ))}
+        {userNPSDetail &&
+          userNPSDetail.map((nps) => (
+            <div key={nps.id.event_id} style={{ border: ".75px solid black", margin: ".5em" }}>
+              <p>{nps.title}</p>
+              <NPSMarkComplete
+                event_id={nps.id}
+                parkCode={nps.parkCode}
+                title={nps.title}
+                url={nps.url}
+                image_url={nps.image_url}
+                park_name={nps.park_name}
+                state={nps.state}
+                description={nps.description}
+                type={nps.type}
+              />
+            </div>
+          ))}
+        {userTMDetail &&
+          userTMDetail.map((tm) => (
+            <div style={{ border: ".75px solid black", margin: ".5em" }}>
+              <TMDisplaySaveForFuture key={tm.event_id} tm={tm} />
+            </div>
+          ))}
+        {YelpSaveForFuture &&
+          YelpSaveForFuture.map((yelp) => (
+            <div style={{ border: ".75px solid black", margin: ".5em" }}>
+              <YelpDisplaySaveForFuture key={yelp.id} yelp={yelp} />
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

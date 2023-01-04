@@ -179,8 +179,3 @@ const UserProfilePage = (props) => {
 
 export default UserProfilePage;
 
-/* // <div key={nps.id.id}>
-        //   <li>{nps.title}</li>
-        //   <li>{nps.description}</li>
-        //   <li>{nps.type}</li>
-        // </div>) */

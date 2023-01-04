@@ -16,6 +16,7 @@ import TMDisplaySaveForFuture from "../../components/TMDisplaySaveForFuture/TMDi
 import YelpDisplaySaveForFuture from "../../components/YelpDisplaySaveForFuture/YelpDisplaySaveForFuture";
 import EmailJS from "../../components/EmailJS/EmailJS";
 import YelpMarkComplete from "../../components/YelpMarkComplete/YelpMarkComplete";
+import NPSSaveCurrentNight from "../../components/NPSSaveCurrentNight/NPSSaveCurrentNight";
 
 const UserProfilePage = (props) => {
   const { userid } = useParams();
@@ -154,6 +155,17 @@ const UserProfilePage = (props) => {
                 />
               </p>
               <NPSMarkComplete
+                event_id={nps.event_id}
+                parkCode={nps.parkCode}
+                title={nps.title}
+                url={nps.url}
+                image_url={nps.image_url}
+                park_name={nps.park_name}
+                state={nps.state}
+                description={nps.description}
+                type={nps.type}
+              />
+              <NPSSaveCurrentNight
                 event_id={nps.event_id}
                 parkCode={nps.parkCode}
                 title={nps.title}

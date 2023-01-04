@@ -27,9 +27,9 @@ const UserProfilePage = (props) => {
   useEffect(() => {
     fetchNPSDetails();
     fetchNPSSaveForFuture();
-    fetchTicketmasterDetails();
-    fetchYelpDetails();
-    fetchYelpSaveForFuture();
+    // fetchTicketmasterDetails();
+    // fetchYelpDetails();
+    // fetchYelpSaveForFuture();
   }, []);
 
   const fetchNPSDetails = async () => {
@@ -123,7 +123,7 @@ const UserProfilePage = (props) => {
         {NPSSaveForFuture &&
           NPSSaveForFuture.map((nps) => (
             <div
-              key={nps.id.event_id}
+              key={nps.event_id}
               style={{ border: ".75px solid black", margin: ".5em" }}
             >
               <NPSDisplaySaveForFuture nps={nps} />
@@ -132,12 +132,11 @@ const UserProfilePage = (props) => {
         {userNPSDetail &&
           userNPSDetail.map((nps) => (
             <div
-              key={nps.id.event_id}
+              key={nps.event_id}
               style={{ border: ".75px solid black", margin: ".5em" }}
             >
               <h2>{nps.title}</h2>
               <p>Location: {nps.park_name}</p>
-              <p>Location: {nps.event_id}</p>
               <p>
                 <img
                   id="ytplayer"
@@ -149,7 +148,7 @@ const UserProfilePage = (props) => {
                 />
               </p>
               <NPSMarkComplete
-                event_id={nps.id}
+                event_id={nps.event_id}
                 parkCode={nps.parkCode}
                 title={nps.title}
                 url={nps.url}

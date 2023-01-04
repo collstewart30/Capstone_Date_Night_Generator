@@ -6,7 +6,7 @@ const NPSMarkComplete = (props) => {
   const [user, token] = useAuth();
 
   const [saveCurrent, setSaveCurrent] = useState("False");
-  const [saveFuture, setSaveFuture] = useState("False");
+  const [saveFuture, setSaveFuture] = useState("True");
   const [completed, setCompleted] = useState("True");
   const [isFavorite, setIsFavorite] = useState("False");
 
@@ -23,37 +23,22 @@ const NPSMarkComplete = (props) => {
   // URL first in axios. POST and PUT: request body data
 
   const markComplete = async (post) => {
+    // console.log(event_id)
     // debugger
     try {
-      let response = await axios.get(`http://127.0.0.1:8000/api/nps/${event_id}/`, {
+      let response = await axios.put(`http://127.0.0.1:8000/api/nps/${event_id}/`, post, {
         headers: { Authorization: "Bearer " + token },
       });
-      console.log(event_id)
+      console.log('markComplete function')
       console.log(response.data.data);
-      // markComplete("True");
     } catch (error) {
       console.log(error.response);
     }
   };
 
-  // const markComplete = async (post) => {
-  //   // debugger
-  //   try {
-  //     let response = await axios.put(`http://127.0.0.1:8000/api/nps/${event_id}/`, post, {
-  //       headers: { Authorization: "Bearer " + token },
-  //     });
-  //     console.log('markComplete function')
-  //     console.log(response.data.data);
-  //   } catch (error) {
-  //     console.log(error.response);
-  //   }
-  // };
-
-  // patch
-
-  
   function handleSubmit(event) {
     event.preventDefault();
+    console.log('mark complete clicked')
     let markCompleteData = {
       user: user.id,
       event_id: event_id,
@@ -72,8 +57,7 @@ const NPSMarkComplete = (props) => {
     };
     console.log(markCompleteData);
     markComplete(markCompleteData);
-    console.log("updated Mark Complete");
-  }
+  };
 
   return (
     <button

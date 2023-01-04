@@ -24,18 +24,7 @@ def nps_items_search(request):
         nps_items = NPS.objects.filter(user_id=request.user.id)
         serializer = NPSSerializer(nps_items, many=True)
         return Response(serializer.data)
-    # elif request.method == 'PUT':
-    #     nps_items = get_object_or_404(NPS, user_id=request.user.id)
-    #     serializer = NPSSerializer(nps_items, data=request.data)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-    #     return Response(serializer.data)
-    # elif request.method == 'PATCH':
-    #     nps_items = get_object_or_404(NPS, user_id=request.user.id)
-    #     serializer = NPSSerializer(nps_items, data=request.data, partial=True)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-    #     return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 
 @api_view(['GET','PUT', 'DELETE'])  # get comments by video id
@@ -43,10 +32,10 @@ def nps_items_search(request):
 def nps_by_id(request, event_id):
     nps_items = get_object_or_404(NPS, user_id=request.user.id, event_id=event_id)
     if request.method == 'GET':
-        serializer = NPSSerializer(nps_items, event_id=event_id)
+        serializer = NPSSerializer(nps_items)
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'PUT':
-        serializer = NPSSerializer(nps_items, data=request.data, event_id=event_id)
+        serializer = NPSSerializer(nps_items, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)

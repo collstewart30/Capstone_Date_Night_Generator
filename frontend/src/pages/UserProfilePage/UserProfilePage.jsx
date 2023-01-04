@@ -15,6 +15,7 @@ import TMMarkComplete from "../../components/TMMarkComplete/TMMarkComplete";
 import TMDisplaySaveForFuture from "../../components/TMDisplaySaveForFuture/TMDisplaySaveForFuture";
 import YelpDisplaySaveForFuture from "../../components/YelpDisplaySaveForFuture/YelpDisplaySaveForFuture";
 import EmailJS from "../../components/EmailJS/EmailJS";
+import YelpMarkComplete from "../../components/YelpMarkComplete/YelpMarkComplete";
 
 const UserProfilePage = (props) => {
   const { userid } = useParams();
@@ -29,7 +30,7 @@ const UserProfilePage = (props) => {
     fetchNPSDetails();
     // fetchNPSSaveForFuture();
     fetchTicketmasterDetails();
-    // fetchYelpDetails();
+    fetchYelpDetails();
     // fetchYelpSaveForFuture();
   }, []);
 
@@ -96,7 +97,7 @@ const UserProfilePage = (props) => {
       });
       setuserYelpDetail(response.data);
       console.log("Yelp user ALL data: ", response.data);
-      fetchYelpSaveForFuture(userYelpDetail);
+      // fetchYelpSaveForFuture(userYelpDetail);
     } catch (error) {
       console.log(error);
     }
@@ -193,10 +194,32 @@ const UserProfilePage = (props) => {
               />
             </div>
           ))}
-        {YelpSaveForFuture &&
-          YelpSaveForFuture.map((yelp) => (
-            <div style={{ border: ".75px solid black", margin: ".5em" }}>
-              <YelpDisplaySaveForFuture key={yelp.id} yelp={yelp} />
+        {userYelpDetail &&
+          userYelpDetail.map((yelp) => (
+            <div
+              key={yelp.id}
+              style={{ border: ".75px solid black", margin: ".5em" }}
+            >
+              <h2>{yelp.name}</h2>
+              <p>Cuisine: {yelp.cuisine_type}</p>
+              <p>
+                <img
+                  id="ytplayer"
+                  type="text/html"
+                  width="160"
+                  height="90"
+                  src={yelp.image_url}
+                  border="1px solid #555"
+                />
+              </p>
+              <YelpMarkComplete
+                business_id={yelp.business_id}
+                name={yelp.name}
+                url={yelp.url}
+                image_url={yelp.image_url}
+                cuisine_type={yelp.cuisine_type}
+                city={yelp.city}
+              />
             </div>
           ))}
       </div>

@@ -26,14 +26,21 @@ def yelp_items_search(request):
         yelp_items = Yelp.objects.filter(user_id=request.user.id)
         serializer = YelpSerializer(yelp_items, many=True)
         return Response(serializer.data)
+
+
+@api_view(['GET','PUT', 'DELETE'])  # GET, PUT, DELETE by id
+@permission_classes([IsAuthenticated])
+def yelp_by_id(request, business_id):
+    yelp_items = get_object_or_404(Yelp, user_id=request.user.id, business_id=business_id)
+    if request.method == 'GET':
+        serializer = YelpSerializer(yelp_items)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'PUT':
-        yelp_items = get_object_or_404(Yelp, user_id=request.user.id)
         serializer = YelpSerializer(yelp_items, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'DELETE':
-        yelp_items = get_object_or_404(Yelp, user_id=request.user.id)
         yelp_items.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 

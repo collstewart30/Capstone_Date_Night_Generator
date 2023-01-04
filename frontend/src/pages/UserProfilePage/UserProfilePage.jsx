@@ -18,6 +18,7 @@ import EmailJS from "../../components/EmailJS/EmailJS";
 import YelpMarkComplete from "../../components/YelpMarkComplete/YelpMarkComplete";
 import NPSSaveCurrentNight from "../../components/NPSSaveCurrentNight/NPSSaveCurrentNight";
 import TMSaveCurrentNight from "../../components/TMSaveCurrentNight/TMSaveCurrentNight";
+import YelpSaveCurrentNight from "../../components/YelpSaveCurrentNight/YelpSaveCurrrentNight";
 
 const UserProfilePage = (props) => {
   const { userid } = useParams();
@@ -234,6 +235,14 @@ const UserProfilePage = (props) => {
                 />
               </p>
               <YelpMarkComplete
+                business_id={yelp.business_id}
+                name={yelp.name}
+                url={yelp.url}
+                image_url={yelp.image_url}
+                cuisine_type={yelp.cuisine_type}
+                city={yelp.city}
+              />
+              <YelpSaveCurrentNight
                 business_id={yelp.business_id}
                 name={yelp.name}
                 url={yelp.url}

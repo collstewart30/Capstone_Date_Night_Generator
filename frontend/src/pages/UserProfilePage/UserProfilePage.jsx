@@ -17,6 +17,7 @@ import YelpDisplaySaveForFuture from "../../components/YelpDisplaySaveForFuture/
 import EmailJS from "../../components/EmailJS/EmailJS";
 import YelpMarkComplete from "../../components/YelpMarkComplete/YelpMarkComplete";
 import NPSSaveCurrentNight from "../../components/NPSSaveCurrentNight/NPSSaveCurrentNight";
+import TMSaveCurrentNight from "../../components/TMSaveCurrentNight/TMSaveCurrentNight";
 
 const UserProfilePage = (props) => {
   const { userid } = useParams();
@@ -197,6 +198,14 @@ const UserProfilePage = (props) => {
                 />
               </p>
               <TMMarkComplete
+                event_id={tm.event_id}
+                name={tm.name}
+                url={tm.url}
+                image={tm.image}
+                eventType={tm.eventType}
+                state={tm.state}
+              />
+              <TMSaveCurrentNight
                 event_id={tm.event_id}
                 name={tm.name}
                 url={tm.url}

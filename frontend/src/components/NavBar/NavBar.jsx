@@ -19,7 +19,7 @@ const Navbar = () => {
         </li>
         <li className="brand">
           <Link
-            to="/user/:userid"
+            to="/user"
             style={{ textDecoration: "none", color: "white" }}
           >
             <b>Profile</b>

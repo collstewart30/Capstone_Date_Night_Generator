@@ -23,18 +23,31 @@ const NPSMarkComplete = (props) => {
   // URL first in axios. POST and PUT: request body data
 
   const markComplete = async (post) => {
-    debugger
+    // debugger
     try {
-      let response = await axios.put(`http://127.0.0.1:8000/api/nps/`, post, {
+      let response = await axios.get(`http://127.0.0.1:8000/api/nps/${event_id}/`, {
         headers: { Authorization: "Bearer " + token },
       });
-      console.log('markComplete function')
+      console.log(event_id)
       console.log(response.data.data);
       // markComplete("True");
     } catch (error) {
       console.log(error.response);
     }
   };
+
+  // const markComplete = async (post) => {
+  //   // debugger
+  //   try {
+  //     let response = await axios.put(`http://127.0.0.1:8000/api/nps/${event_id}/`, post, {
+  //       headers: { Authorization: "Bearer " + token },
+  //     });
+  //     console.log('markComplete function')
+  //     console.log(response.data.data);
+  //   } catch (error) {
+  //     console.log(error.response);
+  //   }
+  // };
 
   // patch
 

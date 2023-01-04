@@ -30,7 +30,7 @@ const UserProfilePage = (props) => {
     fetchTicketmasterDetails();
     fetchYelpDetails();
     fetchYelpSaveForFuture();
-  }, [userid]);
+  }, []);
 
   const fetchNPSDetails = async () => {
     try {
@@ -137,6 +137,7 @@ const UserProfilePage = (props) => {
             >
               <h2>{nps.title}</h2>
               <p>Location: {nps.park_name}</p>
+              <p>Location: {nps.event_id}</p>
               <p>
                 <img
                   id="ytplayer"

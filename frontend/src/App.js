@@ -37,7 +37,7 @@ function App() {
         <Route path="/nps" element={<NPSPage />} />
         <Route path="/yelp" element={<YelpPage />} />
         <Route
-          path="/user/:userid"
+          path="/user"
           element={
             <PrivateRoute>
               <UserProfilePage />

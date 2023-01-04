@@ -122,14 +122,31 @@ const UserProfilePage = (props) => {
       <div className="grid-container">
         {NPSSaveForFuture &&
           NPSSaveForFuture.map((nps) => (
-            <div key={nps.id.event_id} style={{ border: ".75px solid black", margin: ".5em" }}>
+            <div
+              key={nps.id.event_id}
+              style={{ border: ".75px solid black", margin: ".5em" }}
+            >
               <NPSDisplaySaveForFuture nps={nps} />
             </div>
           ))}
         {userNPSDetail &&
           userNPSDetail.map((nps) => (
-            <div key={nps.id.event_id} style={{ border: ".75px solid black", margin: ".5em" }}>
-              <p>{nps.title}</p>
+            <div
+              key={nps.id.event_id}
+              style={{ border: ".75px solid black", margin: ".5em" }}
+            >
+              <h2>{nps.title}</h2>
+              <p>Location: {nps.park_name}</p>
+              <p>
+                <img
+                  id="ytplayer"
+                  type="text/html"
+                  width="160"
+                  height="90"
+                  src={nps.image_url}
+                  border="1px solid #555"
+                />
+              </p>
               <NPSMarkComplete
                 event_id={nps.id}
                 parkCode={nps.parkCode}

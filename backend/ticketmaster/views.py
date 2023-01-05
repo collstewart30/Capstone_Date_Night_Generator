@@ -40,3 +40,10 @@ def ticketmaster_by_id(request, event_id):
     elif request.method == 'DELETE':
         ticketmaster_items.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def tm_saveFuture(request):
+    ticketmaster_items = Ticketmaster.objects.filter()
+    serializer = TicketmasterSerializer(ticketmaster_items, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)

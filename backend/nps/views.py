@@ -7,12 +7,10 @@ from .serializers import NPSSerializer
 from django.shortcuts import get_object_or_404
 
 
-
 @api_view(['GET', 'POST','PATCH'])  
 @permission_classes([IsAuthenticated])
 def nps_items_search(request):
     print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
-    # print('Event ID: 'f"{request.id}")
 
     if request.method == 'POST':
         serializer = NPSSerializer(data=request.data)        
@@ -24,7 +22,6 @@ def nps_items_search(request):
         nps_items = NPS.objects.filter(user_id=request.user.id)
         serializer = NPSSerializer(nps_items, many=True)
         return Response(serializer.data)
-
 
 
 @api_view(['GET','PUT', 'DELETE'])  # GET, PUT, DELETE by id
@@ -47,8 +44,9 @@ def nps_by_id(request, event_id):
 @api_view(['GET'])  
 @permission_classes([IsAuthenticated])
 def nps_saveFuture(request):
-
+    nps_items = get_object_or_404(NPS, user_id=request.user.id)
     if request.method == 'GET':
-        nps_items = NPS.objects.filter(user_id=request.user.id, saveFuture="True")
+        nps_items = NPS.objects.filter(saveFuture="True")
         serializer = NPSSerializer(nps_items, many=True)
+        print(nps_items)
         return Response(serializer.data)

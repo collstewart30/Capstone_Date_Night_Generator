@@ -122,12 +122,12 @@ const UserProfilePage = (props) => {
 
   return (
     <div className="container">
-      <h1>Welcome, {user.first_name}!</h1>
-      <h1>User ID # {user.id}</h1>
+      <h1>Hey, {user.first_name}!</h1>
+      {/* <h1>User ID # {user.id}</h1> */}
       {/* <h1>{user.username}!</h1> */}
       {/* <h2>Email your info:</h2> */}
       <EmailJS />
-      <h2>Here are your favorites:</h2>
+      <h2>Here are your saved items:</h2>
       <div className="grid-container">
         {/* {NPSSaveForFuture &&
           NPSSaveForFuture.map((nps) => (
@@ -186,7 +186,7 @@ const UserProfilePage = (props) => {
               key={tm.event_id}
               style={{ border: ".75px solid black", margin: ".5em" }}
             >
-              <h2>{tm.title}</h2>
+              <h2>{tm.name}</h2>
               <p>Event Type: {tm.eventType}</p>
               <p>
                 <img

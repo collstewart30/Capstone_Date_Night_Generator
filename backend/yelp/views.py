@@ -92,3 +92,34 @@ def search_yelp_api(request):
     print(rest_response.headers)
     print(rest_response.json())
     return Response(rest_response.json())
+
+
+@api_view(['GET', 'POST','PATCH'])  
+@permission_classes([IsAuthenticated])
+def yelp_filter_saveCurrent(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+
+    if request.method == 'GET':
+        yelp_items = Yelp.objects.filter(user_id=request.user.id, saveCurrent="True")
+        serializer = YelpSerializer(yelp_items, many=True)
+        return Response(serializer.data)
+
+@api_view(['GET', 'POST','PATCH'])  
+@permission_classes([IsAuthenticated])
+def yelp_filter_saveFuture(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+
+    if request.method == 'GET':
+        yelp_items = Yelp.objects.filter(user_id=request.user.id, saveFuture="True")
+        serializer = YelpSerializer(yelp_items, many=True)
+        return Response(serializer.data)
+
+@api_view(['GET', 'POST','PATCH'])  
+@permission_classes([IsAuthenticated])
+def yelp_filter_completed(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+
+    if request.method == 'GET':
+        yelp_items = Yelp.objects.filter(user_id=request.user.id, completed="True")
+        serializer = YelpSerializer(yelp_items, many=True)
+        return Response(serializer.data)

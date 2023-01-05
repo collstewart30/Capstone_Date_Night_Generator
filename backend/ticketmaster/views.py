@@ -47,3 +47,34 @@ def tm_saveFuture(request):
     ticketmaster_items = Ticketmaster.objects.filter()
     serializer = TicketmasterSerializer(ticketmaster_items, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET', 'POST','PATCH'])  
+@permission_classes([IsAuthenticated])
+def ticketmaster_filter_saveCurrent(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+
+    if request.method == 'GET':
+        ticketmaster_items = Ticketmaster.objects.filter(user_id=request.user.id, saveCurrent="True")
+        serializer = TicketmasterSerializer(ticketmaster_items, many=True)
+        return Response(serializer.data)
+
+@api_view(['GET', 'POST','PATCH'])  
+@permission_classes([IsAuthenticated])
+def ticketmaster_filter_saveFuture(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+
+    if request.method == 'GET':
+        ticketmaster_items = Ticketmaster.objects.filter(user_id=request.user.id, saveFuture="True")
+        serializer = TicketmasterSerializer(ticketmaster_items, many=True)
+        return Response(serializer.data)
+
+@api_view(['GET', 'POST','PATCH'])  
+@permission_classes([IsAuthenticated])
+def ticketmaster_filter_completed(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+
+    if request.method == 'GET':
+        ticketmaster_items = Ticketmaster.objects.filter(user_id=request.user.id, completed="True")
+        serializer = TicketmasterSerializer(ticketmaster_items, many=True)
+        return Response(serializer.data)

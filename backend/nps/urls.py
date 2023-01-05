@@ -3,7 +3,9 @@ from . import views
 
 
 urlpatterns = [
+    path('save_current/', views.nps_filter_saveCurrent),
+    path('save_future/', views.nps_filter_saveFuture),
+    path('completed/', views.nps_filter_completed),
     path('', views.nps_items_search),
     path('<str:event_id>/', views.nps_by_id),
-    path('nps_saveFuture/', views.nps_saveFuture),
 ]

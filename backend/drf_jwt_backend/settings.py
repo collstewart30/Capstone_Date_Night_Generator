@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'ticketmaster',
     'yelp',
     'nps',
-    'cars'
+    'cars',
+    'django_filters'
 ]
 
 MIDDLEWARE = [

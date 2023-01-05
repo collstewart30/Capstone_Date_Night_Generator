@@ -5,6 +5,7 @@ from rest_framework import status
 from .models import NPS
 from .serializers import NPSSerializer
 from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 @api_view(['GET', 'POST','PATCH'])  
@@ -24,7 +25,38 @@ def nps_items_search(request):
         return Response(serializer.data)
 
 
-@api_view(['GET','PUT', 'DELETE'])  # GET, PUT, DELETE by id
+@api_view(['GET', 'POST','PATCH'])  
+@permission_classes([IsAuthenticated])
+def nps_filter_saveCurrent(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+
+    if request.method == 'GET':
+        nps_items = NPS.objects.filter(user_id=request.user.id, saveCurrent="True")
+        serializer = NPSSerializer(nps_items, many=True)
+        return Response(serializer.data)
+
+@api_view(['GET', 'POST','PATCH'])  
+@permission_classes([IsAuthenticated])
+def nps_filter_saveFuture(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+
+    if request.method == 'GET':
+        nps_items = NPS.objects.filter(user_id=request.user.id, saveFuture="True")
+        serializer = NPSSerializer(nps_items, many=True)
+        return Response(serializer.data)
+
+@api_view(['GET', 'POST','PATCH'])  
+@permission_classes([IsAuthenticated])
+def nps_filter_completed(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+
+    if request.method == 'GET':
+        nps_items = NPS.objects.filter(user_id=request.user.id, completed="True")
+        serializer = NPSSerializer(nps_items, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET','PUT', 'DELETE'])  # GET, PUT, DELETE by id (markComplete, saveCurrent, favorite)
 @permission_classes([IsAuthenticated])
 def nps_by_id(request, event_id):
     nps_items = get_object_or_404(NPS, user_id=request.user.id, event_id=event_id)
@@ -41,12 +73,3 @@ def nps_by_id(request, event_id):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-@api_view(['GET'])  
-@permission_classes([IsAuthenticated])
-def nps_saveFuture(request):
-    nps_items = get_object_or_404(NPS, user_id=request.user.id)
-    if request.method == 'GET':
-        nps_items = NPS.objects.filter(saveFuture="True")
-        serializer = NPSSerializer(nps_items, many=True)
-        print(nps_items)
-        return Response(serializer.data)

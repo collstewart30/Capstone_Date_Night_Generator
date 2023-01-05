@@ -23,60 +23,70 @@ import YelpSaveCurrentNight from "../../components/YelpSaveCurrentNight/YelpSave
 const UserProfilePage = (props) => {
   const { userid } = useParams();
   const [user, token] = useAuth();
-  const [userNPSDetail, setUserNPSDetail] = useState([]);
+  const [NPSSaveFuture, setNPSSaveFuture] = useState([]);
+  const [NPSCurrentNight, setNPSCurrentNight] = useState([]);
+  const [NPSCompleted, setNPSCompleted] = useState([]);
   const [userTMDetail, setUserTMDetail] = useState([]);
   const [userYelpDetail, setuserYelpDetail] = useState([]);
   const [NPSSaveForFuture, setNPSSaveForFuture] = useState([]);
   const [YelpSaveForFuture, setYelpSaveForFuture] = useState([]);
 
   useEffect(() => {
-    fetchNPSDetails();
-    // fetchNPSSaveForFuture();
+    fetchNPSSaveFuture();
+    fetchNPSSaveCurrent();
+    fetchNPSCompleted();
     fetchTicketmasterDetails();
     fetchYelpDetails();
     // fetchYelpSaveForFuture();
   }, []);
 
-  const fetchNPSDetails = async () => {
+  const fetchNPSSaveFuture = async () => {
     try {
-      let response = await axios.get(`http://127.0.0.1:8000/api/nps/`, {
-        headers: { Authorization: "Bearer " + token },
-      });
-      setUserNPSDetail(response.data);
-      console.log("NPS user ALL data: ", response.data);
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/nps/save_future/`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      setNPSSaveFuture(response.data);
+      console.log("NPS saved for future: ", response.data);
       // fetchNPSSaveForFuture(userNPSDetail);
     } catch (error) {
       console.log(error);
     }
   };
 
-  //  WORK ON - FILTERING IN BACKEND
-  // const fetchNPSSaveForFuture = async () => {
-  //   try {
-  //     let response = await axios.get(
-  //       `http://127.0.0.1:8000/api/nps/nps_saveFuture/`,
-  //       {
-  //         headers: { Authorization: "Bearer " + token },
-  //       }
-  //     );
-  //     setUserNPSDetail(response.data);
-  //     console.log("save for future: ", response.data);
-  //     fetchNPSSaveForFuture(userNPSDetail);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const fetchNPSSaveCurrent = async () => {
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/nps/save_current/`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      setNPSCurrentNight(response.data);
+      console.log("NPS current date night", response.data);
+      // fetchNPSSaveForFuture(userNPSDetail);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // need to filter for saveForFuture = "True". other backend api calls are pulling all saved info per user.
-  // function fetchNPSSaveForFuture (){
-  //   let saveForFuture = userNPSDetail.filter(function(save){
-  //     if(save.saveFuture.includes("True")){
-  //       return true
-  //     }
-  //   })
-  //   console.log("NPS user set save for future: ", saveForFuture)
-  //   setNPSSaveForFuture(saveForFuture)
-  // }
+  const fetchNPSCompleted = async () => {
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/nps/completed/`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      setNPSCompleted(response.data);
+      console.log("NPS completed", response.data);
+      // fetchNPSSaveForFuture(userNPSDetail);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fetchTicketmasterDetails = async () => {
     try {
@@ -123,23 +133,67 @@ const UserProfilePage = (props) => {
   return (
     <div className="container">
       <h1>Hey, {user.first_name}!</h1>
-      {/* <h1>User ID # {user.id}</h1> */}
+      <h1>User ID # {user.id}</h1>
       {/* <h1>{user.username}!</h1> */}
       {/* <h2>Email your info:</h2> */}
       <EmailJS />
-      <h2>Here are your saved items:</h2>
+
       <div className="grid-container">
-        {/* {NPSSaveForFuture &&
-          NPSSaveForFuture.map((nps) => (
-            <div
-              key={nps.event_id}
-              style={{ border: ".75px solid black", margin: ".5em" }}
-            >
-              <NPSDisplaySaveForFuture nps={nps} />
-            </div>
-          ))} */}
-        {userNPSDetail &&
-          userNPSDetail.map((nps) => (
+        <div>
+          <h2>Current Date Night:</h2>
+          {NPSCurrentNight &&
+            NPSCurrentNight.map((nps) => (
+              <div
+                key={nps.event_id}
+                style={{ border: ".75px solid black", margin: ".5em" }}
+              >
+                <h2>{nps.title}</h2>
+                <p>Location: {nps.park_name}</p>
+                <p>
+                  <img
+                    id="ytplayer"
+                    type="text/html"
+                    width="160"
+                    height="90"
+                    src={nps.image_url}
+                    border="1px solid #555"
+                  />
+                </p>
+              </div>
+            ))}
+        </div>
+      </div>
+
+      <div className="grid-container">
+        <div>
+          <h2>Completed:</h2>
+          {NPSCompleted &&
+            NPSCompleted.map((nps) => (
+              <div
+                key={nps.event_id}
+                style={{ border: ".75px solid black", margin: ".5em" }}
+              >
+                <h2>{nps.title}</h2>
+                <p>Location: {nps.park_name}</p>
+                <p>
+                  <img
+                    id="ytplayer"
+                    type="text/html"
+                    width="160"
+                    height="90"
+                    src={nps.image_url}
+                    border="1px solid #555"
+                  />
+                </p>
+              </div>
+            ))}
+        </div>
+      </div>
+
+      <h2>Saved for Future:</h2>
+      <div className="grid-container">
+        {NPSSaveFuture &&
+          NPSSaveFuture.map((nps) => (
             <div
               key={nps.event_id}
               style={{ border: ".75px solid black", margin: ".5em" }}

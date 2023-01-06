@@ -37,6 +37,10 @@ const NPSSaveForFuture = (props) => {
 
   // patch
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     let saveForFutureNPSData = {
@@ -56,6 +60,7 @@ const NPSSaveForFuture = (props) => {
       isFavorite: isFavorite,
     };
     saveForFuture(saveForFutureNPSData);
+    refreshPage();
   }
 
   return (

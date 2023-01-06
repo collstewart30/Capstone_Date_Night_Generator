@@ -31,6 +31,10 @@ const YelptoBackend = (props) => {
 
   // URL first in axios. POST and PUT: request body data
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     let saveForFutureYelpData = {
@@ -48,6 +52,7 @@ const YelptoBackend = (props) => {
     };
     saveForFuture(saveForFutureYelpData);
     console.log("Yelp Save For Future Updated");
+    refreshPage();
   }
 
   return (

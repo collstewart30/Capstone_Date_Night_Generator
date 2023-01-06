@@ -10,7 +10,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <div className="navBar">
-      <img src={logo} alt="logo" className="logo"/>
+      <img src={logo} alt="logo" className="logo" />
       <ul className="nav">
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
@@ -18,10 +18,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="brand">
-          <Link
-            to="/user"
-            style={{ textDecoration: "none", color: "white" }}
-          >
+          <Link to="/user" style={{ textDecoration: "none", color: "white" }}>
             <b>Profile</b>
           </Link>
         </li>

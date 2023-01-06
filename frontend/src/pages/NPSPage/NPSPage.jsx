@@ -45,7 +45,6 @@ const NPSPage = () => {
               style={{ border: ".75px solid black", margin: ".5em" }}
             >
               <h2>{data.title}</h2>
-              <h2>{data.id}</h2>
               <p>Location: {data.relatedParks[0].fullName}</p>
               <p>
                 <img

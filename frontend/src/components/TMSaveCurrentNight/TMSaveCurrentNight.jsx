@@ -23,35 +23,44 @@ const TMSaveCurrentNight = (props) => {
     // console.log(event_id)
     // debugger
     try {
-      let response = await axios.put(`http://127.0.0.1:8000/api/ticketmaster/${event_id}/`, post, {
-        headers: { Authorization: "Bearer " + token },
-      });
-      console.log('saveCurrent function')
+      let response = await axios.put(
+        `http://127.0.0.1:8000/api/ticketmaster/${event_id}/`,
+        post,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      console.log("saveCurrent function");
       console.log(response.data.data);
     } catch (error) {
       console.log(error.response);
     }
   };
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('save current clicked')
+    console.log("save current clicked");
     let saveCurrentData = {
-        user: user.id,
-        event_id: event_id,
-        name: name,
-        url: url,
-        image: image,
-        eventType: eventType,
-        state: state,
-        saveCurrent: saveCurrent,
-        saveFuture: saveFuture,
-        completed: completed,
-        isFavorite: isFavorite,
+      user: user.id,
+      event_id: event_id,
+      name: name,
+      url: url,
+      image: image,
+      eventType: eventType,
+      state: state,
+      saveCurrent: saveCurrent,
+      saveFuture: saveFuture,
+      completed: completed,
+      isFavorite: isFavorite,
     };
     console.log(saveCurrentData);
     saveCurrentNight(saveCurrentData);
-  };
+    refreshPage();
+  }
 
   return (
     <button

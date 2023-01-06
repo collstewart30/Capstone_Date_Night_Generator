@@ -19,14 +19,22 @@ const TMMarkComplete = (props) => {
 
   // URL first in axios. POST and PUT: request body data
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   const markComplete = async (post) => {
-    console.log(event_id)
+    console.log(event_id);
     // debugger
     try {
-      let response = await axios.put(`http://127.0.0.1:8000/api/ticketmaster/${event_id}/`, post, {
-        headers: { Authorization: "Bearer " + token },
-      });
-      console.log('markComplete function')
+      let response = await axios.put(
+        `http://127.0.0.1:8000/api/ticketmaster/${event_id}/`,
+        post,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      console.log("markComplete function");
       console.log(response.data.data);
     } catch (error) {
       console.log(error.response);
@@ -35,23 +43,24 @@ const TMMarkComplete = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('mark complete clicked')
+    console.log("mark complete clicked");
     let markCompleteData = {
-        user: user.id,
-        event_id: event_id,
-        name: name,
-        url: url,
-        image: image,
-        eventType: eventType,
-        state: state,
-        saveCurrent: saveCurrent,
-        saveFuture: saveFuture,
-        completed: completed,
-        isFavorite: isFavorite,
+      user: user.id,
+      event_id: event_id,
+      name: name,
+      url: url,
+      image: image,
+      eventType: eventType,
+      state: state,
+      saveCurrent: saveCurrent,
+      saveFuture: saveFuture,
+      completed: completed,
+      isFavorite: isFavorite,
     };
     console.log(markCompleteData);
     markComplete(markCompleteData);
-  };
+    refreshPage();
+  }
 
   return (
     <button

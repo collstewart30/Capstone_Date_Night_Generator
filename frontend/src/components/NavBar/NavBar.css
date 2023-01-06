@@ -5,9 +5,9 @@
   margin-bottom: 1rem;
   padding: 1rem 1rem;
   /* position: fixed; */
-  /* top: 0;
-  left: 0;
-  width: 100%; */
+  top: 0;
+  /* left: 0; */
+  width: 100%;
 }
 
 .navBar::after{
@@ -54,11 +54,11 @@
   cursor: pointer;
   border-color: black;
 }
-
+/* 
 .brand {
   cursor: pointer;
   font-size: 2rem;
-}
+} */
 
 .brand:hover{
   color:black;

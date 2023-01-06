@@ -13,7 +13,6 @@ import NPSSaveAsFavorite from "../../components/NPSSaveAsFavorite/NPSSaveAsFavor
 import TMSaveAsFavorite from "../../components/TMSaveAsFavorite/TMSaveAsFavorite";
 import YelpSaveAsFavorite from "../../components/YelpSaveAsFavorite/YelpSaveAsFavorite";
 
-
 const UserProfilePage = (props) => {
   const [user, token] = useAuth();
   const [NPSCurrentNight, setNPSCurrentNight] = useState([]);
@@ -326,7 +325,7 @@ const UserProfilePage = (props) => {
       </div>
 
       <div className="container">
-        <h2 className="profile-heading">Future Dates:</h2>
+        <h2 className="profile-heading">Future Date Ideas:</h2>
         <div className="grid-container">
           {NPSSaveFuture &&
             NPSSaveFuture.map((nps) => (

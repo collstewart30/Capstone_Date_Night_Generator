@@ -33,10 +33,6 @@ const TMSaveForFuture = (props) => {
     }
   };
 
-  function refreshPage() {
-    window.location.reload(false);
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
     let saveForFutureTicketmasterData = {
@@ -54,7 +50,6 @@ const TMSaveForFuture = (props) => {
     };
     saveForFuture(saveForFutureTicketmasterData);
     console.log("Ticketmaster Save for Future Updated");
-    refreshPage();
   }
 
   return (

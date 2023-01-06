@@ -3,8 +3,8 @@ import useAuth from "../../hooks/useAuth";
 import "./EmailJS.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ReactDom from "react-dom";
-import Popup from "react-popup";
+// import ReactDom from "react-dom";
+// import Popup from "react-popup";
 
 const EmailJS = (props) => {
   const [user, token] = useAuth();
@@ -77,12 +77,11 @@ const EmailJS = (props) => {
     }
   };
 
-
   // message showing as undefined
   const templateParams = {
     subject: "Your date night itinerary inside",
     name: `${user.first_name}`,
-    message: `${NPSCurrentNight.title},${TMCurrentNight.name},${YelpCurrentNight.name}.`
+    message: "",
   };
 
   const sendEmail = (e) => {
@@ -98,12 +97,12 @@ const EmailJS = (props) => {
       .then(
         (result) => {
           console.log(result.text);
+          alert("Email sent!");
         },
         (error) => {
           console.log(error.text);
         }
       );
-    alert("Email sent!");
     // Popup.alert("Email sent!");
     //   e.target.reset()   // youtube tutorial has e.target instead of form.current.
   };
@@ -114,6 +113,26 @@ const EmailJS = (props) => {
         <button className="email-button" onClick={sendEmail}>
           Email Your Current Date Night's Itinerary
         </button>
+        <div name="message">
+          <input
+            type="hidden"
+            className="form-control"
+            name="NPSCurrent"
+            defaultValue={NPSCurrentNight}
+          />
+          <input
+            type="hidden"
+            className="form-control"
+            name="TMCurrent"
+            defaultValue={TMCurrentNight}
+          />
+          <input
+            type="hidden"
+            className="form-control"
+            name="YelpCurrent"
+            defaultValue={YelpCurrentNight}
+          />
+        </div>
       </div>
     </div>
   );

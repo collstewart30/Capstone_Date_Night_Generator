@@ -2,5 +2,13 @@ p {
     display: container;
     justify-content: space-between;
     list-style-type: none;
-    /* color: red; */
   }
+
+
+.profile-heading{
+  border: 2px solid black;
+  color:white;
+  margin: .5em;
+  background-color: cadetblue;
+  padding: 0.4rem 0.5rem;
+}

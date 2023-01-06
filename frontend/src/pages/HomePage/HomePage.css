@@ -15,5 +15,12 @@
     background: white;
     color: black;
     cursor:pointer;
-    border-color: darkcyan;
-  }
+    border-color: cadetblue;
+}
+
+.home-grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: .25em;
+    text-align: center;
+}

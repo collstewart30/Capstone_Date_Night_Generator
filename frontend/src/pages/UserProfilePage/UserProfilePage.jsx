@@ -1,8 +1,3 @@
-// use views files to filter by each saved type
-// button to change from "save for future" to "mark favorite," "save for current night," "mark complete"
-
-// routes - user id in url
-
 import "./UserProfilePage.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -14,9 +9,6 @@ import YelpMarkComplete from "../../components/YelpMarkComplete/YelpMarkComplete
 import NPSSaveCurrentNight from "../../components/NPSSaveCurrentNight/NPSSaveCurrentNight";
 import TMSaveCurrentNight from "../../components/TMSaveCurrentNight/TMSaveCurrentNight";
 import YelpSaveCurrentNight from "../../components/YelpSaveCurrentNight/YelpSaveCurrrentNight";
-import NPSDisplaySaveForFuture from "../../components/NPSDisplaySaveForFuture/NPSDisplaySaveForFuture";
-import TMDisplaySaveForFuture from "../../components/TMDisplaySaveForFuture/TMDisplaySaveForFuture";
-import YelpDisplaySaveForFuture from "../../components/YelpDisplaySaveForFuture/YelpDisplaySaveForFuture";
 
 const UserProfilePage = (props) => {
   const [user, token] = useAuth();
@@ -179,15 +171,14 @@ const UserProfilePage = (props) => {
 
   return (
     <div className="container">
-      <h1>Hey, {user.first_name}!</h1>
-      <h1>User ID # {user.id}</h1>
-      {/* <h1>{user.username}!</h1> */}
-      {/* <h2>Email your info:</h2> */}
+      <h1>{user.first_name}'s Profile</h1>
       <EmailJS />
 
-      <div className="grid-container">
-        <div>
-          <h2>Current Date Night:</h2>
+      <div className="container">
+        <h2 className="profile-heading">
+          Current Date Night:
+        </h2>
+        <div className="grid-container">
           {NPSCurrentNight &&
             NPSCurrentNight.map((nps) => (
               <div
@@ -208,8 +199,7 @@ const UserProfilePage = (props) => {
                 </p>
               </div>
             ))}
-        </div>
-        <div>
+
           {TMCurrentNight &&
             TMCurrentNight.map((tm) => (
               <div
@@ -230,8 +220,7 @@ const UserProfilePage = (props) => {
                 </p>
               </div>
             ))}
-        </div>
-        <div>
+
           {YelpCurrentNight &&
             YelpCurrentNight.map((yelp) => (
               <div
@@ -255,78 +244,10 @@ const UserProfilePage = (props) => {
         </div>
       </div>
 
-      <div className="grid-container">
-        <div>
-          <h2>Completed:</h2>
-          <div>
-            {NPSCompleted &&
-              NPSCompleted.map((nps) => (
-                <div
-                  key={nps.event_id}
-                  style={{ border: ".75px solid black", margin: ".5em" }}
-                >
-                  <h2>{nps.title}</h2>
-                  <p>Location: {nps.park_name}</p>
-                  <p>
-                    <img
-                      id="ytplayer"
-                      type="text/html"
-                      width="160"
-                      height="90"
-                      src={nps.image_url}
-                      border="1px solid #555"
-                    />
-                  </p>
-                </div>
-              ))}
-          </div>
-          <div>
-            {TMCompleted &&
-              TMCompleted.map((tm) => (
-                <div
-                  key={tm.event_id}
-                  style={{ border: ".75px solid black", margin: ".5em" }}
-                >
-                  <h2>{tm.name}</h2>
-                  <p>Event Type: {tm.eventType}</p>
-                  <p>
-                    <img
-                      id="ytplayer"
-                      type="text/html"
-                      width="160"
-                      height="90"
-                      src={tm.image}
-                      border="1px solid #555"
-                    />
-                  </p>
-                </div>
-              ))}
-          </div>
-          <div>
-            {YelpCompleted &&
-              YelpCompleted.map((yelp) => (
-                <div
-                  key={yelp.id}
-                  style={{ border: ".75px solid black", margin: ".5em" }}
-                >
-                  <h2>{yelp.name}</h2>
-                  <p>Cuisine: {yelp.cuisine_type}</p>
-                  <p>
-                    <img
-                      id="ytplayer"
-                      type="text/html"
-                      width="160"
-                      height="90"
-                      src={yelp.image_url}
-                      border="1px solid #555"
-                    />
-                  </p>
-                </div>
-              ))}
-          </div>
-        </div>
-
-        <h2>Saved for Future:</h2>
+      <div className="container">
+        <h2 className="profile-heading">
+          Future Dates:
+        </h2>
         <div className="grid-container">
           {NPSSaveFuture &&
             NPSSaveFuture.map((nps) => (
@@ -440,6 +361,73 @@ const UserProfilePage = (props) => {
                   cuisine_type={yelp.cuisine_type}
                   city={yelp.city}
                 />
+              </div>
+            ))}
+        </div>
+      </div>
+      <div>
+        <h2 className="profile-heading">
+          Completed Dates:
+        </h2>
+        <div className="grid-container">
+          {NPSCompleted &&
+            NPSCompleted.map((nps) => (
+              <div
+                key={nps.event_id}
+                style={{ border: ".75px solid black", margin: ".5em" }}
+              >
+                <h2>{nps.title}</h2>
+                <p>Location: {nps.park_name}</p>
+                <p>
+                  <img
+                    id="ytplayer"
+                    type="text/html"
+                    width="160"
+                    height="90"
+                    src={nps.image_url}
+                    border="1px solid #555"
+                  />
+                </p>
+              </div>
+            ))}
+          {TMCompleted &&
+            TMCompleted.map((tm) => (
+              <div
+                key={tm.event_id}
+                style={{ border: ".75px solid black", margin: ".5em" }}
+              >
+                <h2>{tm.name}</h2>
+                <p>Event Type: {tm.eventType}</p>
+                <p>
+                  <img
+                    id="ytplayer"
+                    type="text/html"
+                    width="160"
+                    height="90"
+                    src={tm.image}
+                    border="1px solid #555"
+                  />
+                </p>
+              </div>
+            ))}
+          {YelpCompleted &&
+            YelpCompleted.map((yelp) => (
+              <div
+                key={yelp.id}
+                style={{ border: ".75px solid black", margin: ".5em" }}
+              >
+                <h2>{yelp.name}</h2>
+                <p>Cuisine: {yelp.cuisine_type}</p>
+                <p>
+                  <img
+                    id="ytplayer"
+                    type="text/html"
+                    width="160"
+                    height="90"
+                    src={yelp.image_url}
+                    border="1px solid #555"
+                  />
+                </p>
               </div>
             ))}
         </div>

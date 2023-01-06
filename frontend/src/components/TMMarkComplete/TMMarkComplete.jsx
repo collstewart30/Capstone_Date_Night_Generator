@@ -6,7 +6,7 @@ const TMMarkComplete = (props) => {
   const [user, token] = useAuth();
 
   const [saveCurrent, setSaveCurrent] = useState("False");
-  const [saveFuture, setSaveFuture] = useState("True");
+  const [saveFuture, setSaveFuture] = useState("False");
   const [completed, setCompleted] = useState("True");
   const [isFavorite, setIsFavorite] = useState("False");
 

@@ -12,7 +12,7 @@ const HomePage = () => {
     <div>
       <h1>Welcome, {user.first_name}!</h1>
       <h2>Choose from the below options to start planning your date night:</h2>
-      <div className="grid-container">
+      <div className="home-grid-container">
         <p>
           <Link to="/ticketmaster" className="Link">Ticketmaster</Link>
         </p>

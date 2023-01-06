@@ -465,6 +465,17 @@ const UserProfilePage = (props) => {
                     border="1px solid #555"
                   />
                 </p>
+                <NPSSaveCurrentNight
+                  event_id={nps.event_id}
+                  parkCode={nps.parkCode}
+                  title={nps.title}
+                  url={nps.url}
+                  image_url={nps.image_url}
+                  park_name={nps.park_name}
+                  state={nps.state}
+                  description={nps.description}
+                  type={nps.type}
+                />
               </div>
             ))}
 
@@ -486,6 +497,14 @@ const UserProfilePage = (props) => {
                     border="1px solid #555"
                   />
                 </p>
+                <TMSaveCurrentNight
+                  event_id={tm.event_id}
+                  name={tm.name}
+                  url={tm.url}
+                  image={tm.image}
+                  eventType={tm.eventType}
+                  state={tm.state}
+                />
               </div>
             ))}
 
@@ -507,6 +526,14 @@ const UserProfilePage = (props) => {
                     border="1px solid #555"
                   />
                 </p>
+                <YelpSaveCurrentNight
+                  business_id={yelp.business_id}
+                  name={yelp.name}
+                  url={yelp.url}
+                  image_url={yelp.image_url}
+                  cuisine_type={yelp.cuisine_type}
+                  city={yelp.city}
+                />
               </div>
             ))}
         </div>

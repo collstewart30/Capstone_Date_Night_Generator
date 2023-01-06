@@ -1,8 +1,10 @@
 import emailjs from "emailjs-com";
 import useAuth from "../../hooks/useAuth";
 import "./EmailJS.css";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ReactDom from "react-dom";
+import Popup from "react-popup";
 
 const EmailJS = (props) => {
   const [user, token] = useAuth();
@@ -15,6 +17,20 @@ const EmailJS = (props) => {
     fetchTMCurrent();
     fetchYelpCurrent();
   }, []);
+
+  // ReactDom.render(
+  //   <Popup
+  //     className="mm-popup"
+  //     btnClass="mm-popup__btn"
+  //     closeBtn={true}
+  //     closeHtml={null}
+  //     defaultOk="Ok"
+  //     defaultCancel="Cancel"
+  //     wildClasses={false}
+  //     escToClose={true}
+  //   />,
+  //   document.getElementById("popupContainer")
+  // );
 
   const fetchNPSCurrent = async () => {
     try {
@@ -64,7 +80,7 @@ const EmailJS = (props) => {
   const templateParams = {
     subject: "Your date night itinerary inside",
     name: `${user.first_name}`,
-    message: [[NPSCurrentNight],[TMCurrentNight],[YelpCurrentNight]]
+    message: `${([NPSCurrentNight], [TMCurrentNight], [YelpCurrentNight])}`,
   };
 
   const sendEmail = (e) => {
@@ -80,12 +96,13 @@ const EmailJS = (props) => {
       .then(
         (result) => {
           console.log(result.text);
-          console.log(`${user.first_name}`);
         },
         (error) => {
           console.log(error.text);
         }
       );
+    alert("Email sent!");
+    // Popup.alert("Email sent!");
     //   e.target.reset()   // youtube tutorial has e.target instead of form.current.
   };
 

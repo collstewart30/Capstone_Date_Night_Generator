@@ -15,13 +15,12 @@ const YelpPage = () => {
 
   const searchYelpLocation = (searchTerm) => {
     setLocation(searchTerm);
-    console.log("setLocation function called ", searchTerm);
-    getYelpData(searchTerm);
+    getYelpData({location:location});
   };
 
   // location parameter not pulling location from SearchBar
 
-  const getYelpData = async (location) => {
+  const getYelpData = async () => {
     try {
       let response = await axios.get(
         `http://127.0.0.1:8000/api/yelp/yelp_api/`,
@@ -34,8 +33,7 @@ const YelpPage = () => {
           },
         }
       );
-      console.log("Yelp API");
-      console.log(response.data.businesses);
+      console.log("Yelp API", response.data.businesses);
       setYelpData(response.data.businesses);
     } catch (error) {
       console.log(error);

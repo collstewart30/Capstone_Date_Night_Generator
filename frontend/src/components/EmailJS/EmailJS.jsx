@@ -77,10 +77,12 @@ const EmailJS = (props) => {
     }
   };
 
+
+  // message showing as undefined
   const templateParams = {
     subject: "Your date night itinerary inside",
     name: `${user.first_name}`,
-    message: `${([NPSCurrentNight], [TMCurrentNight], [YelpCurrentNight])}`,
+    message: `${NPSCurrentNight.title},${TMCurrentNight.name},${YelpCurrentNight.name}.`
   };
 
   const sendEmail = (e) => {

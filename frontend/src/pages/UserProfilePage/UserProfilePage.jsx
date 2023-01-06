@@ -345,7 +345,7 @@ const UserProfilePage = (props) => {
                     border="1px solid #555"
                   />
                 </p>
-                <NPSMarkComplete
+                <NPSSaveCurrentNight
                   event_id={nps.event_id}
                   parkCode={nps.parkCode}
                   title={nps.title}
@@ -356,7 +356,7 @@ const UserProfilePage = (props) => {
                   description={nps.description}
                   type={nps.type}
                 />
-                <NPSSaveCurrentNight
+                <NPSMarkComplete
                   event_id={nps.event_id}
                   parkCode={nps.parkCode}
                   title={nps.title}
@@ -387,7 +387,7 @@ const UserProfilePage = (props) => {
                     border="1px solid #555"
                   />
                 </p>
-                <TMMarkComplete
+                <TMSaveCurrentNight
                   event_id={tm.event_id}
                   name={tm.name}
                   url={tm.url}
@@ -395,7 +395,7 @@ const UserProfilePage = (props) => {
                   eventType={tm.eventType}
                   state={tm.state}
                 />
-                <TMSaveCurrentNight
+                <TMMarkComplete
                   event_id={tm.event_id}
                   name={tm.name}
                   url={tm.url}
@@ -423,7 +423,7 @@ const UserProfilePage = (props) => {
                     border="1px solid #555"
                   />
                 </p>
-                <YelpMarkComplete
+                <YelpSaveCurrentNight
                   business_id={yelp.business_id}
                   name={yelp.name}
                   url={yelp.url}
@@ -431,7 +431,7 @@ const UserProfilePage = (props) => {
                   cuisine_type={yelp.cuisine_type}
                   city={yelp.city}
                 />
-                <YelpSaveCurrentNight
+                <YelpMarkComplete
                   business_id={yelp.business_id}
                   name={yelp.name}
                   url={yelp.url}

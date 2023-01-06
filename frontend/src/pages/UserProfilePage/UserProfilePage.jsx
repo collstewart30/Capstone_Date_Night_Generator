@@ -172,7 +172,44 @@ const UserProfilePage = (props) => {
   return (
     <div className="container">
       <h1>{user.first_name}'s Profile</h1>
-      <EmailJS />
+      <div>
+        {NPSCurrentNight &&
+        NPSCurrentNight.map((nps) => (
+          <EmailJS
+          nps_event_id={nps.event_id}
+          nps_parkCode={nps.parkCode}
+          nps_title={nps.title}
+          nps_url={nps.url}
+          nps_image_url={nps.image_url}
+          nps_park_name={nps.park_name}
+          nps_state={nps.state}
+          nps_description={nps.description}
+          nps_type={nps.type}/>
+        ))};
+        {TMCurrentNight &&
+        TMCurrentNight.map((tm) => (
+          <EmailJS
+          tm_event_id={tm.event_id}
+          tm_name={tm.name}
+          tm_url={tm.url}
+          tm_image={tm.image}
+          tm_eventType={tm.eventType}
+          tm_state={tm.state}
+          />
+        ))};
+        {YelpCurrentNight &&
+        YelpCurrentNight.map((yelp) => (
+          <EmailJS 
+          yelp_business_id={yelp.business_id}
+          yelp_name={yelp.name}
+          yelp_url={yelp.url}
+          yelp_image_url={yelp.image_url}
+          yelp_cuisine_type={yelp.cuisine_type}
+          yelp_city={yelp.city}
+          />
+        ))}
+      </div>
+      
 
       <div className="container">
         <h2 className="profile-heading">

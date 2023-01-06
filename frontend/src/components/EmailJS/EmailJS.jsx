@@ -7,6 +7,31 @@ const EmailJS = (props) => {
 
     const [user, token] = useAuth();
 
+    let yelp_business_id = props.yelp_business_id;
+    let yelp_name = yelp_props.name;
+    let yelp_url = yelp_props.url;
+    let yelp_image_url = yelp_props.image_url;
+    let yelp_cuisine_type = yelp_props.cuisine_type;
+    let yelp_city = yelp_props.city;
+
+    let tm_event_id = props.tm_event_id;
+    let tm_name = props.tm_name;
+    let tm_url = props.tm_url;
+    let tm_image = props.tm_image;
+    let tm_eventType = props.tm_eventType;
+    let tm_state = props.tm_state;
+
+    let nps_event_id = props.nps_event_id;
+    let nps_parkCode = props.nps_parkCode;
+    let nps_title = props.nps_title;
+    let nps_url = props.nps_url;
+    let nps_image_url = props.nps_image_url;
+    let nps_park_name = props.nps_park_name;
+    let nps_state = props.nps_state;
+    let nps_description = props.nps_description;
+    let nps_type = props.nps_type;
+
+
     const templateParams = {
         subject: "Your date night itinerary inside",
         name: `${user.first_name}`,

@@ -47,6 +47,16 @@ def nps_filter_saveFuture(request):
 
 @api_view(['GET', 'POST','PATCH'])  
 @permission_classes([IsAuthenticated])
+def nps_filter_isFavorite(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+
+    if request.method == 'GET':
+        nps_items = NPS.objects.filter(user_id=request.user.id, isFavorite="True")
+        serializer = NPSSerializer(nps_items, many=True)
+        return Response(serializer.data)
+
+@api_view(['GET', 'POST','PATCH'])  
+@permission_classes([IsAuthenticated])
 def nps_filter_completed(request):
     print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
 

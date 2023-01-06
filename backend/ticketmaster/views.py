@@ -59,6 +59,18 @@ def ticketmaster_filter_saveCurrent(request):
         serializer = TicketmasterSerializer(ticketmaster_items, many=True)
         return Response(serializer.data)
 
+
+@api_view(['GET', 'POST','PATCH'])  
+@permission_classes([IsAuthenticated])
+def ticketmaster_filter_isFavorite(request):
+    print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
+
+    if request.method == 'GET':
+        ticketmaster_items = Ticketmaster.objects.filter(user_id=request.user.id, isFavorite="True")
+        serializer = TicketmasterSerializer(ticketmaster_items, many=True)
+        return Response(serializer.data)
+
+
 @api_view(['GET', 'POST','PATCH'])  
 @permission_classes([IsAuthenticated])
 def ticketmaster_filter_saveFuture(request):

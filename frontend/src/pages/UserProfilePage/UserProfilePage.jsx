@@ -9,6 +9,10 @@ import YelpMarkComplete from "../../components/YelpMarkComplete/YelpMarkComplete
 import NPSSaveCurrentNight from "../../components/NPSSaveCurrentNight/NPSSaveCurrentNight";
 import TMSaveCurrentNight from "../../components/TMSaveCurrentNight/TMSaveCurrentNight";
 import YelpSaveCurrentNight from "../../components/YelpSaveCurrentNight/YelpSaveCurrrentNight";
+import NPSSaveAsFavorite from "../../components/NPSSaveAsFavorite/NPSSaveAsFavorite";
+import TMSaveAsFavorite from "../../components/TMSaveAsFavorite/TMSaveAsFavorite";
+import YelpSaveAsFavorite from "../../components/YelpSaveAsFavorite/YelpSaveAsFavorite";
+
 
 const UserProfilePage = (props) => {
   const [user, token] = useAuth();
@@ -18,6 +22,9 @@ const UserProfilePage = (props) => {
   const [NPSSaveFuture, setNPSSaveFuture] = useState([]);
   const [TMSaveFuture, setTMSaveFuture] = useState([]);
   const [YelpSaveFuture, setYelpSaveFuture] = useState([]);
+  const [NPSIsFavorite, setNPSIsFavorite] = useState([]);
+  const [TMIsFavorite, setTMIsFavorite] = useState([]);
+  const [YelpIsFavorite, setYelpIsFavorite] = useState([]);
   const [NPSCompleted, setNPSCompleted] = useState([]);
   const [TMCompleted, setTMCompleted] = useState([]);
   const [YelpCompleted, setYelpCompleted] = useState([]);
@@ -29,6 +36,9 @@ const UserProfilePage = (props) => {
     fetchNPSCurrent();
     fetchTMCurrent();
     fetchYelpCurrent();
+    fetchNPSIsFavorite();
+    fetchTMSIsFavorite();
+    fetchYelpIsFavorite();
     fetchNPSCompleted();
     fetchTMCompleted();
     fetchYelpCompleted();
@@ -124,6 +134,51 @@ const UserProfilePage = (props) => {
     }
   };
 
+  const fetchNPSIsFavorite = async () => {
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/nps/favorite/`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      setNPSIsFavorite(response.data);
+      console.log("NPS favorite: ", response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchTMSIsFavorite = async () => {
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/ticketmaster/favorite/`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      setTMIsFavorite(response.data);
+      console.log("TM favorite: ", response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchYelpIsFavorite = async () => {
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/yelp/favorite/`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+      setYelpIsFavorite(response.data);
+      console.log("Yelp favorite: ", response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const fetchNPSCompleted = async () => {
     try {
       let response = await axios.get(
@@ -133,7 +188,7 @@ const UserProfilePage = (props) => {
         }
       );
       setNPSCompleted(response.data);
-      console.log("NPS completed", response.data);
+      console.log("NPS completed: ", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -148,7 +203,7 @@ const UserProfilePage = (props) => {
         }
       );
       setTMCompleted(response.data);
-      console.log("TM completed", response.data);
+      console.log("TM completed: ", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -163,7 +218,7 @@ const UserProfilePage = (props) => {
         }
       );
       setYelpCompleted(response.data);
-      console.log("Yelp completed", response.data);
+      console.log("Yelp completed: ", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -389,6 +444,75 @@ const UserProfilePage = (props) => {
             ))}
         </div>
       </div>
+
+      <div className="container">
+        <h2 className="profile-heading">Favorites:</h2>
+        <div className="grid-container">
+          {NPSIsFavorite &&
+            NPSIsFavorite.map((nps) => (
+              <div
+                key={nps.event_id}
+                style={{ border: ".75px solid black", margin: ".5em" }}
+              >
+                <h2>{nps.title}</h2>
+                <p>Location: {nps.park_name}</p>
+                <p>
+                  <img
+                    id="ytplayer"
+                    type="text/html"
+                    width="160"
+                    height="90"
+                    src={nps.image_url}
+                    border="1px solid #555"
+                  />
+                </p>
+              </div>
+            ))}
+
+          {TMIsFavorite &&
+            TMIsFavorite.map((tm) => (
+              <div
+                key={tm.event_id}
+                style={{ border: ".75px solid black", margin: ".5em" }}
+              >
+                <h2>{tm.name}</h2>
+                <p>Event Type: {tm.eventType}</p>
+                <p>
+                  <img
+                    id="ytplayer"
+                    type="text/html"
+                    width="160"
+                    height="90"
+                    src={tm.image}
+                    border="1px solid #555"
+                  />
+                </p>
+              </div>
+            ))}
+
+          {YelpIsFavorite &&
+            YelpIsFavorite.map((yelp) => (
+              <div
+                key={yelp.id}
+                style={{ border: ".75px solid black", margin: ".5em" }}
+              >
+                <h2>{yelp.name}</h2>
+                <p>Cuisine: {yelp.cuisine_type}</p>
+                <p>
+                  <img
+                    id="ytplayer"
+                    type="text/html"
+                    width="160"
+                    height="90"
+                    src={yelp.image_url}
+                    border="1px solid #555"
+                  />
+                </p>
+              </div>
+            ))}
+        </div>
+      </div>
+
       <div>
         <h2 className="profile-heading">Completed Dates:</h2>
         <div className="grid-container">
@@ -410,6 +534,17 @@ const UserProfilePage = (props) => {
                     border="1px solid #555"
                   />
                 </p>
+                <NPSSaveAsFavorite
+                  event_id={nps.event_id}
+                  parkCode={nps.parkCode}
+                  title={nps.title}
+                  url={nps.url}
+                  image_url={nps.image_url}
+                  park_name={nps.park_name}
+                  state={nps.state}
+                  description={nps.description}
+                  type={nps.type}
+                />
               </div>
             ))}
           {TMCompleted &&
@@ -430,6 +565,14 @@ const UserProfilePage = (props) => {
                     border="1px solid #555"
                   />
                 </p>
+                <TMSaveAsFavorite
+                  event_id={tm.event_id}
+                  name={tm.name}
+                  url={tm.url}
+                  image={tm.image}
+                  eventType={tm.eventType}
+                  state={tm.state}
+                />
               </div>
             ))}
           {YelpCompleted &&
@@ -450,6 +593,14 @@ const UserProfilePage = (props) => {
                     border="1px solid #555"
                   />
                 </p>
+                <YelpSaveAsFavorite
+                  business_id={yelp.business_id}
+                  name={yelp.name}
+                  url={yelp.url}
+                  image_url={yelp.image_url}
+                  cuisine_type={yelp.cuisine_type}
+                  city={yelp.city}
+                />
               </div>
             ))}
         </div>

@@ -6,6 +6,7 @@ urlpatterns = [
     path('save_current/', views.yelp_filter_saveCurrent),
     path('save_future/', views.yelp_filter_saveFuture),
     path('completed/', views.yelp_filter_completed),
+    path('favorite/', views.yelp_filter_isFavorite),
     path('', views.yelp_items_search),
     path('yelp_api/', views.yelp_api),
     path('yelp_api/search/', views.search_yelp_api),

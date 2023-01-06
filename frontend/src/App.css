@@ -47,7 +47,7 @@ h2 {
 }
 
 button {
-  background-color:ghostwhite;
+  background-color:lavenderblush;
   border: 1px solid black;
   color:black;
   font-size: .75rem;
@@ -58,8 +58,8 @@ button {
 
 button:hover {
   cursor: pointer;
-  color: white;
-  background-color: cadetblue;
+  color: black;
+  background-color:lightgray;
 }
 
 .container {

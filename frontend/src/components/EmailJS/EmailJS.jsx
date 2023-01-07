@@ -81,7 +81,14 @@ const EmailJS = (props) => {
   const templateParams = {
     subject: "Your date night itinerary inside",
     name: `${user.first_name}`,
-    message: "",
+    message: `${
+      NPSCurrentNight &&
+      NPSCurrentNight.map((nps) => (
+        <div key={nps.event_id.value}>
+          <p>NPS Title: {nps.title.value}</p>
+        </div>
+      ))
+    }`,
   };
 
   const sendEmail = (e) => {
@@ -113,7 +120,7 @@ const EmailJS = (props) => {
         <button className="email-button" onClick={sendEmail}>
           Email Your Current Date Night's Itinerary
         </button>
-        <div name="message">
+        {/* <div name="message">
           <input
             type="hidden"
             className="form-control"
@@ -132,7 +139,7 @@ const EmailJS = (props) => {
             name="YelpCurrent"
             defaultValue={YelpCurrentNight}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

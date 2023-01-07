@@ -20,10 +20,10 @@ const YelpPage = () => {
 
   // location parameter not pulling location from SearchBar
 
-  const getYelpData = async (searchTerm = 'Baltimore') => {
+  const getYelpData = async () => {
     try {
       let response = await axios.get(
-        `http://127.0.0.1:8000/api/yelp/yelp_api/${searchTerm}`,
+        `http://127.0.0.1:8000/api/yelp/yelp_api/`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

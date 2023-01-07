@@ -8,7 +8,8 @@ urlpatterns = [
     path('completed/', views.yelp_filter_completed),
     path('favorite/', views.yelp_filter_isFavorite),
     path('', views.yelp_items_search),
-    path('yelp_api/<str:searchTerm>/', views.yelp_api),
+    # path('yelp_api/<str:searchTerm>/', views.yelp_api), 
+    path('yelp_api/', views.yelp_api), 
     # path('yelp_api/search/', views.search_yelp_api),
     path('<str:business_id>/', views.yelp_by_id),
 ]

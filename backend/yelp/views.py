@@ -47,9 +47,11 @@ def yelp_by_id(request, business_id):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def yelp_api(request, searchTerm):
+def yelp_api(request):
 
-    # example:
+# , searchTerm 
+
+    # example: 
     # rest_response_example = requests.get("https://swapi.dev/api/")
     # print(rest_response.headers)
     # print(rest_response_example.json())
@@ -62,7 +64,7 @@ def yelp_api(request, searchTerm):
     # baseUrl = "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1"
 
     params = {
-        'location': searchTerm,
+        'location': "Batimore",
     }
     #, params=params
 

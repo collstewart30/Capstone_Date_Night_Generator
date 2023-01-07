@@ -47,7 +47,7 @@ def yelp_by_id(request, business_id):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def yelp_api(request):
+def yelp_api(request, searchTerm):
 
     # example:
     # rest_response_example = requests.get("https://swapi.dev/api/")
@@ -59,10 +59,10 @@ def yelp_api(request):
     # calling API in backend and then serializing data in a response variable to send to the front end
     
     headers = {'Authorization': 'Bearer {}'.format(api_key)}
-    baseUrl = "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1"
+    # baseUrl = "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1"
 
     params = {
-        'location': 'Baltimore',
+        'location': searchTerm,
     }
     #, params=params
 
@@ -75,23 +75,23 @@ def yelp_api(request):
 
 
 
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def search_yelp_api(request):
+# @api_view(['GET'])
+# @permission_classes([AllowAny])
+# def search_yelp_api(request):
 
-    headers = {'Authorization': 'Bearer {}'.format(api_key)}
-    baseUrl = "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1"
+#     headers = {'Authorization': 'Bearer {}'.format(api_key)}
+#     baseUrl = "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1"
 
-    params = {
-        'location': 'Baltimore'
-    }
-    #, params=params
+#     params = {
+#         'location': 'Baltimore'
+#     }
+#     #, params=params
 
-    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&limit=12", params, headers=headers)
-    # print(rest_response.status_code)
-    print(rest_response.headers)
-    print(rest_response.json())
-    return Response(rest_response.json())
+#     rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&limit=12", params, headers=headers)
+#     # print(rest_response.status_code)
+#     print(rest_response.headers)
+#     print(rest_response.json())
+#     return Response(rest_response.json())
 
 
 @api_view(['GET', 'POST','PATCH'])  

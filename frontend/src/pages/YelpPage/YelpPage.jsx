@@ -13,21 +13,18 @@ const YelpPage = () => {
     getYelpData();
   }, []);
 
-  const searchYelpLocation = (searchTerm) => {
-    setLocation(searchTerm);
-    getYelpData({location:location});
-  };
+  // const searchYelpLocation = (searchTerm) => {
+  //   setLocation(searchTerm);
+  //   getYelpData({ location: location });
+  // };
 
   // location parameter not pulling location from SearchBar
 
-  const getYelpData = async () => {
+  const getYelpData = async (searchTerm = 'Baltimore') => {
     try {
       let response = await axios.get(
-        `http://127.0.0.1:8000/api/yelp/yelp_api/`,
+        `http://127.0.0.1:8000/api/yelp/yelp_api/${searchTerm}`,
         {
-          params: {
-            location: location,
-          },
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -43,7 +40,7 @@ const YelpPage = () => {
   return (
     <div className="container">
       <h1>SEARCH BY CITY:</h1>
-      <SearchBar searchBarParent={searchYelpLocation} />
+      <SearchBar searchBarParent={getYelpData} />
       <div className="grid-container">
         {yelpData &&
           yelpData.map((data) => (

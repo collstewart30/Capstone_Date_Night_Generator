@@ -16,8 +16,7 @@ const TicketMasterPage = () => {
       let response = await axios.get(
         `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${tickemasterKEY}&size=12&stateCode=${searchTerm}`
       );
-      console.log("Ticketmaster API");
-      console.log(response.data._embedded.events);
+      console.log("Ticketmaster API: ", response.data._embedded.events);
       setTicketmasterData(response.data._embedded.events);
     } catch (error) {
       console.log(error);

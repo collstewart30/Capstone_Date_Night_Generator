@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"person1\",\r\n    \"password\": \"password123@\",\r\n    \"email\": \"person1@person1.com\",\r\n    \"first_name\": \"Person1\",\r\n    \"last_name\": \"PersonLastName\"\r\n}",
+							"raw": "{\r\n    \"username\": \"myusername\",\r\n    \"password\": \"password123@\",\r\n    \"email\": \"cstewart@medline.com\",\r\n    \"first_name\": \"Firstname\",\r\n    \"last_name\": \"Lastname\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -50,7 +50,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"person1\",\r\n    \"password\": \"password123@\"\r\n}",
+							"raw": "{\r\n    \"username\": \"colleencolleen\",\r\n    \"password\": \"Password1$??\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -123,7 +123,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://developer.nps.gov/api/v1/thingstodo?stateCode=PA%2CMD&api_key=cWwMCYqNufQDykMdAzT8bW49ypaAu5zVRnEKk8Z5",
+							"raw": "https://developer.nps.gov/api/v1/thingstodo?stateCode=PA%2CMD&api_key=cWwMCYqNufQDykMdAzT8bW49ypaAu5zVRnEKk8Z5&limit=5",
 							"protocol": "https",
 							"host": [
 								"developer",
@@ -143,6 +143,10 @@
 								{
 									"key": "api_key",
 									"value": "cWwMCYqNufQDykMdAzT8bW49ypaAu5zVRnEKk8Z5"
+								},
+								{
+									"key": "limit",
+									"value": "5"
 								}
 							]
 						}
@@ -191,7 +195,7 @@
 					"response": []
 				},
 				{
-					"name": "Yelp - GET restaurants",
+					"name": "(Postman only) Yelp - GET restaurants (with API key)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -206,7 +210,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore",
+							"raw": "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=20",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -226,6 +230,71 @@
 								{
 									"key": "location",
 									"value": "Baltimore"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET all Yelp items (calling in backend views)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczMTUxNTAyLCJpYXQiOjE2NzIyODc1MDIsImp0aSI6IjhlZWQ0YjliYmIyODQ5ZGVhM2YyODZjZjNhYWJmZDlkIiwidXNlcl9pZCI6NiwidXNlcm5hbWUiOiJteXVzZXJuYW1lIiwiZmlyc3RfbmFtZSI6IkZpcnN0bmFtZSJ9.4qzhKhTZiVtlNzYbO8YNMdq1MUYgZNvBqoK9SZEIqD0",
+								"type": "text"
+							},
+							{
+								"key": "limit",
+								"value": "5",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "Philadelphia",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/yelp/yelp_api/?location=Philadelphia",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"yelp",
+								"yelp_api",
+								""
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "Philadelphia"
 								}
 							]
 						}
@@ -379,7 +448,7 @@
 					"name": "Yelp",
 					"item": [
 						{
-							"name": "GET all Yelp items",
+							"name": "GET (Yelp API) all Yelp items (for user)",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -388,7 +457,12 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczMjg5OTcxLCJpYXQiOjE2NzI0MjU5NzEsImp0aSI6Ijc1NTg5NDdhYjZiYTRkNzliMDIwMTZiOWExMTYxM2FhIiwidXNlcl9pZCI6NiwidXNlcm5hbWUiOiJteXVzZXJuYW1lIiwiZmlyc3RfbmFtZSI6IkZpcnN0bmFtZSJ9.BztY2POGOXlfmK-6CpS8aHo8UHkYgmwGquvUyAY0DNA",
+										"type": "text"
+									},
+									{
+										"key": "limit",
+										"value": "5",
 										"type": "text"
 									}
 								],
@@ -427,7 +501,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyNDMyMTE1LCJpYXQiOjE2NzE1NjgxMTUsImp0aSI6ImIzNTQ3NTExN2I3MzRjNDhiYmI1Yzc1OWQ5ZGIyMGM2IiwidXNlcl9pZCI6NCwidXNlcm5hbWUiOiJjb2xsc3Rld2FydDMiLCJmaXJzdF9uYW1lIjoiQ29sbGVlbiJ9.Y-Jkh9ZTJkOmAxJQ0E9x5BElSHS6QjgUW8usjWqGr9U",
 										"type": "text"
 									}
 								],
@@ -508,13 +582,13 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczMjg5OTcxLCJpYXQiOjE2NzI0MjU5NzEsImp0aSI6Ijc1NTg5NDdhYjZiYTRkNzliMDIwMTZiOWExMTYxM2FhIiwidXNlcl9pZCI6NiwidXNlcm5hbWUiOiJteXVzZXJuYW1lIiwiZmlyc3RfbmFtZSI6IkZpcnN0bmFtZSJ9.BztY2POGOXlfmK-6CpS8aHo8UHkYgmwGquvUyAY0DNA",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"business_id\": \"ieS_5zqxDHcWMCm8BKUYbg\",\n    \"name\": \"Thames Street Oyster House\",\n    \"url\": \"https://www.yelp.com/biz/thames-street-oyster-house-baltimore?adjust_creative=Z9bFLQzXrBadY0N37xYNHw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Z9bFLQzXrBadY0N37xYNHw\",\n    \"image_url\": \"https://s3-media1.fl.yelpcdn.com/bphoto/fVt5qt7jPetbVti90Mzqqw/o.jpg\",\n    \"cuisine_type\": \"Seafood\",\n    \"city\": \"Baltimore\",\n    \"saveCurrent\": \"False\",\n    \"saveFuture\": \"False\",\n    \"completed\": \"True\",\n    \"isFavorite\": \"False\"\n}",
+									"raw": "{\n        \"business_id\": \"8noXwvC2lMTODTX7X8pVDw\",\n        \"name\": \"Kong Pocha\",\n        \"url\": \"https://www.yelp.com/biz/kong-pocha-baltimore-2?adjust_creative=Z9bFLQzXrBadY0N37xYNHw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Z9bFLQzXrBadY0N37xYNHw\",\n        \"image_url\": \"https://s3-media3.fl.yelpcdn.com/bphoto/hh1U4vuwVgrj-5Px62pcbw/o.jpg\",\n        \"cuisine_type\": \"Korean\",\n        \"city\": \"Baltimore\",\n        \"saveCurrent\": \"False\",\n        \"saveFuture\": \"True\",\n        \"completed\": \"True\",\n        \"isFavorite\": \"False\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -555,7 +629,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczODE2MDY3LCJpYXQiOjE2NzI5NTIwNjcsImp0aSI6IjI4YTU2YzMwZmMxZTQ1ODVhZjdkZjM3NTcwYzQ4NmM2IiwidXNlcl9pZCI6OSwidXNlcm5hbWUiOiJjb2xsZWVuY29sbGVlbiIsImZpcnN0X25hbWUiOiJDb2xsZWVuIn0.9p2IV0NJE31e_b5PLnBxZs3OxzouRX3bL3WLejn3NXk",
 										"type": "text"
 									}
 								],
@@ -588,6 +662,49 @@
 							"response": []
 						},
 						{
+							"name": "GET NPS saveFuture",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczODE2MDY3LCJpYXQiOjE2NzI5NTIwNjcsImp0aSI6IjI4YTU2YzMwZmMxZTQ1ODVhZjdkZjM3NTcwYzQ4NmM2IiwidXNlcl9pZCI6OSwidXNlcm5hbWUiOiJjb2xsZWVuY29sbGVlbiIsImZpcnN0X25hbWUiOiJDb2xsZWVuIn0.9p2IV0NJE31e_b5PLnBxZs3OxzouRX3bL3WLejn3NXk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/nps/completed/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"nps",
+										"completed",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "DELETE NPS item",
 							"protocolProfileBehavior": {
 								"disabledSystemHeaders": {}
@@ -597,7 +714,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczMjg5OTcxLCJpYXQiOjE2NzI0MjU5NzEsImp0aSI6Ijc1NTg5NDdhYjZiYTRkNzliMDIwMTZiOWExMTYxM2FhIiwidXNlcl9pZCI6NiwidXNlcm5hbWUiOiJteXVzZXJuYW1lIiwiZmlyc3RfbmFtZSI6IkZpcnN0bmFtZSJ9.BztY2POGOXlfmK-6CpS8aHo8UHkYgmwGquvUyAY0DNA",
 										"type": "text"
 									}
 								],
@@ -611,7 +728,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/nps/",
+									"raw": "http://127.0.0.1:8000/api/nps/AA927A8C-5C1A-42A3-8ED5-8169095B3D7D/",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -623,6 +740,7 @@
 									"path": [
 										"api",
 										"nps",
+										"AA927A8C-5C1A-42A3-8ED5-8169095B3D7D",
 										""
 									]
 								}
@@ -639,13 +757,13 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczMjg5OTcxLCJpYXQiOjE2NzI0MjU5NzEsImp0aSI6Ijc1NTg5NDdhYjZiYTRkNzliMDIwMTZiOWExMTYxM2FhIiwidXNlcl9pZCI6NiwidXNlcm5hbWUiOiJteXVzZXJuYW1lIiwiZmlyc3RfbmFtZSI6IkZpcnN0bmFtZSJ9.BztY2POGOXlfmK-6CpS8aHo8UHkYgmwGquvUyAY0DNA",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"event_id\": \"32D63018-7718-4F13-867D-B6B2737481D4\",\r\n    \"park_id\": \"gett\",\r\n    \"title\": \"Campfire Programs at Gettysburg\",\r\n    \"url\": \"https://www.nps.gov/thingstodo/gett-campfire-programs.htm\",\r\n    \"image_url\": \"https://www.nps.gov/common/uploads/cropped_image/967892F4-DCCB-4AC7-3A6A6F9B26279813.jpg\",\r\n    \"park_name\": \"Gettysburg National Military Park\",\r\n    \"state\": \"PA\",\r\n    \"description\":\"Join us in the evening for a campfire program! Campfire programs are stationary talks held at the park amphitheater that cover special themes and topics related to Gettysburg.\",\r\n    \"type\": \"campfire program\",\r\n    \"saveCurrent\": \"True\",\r\n    \"saveFuture\": \"False\",\r\n    \"completed\": \"False\",\r\n    \"isFavorite\": \"False\"\r\n}",
+									"raw": "    {\r\n        \"event_id\": \"AA927A8C-5C1A-42A3-8ED5-8169095B3D7D\",\r\n        \"parkCode\": \"gree\",\r\n        \"title\": \"Junior Ranger booklet- free\",\r\n        \"url\": \"https://www.nps.gov/thingstodo/junior-ranger-booklet-free.htm\",\r\n        \"image_url\": \"https://www.nps.gov/common/uploads/cropped_image/82DBF546-9CF4-A8E6-80ADBABF89646C31.jpg\",\r\n        \"park_name\": \"Greenbelt Park\",\r\n        \"state\": \"MD\",\r\n        \"description\": \"Greenbelt Park Junior ranger booklet\",\r\n        \"type\": \"Junior Ranger Program\",\r\n        \"saveCurrent\": \"False\",\r\n        \"saveFuture\": \"False\",\r\n        \"completed\": \"True\",\r\n        \"isFavorite\": \"False\"\r\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -653,7 +771,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/nps/",
+									"raw": "http://127.0.0.1:8000/api/nps/AA927A8C-5C1A-42A3-8ED5-8169095B3D7D/",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -665,6 +783,7 @@
 									"path": [
 										"api",
 										"nps",
+										"AA927A8C-5C1A-42A3-8ED5-8169095B3D7D",
 										""
 									]
 								}
@@ -854,7 +973,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjIzNTcxLCJpYXQiOjE2NzAzNTk1NzEsImp0aSI6ImQ5YjgyOWM3N2QwODQ0ZWM5NzkwZmE0MmQzYjRmNjY5IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJwZXJzb24xIiwiZmlyc3RfbmFtZSI6IlBlcnNvbjEifQ.rFThVCmeUUHK9AAomKqQJzfcP5QA-v6IEdWpkf3zkyg",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczMTExNDIzLCJpYXQiOjE2NzIyNDc0MjMsImp0aSI6ImY1NzYyZjA2MmFhYjQ0NmVhMmNlNWZlZjNjODFmMjE3IiwidXNlcl9pZCI6NSwidXNlcm5hbWUiOiIxMjM0dXNlciIsImZpcnN0X25hbWUiOiJVc2VyIn0.1zt8sNNIOZCYziObu4LfeT8uIJ1WNe1yZQcZACCZd9k",
 										"type": "text"
 									}
 								],

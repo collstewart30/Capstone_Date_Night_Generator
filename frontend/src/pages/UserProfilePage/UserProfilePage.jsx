@@ -226,8 +226,8 @@ const UserProfilePage = (props) => {
   return (
     <div className="container">
       <h1>{user.first_name}'s Profile</h1>
-      <h1>{user.email}</h1>
-      <EmailJS />
+      {/* <h1>{user.email}</h1>
+      <EmailJS /> */}
 
       <div className="container">
         <h2 className="profile-heading">Current Date Night:</h2>

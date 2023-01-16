@@ -3,7 +3,7 @@ import axios from "axios";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import useAuth from "../../hooks/useAuth";
 import YelpSaveForFuture from "../../components/YelpSaveForFuture/YelpSaveForFuture";
-import YelpLogo from "../../logo/YelpLogo.png";
+import YelpLogo2 from "../../logo/YelpLogo2.png";
 
 const YelpPage = () => {
   const [yelpData, setYelpData] = useState([]);
@@ -40,8 +40,8 @@ const YelpPage = () => {
 
   return (
     <div className="container">
-      <h1>YELP</h1>
-      <img src={YelpLogo} alt="Yelp"/>
+      {/* <h1>YELP</h1> */}
+      <img src={YelpLogo2} alt="Yelp"/>
       <h2>Search by city:</h2>
       <SearchBar searchBarParent={getYelpData} />
       <div className="grid-container">

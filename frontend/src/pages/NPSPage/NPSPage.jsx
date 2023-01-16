@@ -4,7 +4,7 @@ import { npsKEY } from "../../localKey";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import NPSSaveForFuture from "../../components/NPSSaveForFuture/NPSSaveForFuture";
 import useAuth from "../../hooks/useAuth";
-import NPSLogo from "../../logo/NPSLogo.png";
+import NPSLogo2 from "../../logo/NPSLogo2.png";
 
 const NPSPage = () => {
   const [NPSData, setNPSData] = useState([]);
@@ -35,8 +35,8 @@ const NPSPage = () => {
 
   return (
     <div className="container">
-      <h1>NATIONAL PARK SERVICE</h1>
-      <img src={NPSLogo} alt="NPS"/>
+      {/* <h1>NATIONAL PARK SERVICE</h1> */}
+      <img src={NPSLogo2} alt="NPS"/>
       <h2>Search by state abbreviation:</h2>
       <SearchBar searchBarParent={getNPSData} />
       <div className="grid-container">

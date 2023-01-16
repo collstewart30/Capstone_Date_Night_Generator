@@ -3,7 +3,7 @@ import axios from "axios";
 import { tickemasterKEY } from "../../localKey";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import TMSaveForFuture from "../../components/TMSaveForFuture/TMSaveForFuture";
-import TicketmasterLogo from "../../logo/TicketmasterLogo.png";
+import TicketmasterLogo2 from "../../logo/TicketmasterLogo2.png";
 
 const TicketMasterPage = () => {
   const [ticketmasterData, setTicketmasterData] = useState([]);
@@ -26,8 +26,8 @@ const TicketMasterPage = () => {
 
   return (
     <div className="container">
-      <h1>TICKETMASTER</h1>
-      <img src={TicketmasterLogo} alt="Ticketmaster"/>
+      {/* <h1>TICKETMASTER</h1> */}
+      <img src={TicketmasterLogo2} alt="Ticketmaster"/>
       <h2>Search by state abbreviation:</h2>
       <SearchBar searchBarParent={getTicketMasterData}/>
       <div className="grid-container">

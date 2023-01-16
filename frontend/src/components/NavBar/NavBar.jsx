@@ -10,13 +10,16 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <div className="navBar">
+      <Link to="/" style={{ textDecoration: "none", color: "white" }}>
       <img src={logo} alt="logo" className="logo" />
+      </Link>
+      
       <ul className="nav">
-        <li className="brand">
+        {/* <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             <b>Home</b>
           </Link>
-        </li>
+        </li> */}
         <li className="brand">
           <Link to="/user" style={{ textDecoration: "none", color: "white" }}>
             <b>Profile</b>

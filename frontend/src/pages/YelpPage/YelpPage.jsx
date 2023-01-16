@@ -42,8 +42,8 @@ const YelpPage = () => {
     <div className="container">
       {/* <h1>YELP</h1> */}
       <img src={YelpLogo2} alt="Yelp"/>
-      <h2>Search by city:</h2>
-      <SearchBar searchBarParent={getYelpData} />
+      {/* <h2>Search by city:</h2>
+      <SearchBar searchBarParent={getYelpData} /> */}
       <div className="grid-container">
         {yelpData &&
           yelpData.map((data) => (

@@ -39,8 +39,8 @@ const YelpPage = () => {
 
   return (
     <div className="container">
-      <h1>SEARCH BY CITY:</h1>
-      <SearchBar searchBarParent={getYelpData} />
+      {/* <h1>SEARCH BY CITY:</h1>
+      <SearchBar searchBarParent={getYelpData} /> */}
       <div className="grid-container">
         {yelpData &&
           yelpData.map((data) => (

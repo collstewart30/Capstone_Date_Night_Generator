@@ -68,7 +68,14 @@ def yelp_api(request):
     }
     #, params=params
 
-    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&limit=12", params=params, headers=headers)
+    # location = request.query_params.get("location")    empting query params from wk9 intermediate django code demo
+    # print(location)
+
+    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&limit=12&location=Baltimore", headers=headers)
+
+    # if location:
+    #     rest_response=rest_response.filter(location__city=location)   attempting query params from wk9 intermediate django code demo
+
     # print(rest_response.status_code)
     print(rest_response.headers)
     print(rest_response.url)

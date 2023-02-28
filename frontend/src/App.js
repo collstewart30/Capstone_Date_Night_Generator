@@ -24,7 +24,7 @@ function App() {
       <Navbar />
       <Routes className="Route">
         <Route
-          path="/"
+          exact path="/"
           element={
             <PrivateRoute>
               <HomePage />

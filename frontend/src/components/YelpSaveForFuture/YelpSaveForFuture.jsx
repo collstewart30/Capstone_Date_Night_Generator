@@ -45,7 +45,7 @@ const YelptoBackend = (props) => {
       isFavorite: isFavorite,
     };
     saveForFuture(saveForFutureYelpData);
-    console.log("Yelp Save For Future Updated");
+    // console.log("Yelp Save For Future Updated");
   }
 
   return (

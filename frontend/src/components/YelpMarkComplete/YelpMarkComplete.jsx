@@ -56,7 +56,7 @@ const YelpMarkComplete = (props) => {
       completed: completed,
       isFavorite: isFavorite,
     };
-    console.log(markCompleteData);
+    // console.log(markCompleteData);
     markComplete(markCompleteData);
     refreshPage();
   }

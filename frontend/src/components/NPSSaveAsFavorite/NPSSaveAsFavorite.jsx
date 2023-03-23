@@ -61,7 +61,7 @@ const NPSSaveAsFavorite = (props) => {
       completed: completed,
       isFavorite: isFavorite,
     };
-    console.log("NPS Favorite: ",saveFavoriteData);
+    // console.log("NPS Favorite: ",saveFavoriteData);
     saveFavorite(saveFavoriteData);
     refreshPage();
   }

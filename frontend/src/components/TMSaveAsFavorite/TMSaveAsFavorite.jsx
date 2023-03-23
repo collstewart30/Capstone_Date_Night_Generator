@@ -55,7 +55,7 @@ const TMSaveAsFavorite = (props) => {
       completed: completed,
       isFavorite: isFavorite,
     };
-    console.log("TM Favorite: ",saveFavoriteData);
+    // console.log("TM Favorite: ",saveFavoriteData);
     saveFavorite(saveFavoriteData);
     refreshPage();
   }

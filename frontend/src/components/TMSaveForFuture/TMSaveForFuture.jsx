@@ -49,7 +49,7 @@ const TMSaveForFuture = (props) => {
       isFavorite: isFavorite,
     };
     saveForFuture(saveForFutureTicketmasterData);
-    console.log("Ticketmaster Save for Future Updated");
+    // console.log("Ticketmaster Save for Future Updated");
   }
 
   return (

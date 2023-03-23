@@ -27,7 +27,7 @@ const NPSDelete = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("delete clicked");
+    // console.log("delete clicked");
     deleteDate();
     refreshPage();
   }

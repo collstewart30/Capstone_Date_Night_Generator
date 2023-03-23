@@ -54,7 +54,7 @@ const YelpSaveAsFavorite = (props) => {
       completed: completed,
       isFavorite: isFavorite,
     };
-    console.log("Yelp favorite: ".saveAsFavoriteData);
+    // console.log("Yelp favorite: ".saveAsFavoriteData);
     saveAsFavorite(saveAsFavoriteData);
     refreshPage();
   }

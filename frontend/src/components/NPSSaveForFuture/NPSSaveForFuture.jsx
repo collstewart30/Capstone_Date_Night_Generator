@@ -27,7 +27,7 @@ const NPSSaveForFuture = (props) => {
       let response = await axios.post(`http://127.0.0.1:8000/api/nps/`, post, {
         headers: { Authorization: "Bearer " + token },
       });
-      console.log("NPS Save for Future Updated");
+      // console.log("NPS Save for Future Updated");
       console.log(response.data.data);
       setSaveFuture("True");
     } catch (error) {

@@ -33,7 +33,7 @@ const NPSSaveCurrentNight = (props) => {
           headers: { Authorization: "Bearer " + token },
         }
       );
-      console.log("saveCurrent function");
+      // console.log("saveCurrent function");
       console.log(response.data.data);
     } catch (error) {
       console.log(error.response);
@@ -63,7 +63,7 @@ const NPSSaveCurrentNight = (props) => {
       completed: completed,
       isFavorite: isFavorite,
     };
-    console.log(saveCurrentData);
+    // console.log(saveCurrentData);
     saveCurrentNight(saveCurrentData);
     refreshPage();
   }

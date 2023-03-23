@@ -324,9 +324,7 @@ const UserProfilePage = (props) => {
                   cuisine_type={yelp.cuisine_type}
                   city={yelp.city}
                 />
-                <YelpDelete
-                  business_id={yelp.business_id}
-                />
+                <YelpDelete business_id={yelp.business_id} />
               </div>
             ))}
         </div>
@@ -449,6 +447,7 @@ const UserProfilePage = (props) => {
                   cuisine_type={yelp.cuisine_type}
                   city={yelp.city}
                 />
+                <YelpDelete business_id={yelp.business_id} />
               </div>
             ))}
         </div>
@@ -546,6 +545,7 @@ const UserProfilePage = (props) => {
                   cuisine_type={yelp.cuisine_type}
                   city={yelp.city}
                 />
+                <YelpDelete business_id={yelp.business_id} />
               </div>
             ))}
         </div>
@@ -641,6 +641,7 @@ const UserProfilePage = (props) => {
                   cuisine_type={yelp.cuisine_type}
                   city={yelp.city}
                 />
+                <YelpDelete business_id={yelp.business_id} />
               </div>
             ))}
         </div>

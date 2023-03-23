@@ -293,9 +293,7 @@ const UserProfilePage = (props) => {
                   eventType={tm.eventType}
                   state={tm.state}
                 />
-                <TMDelete
-                  event_id={tm.event_id}
-                />
+                <TMDelete event_id={tm.event_id} />
               </div>
             ))}
 
@@ -410,6 +408,7 @@ const UserProfilePage = (props) => {
                   eventType={tm.eventType}
                   state={tm.state}
                 />
+                <TMDelete event_id={tm.event_id} />
               </div>
             ))}
           {YelpSaveFuture &&
@@ -513,6 +512,7 @@ const UserProfilePage = (props) => {
                   eventType={tm.eventType}
                   state={tm.state}
                 />
+                <TMDelete event_id={tm.event_id} />
               </div>
             ))}
 
@@ -608,6 +608,7 @@ const UserProfilePage = (props) => {
                   eventType={tm.eventType}
                   state={tm.state}
                 />
+                <TMDelete event_id={tm.event_id} />
               </div>
             ))}
           {YelpCompleted &&

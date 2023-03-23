@@ -34,8 +34,8 @@ const TMMarkComplete = (props) => {
           headers: { Authorization: "Bearer " + token },
         }
       );
-      console.log("markComplete function");
-      console.log(response.data.data);
+      // console.log("markComplete function");
+      // console.log(response.data.data);
     } catch (error) {
       console.log(error.response);
     }

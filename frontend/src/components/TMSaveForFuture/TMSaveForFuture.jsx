@@ -26,7 +26,7 @@ const TMSaveForFuture = (props) => {
           headers: { Authorization: "Bearer " + token },
         }
       );
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setSaveFuture("True");
     } catch (error) {
       console.log(error.response);

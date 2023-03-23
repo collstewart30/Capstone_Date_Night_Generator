@@ -55,7 +55,7 @@ const UserProfilePage = (props) => {
         }
       );
       setNPSSaveFuture(response.data);
-      console.log("NPS saved for future: ", response.data);
+      // console.log("NPS saved for future: ", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -70,7 +70,7 @@ const UserProfilePage = (props) => {
         }
       );
       setTMSaveFuture(response.data);
-      console.log("Ticketmaster saved for future: ", response.data);
+      // console.log("Ticketmaster saved for future: ", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -85,7 +85,7 @@ const UserProfilePage = (props) => {
         }
       );
       setYelpSaveFuture(response.data);
-      console.log("Yelp saved for future: ", response.data);
+      // console.log("Yelp saved for future: ", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +100,7 @@ const UserProfilePage = (props) => {
         }
       );
       setNPSCurrentNight(response.data);
-      console.log("NPS current date night", response.data);
+      // console.log("NPS current date night", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -115,7 +115,7 @@ const UserProfilePage = (props) => {
         }
       );
       setTMCurrentNight(response.data);
-      console.log("TM current date night", response.data);
+      // console.log("TM current date night", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -130,7 +130,7 @@ const UserProfilePage = (props) => {
         }
       );
       setYelpCurrentNight(response.data);
-      console.log("Yelp current date night", response.data);
+      // console.log("Yelp current date night", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -145,7 +145,7 @@ const UserProfilePage = (props) => {
         }
       );
       setNPSIsFavorite(response.data);
-      console.log("NPS favorite: ", response.data);
+      // console.log("NPS favorite: ", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -160,7 +160,7 @@ const UserProfilePage = (props) => {
         }
       );
       setTMIsFavorite(response.data);
-      console.log("TM favorite: ", response.data);
+      // console.log("TM favorite: ", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -175,7 +175,7 @@ const UserProfilePage = (props) => {
         }
       );
       setYelpIsFavorite(response.data);
-      console.log("Yelp favorite: ", response.data);
+      // console.log("Yelp favorite: ", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -190,7 +190,7 @@ const UserProfilePage = (props) => {
         }
       );
       setNPSCompleted(response.data);
-      console.log("NPS completed: ", response.data);
+      // console.log("NPS completed: ", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -205,7 +205,7 @@ const UserProfilePage = (props) => {
         }
       );
       setTMCompleted(response.data);
-      console.log("TM completed: ", response.data);
+      // console.log("TM completed: ", response.data);
     } catch (error) {
       console.log(error);
     }
@@ -220,7 +220,7 @@ const UserProfilePage = (props) => {
         }
       );
       setYelpCompleted(response.data);
-      console.log("Yelp completed: ", response.data);
+      // console.log("Yelp completed: ", response.data);
     } catch (error) {
       console.log(error);
     }

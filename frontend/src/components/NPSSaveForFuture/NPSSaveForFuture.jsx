@@ -28,7 +28,7 @@ const NPSSaveForFuture = (props) => {
         headers: { Authorization: "Bearer " + token },
       });
       // console.log("NPS Save for Future Updated");
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setSaveFuture("True");
     } catch (error) {
       console.log(error.response);

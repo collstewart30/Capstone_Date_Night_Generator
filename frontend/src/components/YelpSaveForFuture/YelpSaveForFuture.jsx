@@ -22,7 +22,7 @@ const YelptoBackend = (props) => {
       let response = await axios.post(`http://127.0.0.1:8000/api/yelp/`, post, {
         headers: { Authorization: "Bearer " + token },
       });
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setSaveFuture("True");
     } catch (error) {
       console.log(error.response);

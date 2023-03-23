@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import NPSMarkComplete from "../../components/NPSMarkComplete/NPSMarkComplete";
+import NPSDelete from "../../components/NPSDelete/NPSDelete";
 import TMMarkComplete from "../../components/TMMarkComplete/TMMarkComplete";
 import EmailJS from "../../components/EmailJS/EmailJS";
 import YelpMarkComplete from "../../components/YelpMarkComplete/YelpMarkComplete";
@@ -223,6 +224,7 @@ const UserProfilePage = (props) => {
     }
   };
 
+
   return (
     <div className="container">
       <h1>{user.first_name}'s Profile</h1>
@@ -251,6 +253,17 @@ const UserProfilePage = (props) => {
                   />
                 </p>
                 <NPSMarkComplete
+                  event_id={nps.event_id}
+                  parkCode={nps.parkCode}
+                  title={nps.title}
+                  url={nps.url}
+                  image_url={nps.image_url}
+                  park_name={nps.park_name}
+                  state={nps.state}
+                  description={nps.description}
+                  type={nps.type}
+                />
+                <NPSDelete
                   event_id={nps.event_id}
                   parkCode={nps.parkCode}
                   title={nps.title}

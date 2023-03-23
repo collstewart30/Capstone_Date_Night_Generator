@@ -25,7 +25,7 @@ def nps_items_search(request):
         return Response(serializer.data)
 
 
-@api_view(['GET', 'POST','PATCH'])  
+@api_view(['GET'])  
 @permission_classes([IsAuthenticated])
 def nps_filter_saveCurrent(request):
     print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
@@ -35,7 +35,7 @@ def nps_filter_saveCurrent(request):
         serializer = NPSSerializer(nps_items, many=True)
         return Response(serializer.data)
 
-@api_view(['GET', 'POST','PATCH'])  
+@api_view(['GET'])  
 @permission_classes([IsAuthenticated])
 def nps_filter_saveFuture(request):
     print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
@@ -45,7 +45,7 @@ def nps_filter_saveFuture(request):
         serializer = NPSSerializer(nps_items, many=True)
         return Response(serializer.data)
 
-@api_view(['GET', 'POST','PATCH'])  
+@api_view(['GET'])  
 @permission_classes([IsAuthenticated])
 def nps_filter_isFavorite(request):
     print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")
@@ -55,7 +55,7 @@ def nps_filter_isFavorite(request):
         serializer = NPSSerializer(nps_items, many=True)
         return Response(serializer.data)
 
-@api_view(['GET', 'POST','PATCH'])  
+@api_view(['GET'])  
 @permission_classes([IsAuthenticated])
 def nps_filter_completed(request):
     print('User: 'f"{request.user.id} {request.user.email} {request.user.username}")

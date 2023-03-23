@@ -6,7 +6,7 @@ const TMSaveCurrentNight = (props) => {
   const [user, token] = useAuth();
 
   const [saveCurrent, setSaveCurrent] = useState("True");
-  const [saveFuture, setSaveFuture] = useState("True");
+  const [saveFuture, setSaveFuture] = useState("False");
   const [completed, setCompleted] = useState("False");
   const [isFavorite, setIsFavorite] = useState("False");
 

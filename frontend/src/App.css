@@ -56,10 +56,26 @@ button {
   padding: 0.5rem 0.5rem;
 }
 
+.buttondelete {
+  background-color:beige;
+  border: 1px solid black;
+  color:black;
+  font-size: .75rem;
+  font-family: inherit;
+  /* max-width: 100px; */
+  padding: 0.5rem 0.5rem;
+}
+
 button:hover {
   cursor: pointer;
   color: black;
   background-color:lightgray;
+}
+
+.buttondelete:hover {
+  cursor: pointer;
+  color: lavenderblush;
+  background-color:black;
 }
 
 .container {

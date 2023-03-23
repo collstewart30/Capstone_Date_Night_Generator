@@ -35,7 +35,7 @@ const NPSDelete = (props) => {
   return (
     <button
       type="submit"
-      className="button"
+      className="buttondelete"
       style={{ margin: "1em" }}
       onClick={handleSubmit}
     >

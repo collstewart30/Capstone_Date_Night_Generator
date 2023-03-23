@@ -224,7 +224,6 @@ const UserProfilePage = (props) => {
     }
   };
 
-
   return (
     <div className="container">
       <h1>{user.first_name}'s Profile</h1>
@@ -263,17 +262,7 @@ const UserProfilePage = (props) => {
                   description={nps.description}
                   type={nps.type}
                 />
-                <NPSDelete
-                  event_id={nps.event_id}
-                  parkCode={nps.parkCode}
-                  title={nps.title}
-                  url={nps.url}
-                  image_url={nps.image_url}
-                  park_name={nps.park_name}
-                  state={nps.state}
-                  description={nps.description}
-                  type={nps.type}
-                />
+                <NPSDelete event_id={nps.event_id} />
               </div>
             ))}
 
@@ -380,6 +369,7 @@ const UserProfilePage = (props) => {
                   description={nps.description}
                   type={nps.type}
                 />
+                <NPSDelete event_id={nps.event_id} />
               </div>
             ))}
           {TMSaveFuture &&
@@ -489,6 +479,7 @@ const UserProfilePage = (props) => {
                   description={nps.description}
                   type={nps.type}
                 />
+                <NPSDelete event_id={nps.event_id} />
               </div>
             ))}
 
@@ -584,6 +575,7 @@ const UserProfilePage = (props) => {
                   description={nps.description}
                   type={nps.type}
                 />
+                <NPSDelete event_id={nps.event_id} />
               </div>
             ))}
           {TMCompleted &&

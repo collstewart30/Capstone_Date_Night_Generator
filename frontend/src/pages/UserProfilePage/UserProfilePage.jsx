@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import NPSMarkComplete from "../../components/NPSMarkComplete/NPSMarkComplete";
-import NPSDelete from "../../components/NPSDelete/NPSDelete";
 import TMMarkComplete from "../../components/TMMarkComplete/TMMarkComplete";
 import EmailJS from "../../components/EmailJS/EmailJS";
 import YelpMarkComplete from "../../components/YelpMarkComplete/YelpMarkComplete";
@@ -13,6 +12,8 @@ import YelpSaveCurrentNight from "../../components/YelpSaveCurrentNight/YelpSave
 import NPSSaveAsFavorite from "../../components/NPSSaveAsFavorite/NPSSaveAsFavorite";
 import TMSaveAsFavorite from "../../components/TMSaveAsFavorite/TMSaveAsFavorite";
 import YelpSaveAsFavorite from "../../components/YelpSaveAsFavorite/YelpSaveAsFavorite";
+import NPSDelete from "../../components/NPSDelete/NPSDelete";
+import TMDelete from "../../components/TMDelete/TMDelete";
 
 const UserProfilePage = (props) => {
   const [user, token] = useAuth();
@@ -291,6 +292,9 @@ const UserProfilePage = (props) => {
                   image={tm.image}
                   eventType={tm.eventType}
                   state={tm.state}
+                />
+                <TMDelete
+                  event_id={tm.event_id}
                 />
               </div>
             ))}

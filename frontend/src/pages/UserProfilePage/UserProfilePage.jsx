@@ -14,6 +14,7 @@ import TMSaveAsFavorite from "../../components/TMSaveAsFavorite/TMSaveAsFavorite
 import YelpSaveAsFavorite from "../../components/YelpSaveAsFavorite/YelpSaveAsFavorite";
 import NPSDelete from "../../components/NPSDelete/NPSDelete";
 import TMDelete from "../../components/TMDelete/TMDelete";
+import YelpDelete from "../../components/YelpDelete/YelpDelete";
 
 const UserProfilePage = (props) => {
   const [user, token] = useAuth();
@@ -322,6 +323,9 @@ const UserProfilePage = (props) => {
                   image_url={yelp.image_url}
                   cuisine_type={yelp.cuisine_type}
                   city={yelp.city}
+                />
+                <YelpDelete
+                  business_id={yelp.business_id}
                 />
               </div>
             ))}

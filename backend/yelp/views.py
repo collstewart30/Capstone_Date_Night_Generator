@@ -49,8 +49,6 @@ def yelp_by_id(request, business_id):
 @permission_classes([AllowAny])
 def yelp_api(request):
 
-# , searchTerm 
-
     # example: 
     # rest_response_example = requests.get("https://swapi.dev/api/")
     # print(rest_response.headers)
@@ -59,48 +57,42 @@ def yelp_api(request):
     # Python requests library:      Yelp API was being blocked by CORS
     # best practices. services django requests library. benefits of doing it this way: security, performance
     # calling API in backend and then serializing data in a response variable to send to the front end
-    
+
     headers = {'Authorization': 'Bearer {}'.format(api_key)}
-    # baseUrl = "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1"
-
-    params = {
-        'location': "Batimore",
-    }
-    #, params=params
-
-    # location = request.query_params.get("location")    empting query params from wk9 intermediate django code demo
-    # print(location)
-
     rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&limit=12&location=Baltimore", headers=headers)
 
-    # if location:
-    #     rest_response=rest_response.filter(location__city=location)   attempting query params from wk9 intermediate django code demo
 
     # print(rest_response.status_code)
-    print(rest_response.headers)
-    print(rest_response.url)
-    print(rest_response.json())
+    # print(rest_response.headers)
+    # print(rest_response.url)
+    # print(rest_response.json())
     return Response(rest_response.json())
 
 
 
-# @api_view(['GET'])
-# @permission_classes([AllowAny])
-# def search_yelp_api(request):
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def search_yelp_api(request):   
 
-#     headers = {'Authorization': 'Bearer {}'.format(api_key)}
-#     baseUrl = "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1"
+    headers = {'Authorization': 'Bearer {}'.format(api_key)}
+    baseUrl = "https://api.yelp.com/v3/businesses/search?term=restaurant&location=Baltimore&limit=1"
 
-#     params = {
-#         'location': 'Baltimore'
-#     }
-#     #, params=params
+    params = {
+        'location': 'Baltimore'
+    }
+    #, params=params
 
-#     rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&limit=12", params, headers=headers)
-#     # print(rest_response.status_code)
-#     print(rest_response.headers)
-#     print(rest_response.json())
-#     return Response(rest_response.json())
+    location = request.query_params.get("location")    
+    print(location)
+
+    if location:
+        rest_response=rest_response.filter(location__city=location)   #attempting query params from wk9 intermediate django code demo
+
+    rest_response = requests.get("https://api.yelp.com/v3/businesses/search?term=restaurant&limit=12", params, headers=headers)
+    # print(rest_response.status_code)
+    print(rest_response.headers)
+    print(rest_response.json())
+    return Response(rest_response.json())
 
 
 @api_view(['GET', 'POST','PATCH'])  

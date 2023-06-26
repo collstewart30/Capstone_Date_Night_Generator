@@ -25,11 +25,11 @@ const YelpPage = () => {
     try {
       let response = await axios.get(
         `http://127.0.0.1:8000/api/yelp/yelp_api/`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //   },
+        // }
       );
       console.log("Yelp API", response.data.businesses);
       setYelpData(response.data.businesses);
